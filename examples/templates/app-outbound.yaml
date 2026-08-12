@@ -1,0 +1,209 @@
+workflow-templates:
+  - name: "new-seq"
+
+    inputs:
+      required: &required-vars
+      - domain
+      - system
+      - system_topic
+      - service_queue_owner
+      - non_service_queue_owner
+      - aem_client_username
+
+      optional: &optional-vars
+        topic_prefix: "SITEA/APP/AIF"
+
+        # access control
+        client_profile_name: "cp-it-user"
+        acl_profile_name: "acl-it-user-{{ inputs.aem_client_username }}"
+
+        # service queue
+        service_queue_name: "TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        service_queue_owner: ""
+        service_queue_dmq: "DMQ/TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        service_queue_permission: "no-access"
+        service_queue_access: exclusive
+        service_queue_reject_msg_sender: "always"
+        service_queue_ttl: 0
+        service_queue_max_redelivery: 0 # -1 = disabled ; 0 = forever ; else redelivery = value
+        service_queue_max_spool: 5000
+        service_queue_enabled: false
+        service_queue_subscription: "{{ inputs.topic_prefix }}/{{ inputs.system_topic }}"
+
+        # mirror queue
+        mirror_queue_name: "MIRROR/TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        mirror_queue_owner: "{{ inputs.non_service_queue_owner }}"
+        mirror_queue_dmq: "#DMQ_LAST_VALUE"
+        mirror_queue_permission: "no-access"
+        mirror_queue_access: exclusive
+        mirror_queue_reject_msg_sender: "when-queue-enabled"
+        mirror_queue_ttl: 1296000 # 15 days
+        mirror_queue_max_spool: 5000
+        mirror_queue_enabled: false
+        mirror_queue_subscription: "{{ inputs.topic_prefix }}/{{ inputs.system_topic }}"
+
+        # dmq
+        dmq_name: "DMQ/TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        dmq_owner: "{{ inputs.non_service_queue_owner }}"
+        dmq_dmq: "#DEAD_MSG_QUEUE"
+        dmq_permission: "no-access"
+        dmq_access: exclusive
+        dmq_ttl: 7776000 # 90 days
+        dmq_max_spool: 5000
+        dmq_enabled: false
+
+    actions: &outbound-new
+
+    # ── Access Control ──────────────────────────────────────────────────────
+    - name: "Create Client Profile"
+      module: "client_profile.add"
+      args:
+        clientProfileName: "{{ inputs.client_profile_name }}"
+
+    - name: "Update Client Profile"
+      module: "client_profile.update"
+      args:
+        clientProfileName: "{{ inputs.client_profile_name }}"
+        allowGuaranteedMsgSendEnabled: true
+        allowGuaranteedMsgReceiveEnabled: true
+
+    - name: "Create ACL Profile"
+      module: "acl_profile.add"
+      args:
+        aclProfileName: "{{ inputs.acl_profile_name }}"
+        clientConnectDefaultAction: "allow"
+        publishTopicDefaultAction: "disallow"
+        subscribeTopicDefaultAction: "disallow"
+
+    - name: "Create Client Username"
+      module: "client_username.add"
+      args:
+        clientUsername: "{{ inputs.aem_client_username }}"
+        clientProfileName: "{{ inputs.client_profile_name }}"
+        aclProfileName: "{{ inputs.acl_profile_name }}"
+        enabled: true
+
+    - name: "Update Client Username Association"
+      module: "client_username.update"
+      args:
+        clientUsername: "{{ inputs.aem_client_username }}"
+        clientProfileName: "{{ inputs.client_profile_name }}"
+        aclProfileName: "{{ inputs.acl_profile_name }}"
+
+    - name: "Add ACL Publish Topic Exception"
+      module: "acl_publish_exception.add"
+      args:
+        aclProfileName: "{{ inputs.acl_profile_name }}"
+        publishTopicException: "{{ inputs.service_queue_subscription }}"
+        publishTopicExceptionSyntax: "smf"
+
+    # ── Queues ──────────────────────────────────────────────────────────────
+    - name: "Create Service Queue"
+      module: "queue.add"
+      args:
+        queueName: "{{ inputs.service_queue_name }}"
+        owner: "{{ inputs.service_queue_owner }}"
+        accessType: "{{ inputs.service_queue_access }}"
+        permission: "{{ inputs.service_queue_permission }}"
+        deadMsgQueue: "{{ inputs.service_queue_dmq }}"
+        ingressEnabled: "{{ inputs.service_queue_enabled }}"
+        egressEnabled: "{{ inputs.service_queue_enabled }}"
+        maxTtl: "{{ inputs.service_queue_ttl }}"
+        maxRedeliveryCount: "{{ inputs.service_queue_max_redelivery }}"
+        rejectMsgToSenderOnDiscardBehavior: "{{ inputs.service_queue_reject_msg_sender }}"
+    - name: "Create Mirror Queue"
+      module: "queue.add"
+      args:
+        queueName: "{{ inputs.mirror_queue_name }}"
+        owner: "{{ inputs.mirror_queue_owner }}"
+        accessType: "{{ inputs.mirror_queue_access }}"
+        permission: "{{ inputs.mirror_queue_permission }}"
+        deadMsgQueue: "{{ inputs.mirror_queue_dmq }}"
+        ingressEnabled: "{{ inputs.mirror_queue_enabled }}"
+        egressEnabled: "{{ inputs.mirror_queue_enabled }}"
+        maxTtl: "{{ inputs.mirror_queue_ttl }}"
+        rejectMsgToSenderOnDiscardBehavior: "{{ inputs.mirror_queue_reject_msg_sender }}"
+    - name: "Create DMQ"
+      module: "queue.add"
+      args:
+        queueName: "{{ inputs.dmq_name }}"
+        owner: "{{ inputs.dmq_owner }}"
+        accessType: "{{ inputs.dmq_access }}"
+        permission: "{{ inputs.dmq_permission }}"
+        deadMsgQueue: "{{ inputs.dmq_dmq }}"
+        ingressEnabled: "{{ inputs.dmq_enabled }}"
+        egressEnabled: "{{ inputs.dmq_enabled }}"
+        maxTtl: "{{ inputs.dmq_ttl }}"
+
+    # ── Subscriptions ───────────────────────────────────────────────────────
+    - name: "Add Service Queue Subscription"
+      module: "q_sub.add"
+      args:
+        queueName: "{{ inputs.service_queue_name }}"
+        subscriptionTopic: "{{ inputs.service_queue_subscription }}"
+    - name: "Add Mirror Queue Subscription"
+      module: "q_sub.add"
+      args:
+        queueName: "{{ inputs.mirror_queue_name }}"
+        subscriptionTopic: "{{ inputs.mirror_queue_subscription }}"
+
+  - name: "new-non-seq"
+
+    inputs:
+      required: *required-vars
+      optional:
+        <<: *optional-vars
+        # service queue redelivery different
+        service_queue_max_redelivery: 5 # -1 = disabled ; 0 = forever ; else redelivery = value
+
+    actions: *outbound-new
+
+  - name: "delete"
+
+    inputs:
+      required:
+      - domain
+      - system
+      - system_topic
+      - aem_client_username
+
+      optional:
+        topic_prefix: "SITEA/APP/AIF"
+        acl_profile_name: "acl-it-user-{{ inputs.aem_client_username }}"
+        service_queue_name: "TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        mirror_queue_name: "MIRROR/TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        dmq_name: "DMQ/TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+        service_queue_subscription: "{{ inputs.topic_prefix }}/{{ inputs.system_topic }}"
+
+    actions:
+    # ── Queue Cleanup ───────────────────────────────────────────────────────
+    - name: "Delete Service Queue"
+      module: "queue.delete"
+      args:
+        queueName: "{{ inputs.service_queue_name }}"
+    - name: "Delete Mirror Queue"
+      module: "queue.delete"
+      args:
+        queueName: "{{ inputs.mirror_queue_name }}"
+    - name: "Delete DMQ"
+      module: "queue.delete"
+      args:
+        queueName: "{{ inputs.dmq_name }}"
+
+    # ── Access Control Cleanup ──────────────────────────────────────────────
+    - name: "Remove ACL Publish Topic Exception"
+      module: "acl_publish_exception.delete"
+      args:
+        aclProfileName: "{{ inputs.acl_profile_name }}"
+        publishTopicException: "{{ inputs.service_queue_subscription }}"
+        publishTopicExceptionSyntax: "smf"
+
+    - name: "Delete Client Username"
+      module: "client_username.delete"
+      args:
+        clientUsername: "{{ inputs.aem_client_username }}"
+
+    - name: "Delete ACL Profile"
+      module: "acl_profile.delete"
+      args:
+        aclProfileName: "{{ inputs.acl_profile_name }}"

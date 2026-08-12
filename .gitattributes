@@ -1,0 +1,15 @@
+# Normalise text in the repository and check it out with LF, so a contributor
+# with core.autocrlf=true does not fail the byte-exact generator golden tests.
+* text=auto eol=lf
+
+# Generated Go and the golden fixtures are compared byte-for-byte.
+*.go text eol=lf
+*.golden text eol=lf
+
+# Shell scripts must keep LF or they will not run.
+*.sh text eol=lf
+# PowerShell tolerates either, but keep it consistent with the mirrored dev.sh.
+*.ps1 text eol=lf
+
+# The committed SEMP schemas are inputs to the generator: never touch them.
+specs/** -text

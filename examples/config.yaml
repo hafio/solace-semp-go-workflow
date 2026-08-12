@@ -1,0 +1,413 @@
+# =============================================================================
+# SEMP Workflow Automation - Configuration File
+# =============================================================================
+# This file defines:
+#   1. SEMP broker connection details
+#   2. Global variables shared across all workflows
+#   3. Workflow entries referencing templates with specific inputs
+ 
+semp:
+  host: "https://broker.example.com:443"
+  username: "***************"
+  password: "***************"
+  msg_vpn: "test01"
+  verify_ssl: false
+  timeout: 30
+ 
+global_vars:
+  # Topic hierarchy
+  topic_prefix: "SITEA/APP/AIF"
+
+  # Client Access Control
+  default_client_profile: "cp-it-user"
+  default_acl_profile: "acl-it-user-{{ inputs.aem_client_username }}"
+ 
+  # Queue ownership
+  default_queue_owner: "svc-app-client"
+  queues_enabled: true
+ 
+  # Queue naming conventions
+  default_to_service_queue_name: "TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+  default_from_service_queue_name: "FROM-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+  default_mirror_queue_name: "MIRROR/{{ inputs.system_topic }}"
+  default_outbound_dmq_name: "DMQ/TO-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+  default_inbound_dmq_name: "DMQ/FROM-{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+ 
+  # Queue TTL defaults (seconds; 0 = disabled)
+  default_service_queue_ttl: 1296000  # 15 days
+  default_mirror_queue_ttl: 3240000   # 90 days
+  default_dmq_ttl: 3240000
+ 
+  # Queue behaviour defaults
+  default_service_queue_reject_msg_sender: "always"
+  default_mirror_queue_reject_msg_sender: "when-queue-enabled"
+ 
+  # RDP / REST consumer defaults
+  default_rdp_name: "RDP/{{ inputs.domain }}-{{ inputs.system }}-{{ inputs.system_topic }}"
+  default_rdp_client_profile: "default"
+  default_rc_name: "RC-APP-REST"
+  default_rc_remote_host: ""
+  default_rc_remote_port: 80
+  default_rc_tls_enabled: true
+  default_rc_auth_scheme: "http-basic" 
+  default_rc_auth_username: ""
+  default_rc_rc_auth_password: ""
+  default_qb_post_request_target: ""
+ 
+# Workflow templates directory (relative to this config file)
+templates_dir: "templates"
+ 
+workflows:
+ 
+  # ---------------------------------------------------------------------------
+  # Outbound - Sequential delivery
+  # ---------------------------------------------------------------------------
+  # - template: "app-outbound.new-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEB.ORDERS.ORDER-CREATE"
+  #     service_queue_owner: ""
+  #     non_service_queue_owner: ""
+  #     aem_client_username: ""
+      ## access control
+      #client_profile_name: "{{ global_vars.default_client_profile }}"
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+      #topic_prefix: "{{ global_vars.topic_prefix }}"
+      ## service queue
+      #service_queue_name: "{{ global_vars.default_to_service_queue_name }}"
+      #service_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #service_queue_dmq: "#DEAD_MSG_QUEUE"
+      #service_queue_permission: "no-access"
+      #service_queue_access: exclusive
+      #service_queue_reject_msg_sender: "{{ global_vars.default_service_queue_reject_msg_sender }}"
+      #service_queue_ttl: "{{ global_vars.default_service_queue_ttl }}"
+      #service_queue_max_redelivery: -1
+      #service_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #service_queue_subscription: "{{ global_vars.topic_prefix }}/{{ inputs.system_topic }}"
+      ## mirror queue
+      #mirror_queue_name: "{{ global_vars.default_mirror_queue_name }}"
+      #mirror_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #mirror_queue_dmq: "#DEAD_MSG_QUEUE"
+      #mirror_queue_permission: "no-access"
+      #mirror_queue_access: exclusive
+      #mirror_queue_reject_msg_sender: "{{ global_vars.default_mirror_queue_reject_msg_sender }}"
+      #mirror_queue_ttl: "{{ global_vars.default_mirror_queue_ttl }}"
+      #mirror_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #mirror_queue_subscription: "{{ global_vars.topic_prefix }}/{{ inputs.system_topic }}"
+      ## dmq
+      #dmq_name: "{{ global_vars.default_outbound_dmq_name }}"
+      #dmq_owner: "{{ global_vars.default_queue_owner }}"
+      #dmq_dmq: "#DEAD_MSG_QUEUE"
+      #dmq_permission: "no-access"
+      #dmq_access: exclusive
+      #dmq_ttl: "{{ global_vars.default_dmq_ttl }}"
+      #dmq_enabled: "{{ global_vars.queues_enabled }}"
+ 
+  # ---------------------------------------------------------------------------
+  # Outbound - Non-sequential (concurrent) delivery
+  # ---------------------------------------------------------------------------
+  # - template: "app-outbound.new-non-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.ORDER-UPDATE"
+  #     service_queue_owner: "svc-app-client" # fill in MI client username
+  #     non_service_queue_owner: "queue-owner-03"
+  #     aem_client_username: "svc-app-client"
+ 
+  - template: "app-outbound.new-non-seq"
+    inputs:
+      domain: "CENTRAL"
+      system: "APPSYS"
+      system_topic: "SITEA.ORDERS.ORDER-CREATE"
+      service_queue_owner: "svc-app-client" # fill in MI client username
+      non_service_queue_owner: "queue-owner-01"
+      aem_client_username: "app-client-01"
+      ## access control (optional overrides)
+      #client_profile_name: "{{ global_vars.default_client_profile }}"
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+
+  # - template: "app-outbound.delete" # (this is a delete!!!!!!!!)
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.ORDER-CREATE"
+  #     aem_client_username: "app-client-01"
+    
+  # - template: "app-outbound.new-non-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.ORDER-CREATE"
+  #     service_queue_owner: ""
+  #     non_service_queue_owner: ""
+  #     aem_client_username: ""
+
+  # - template: "app-outbound.new-non-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.DAILY.SUMMARY"
+  #     service_queue_owner: ""
+  #     non_service_queue_owner: ""
+  #     aem_client_username: ""
+  # - template: "app-outbound.new-non-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.STATUS.REPORT"
+  #     service_queue_owner: ""
+  #     non_service_queue_owner: ""
+  #     aem_client_username: ""
+  # - template: "app-outbound.new-non-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.DELIVERY.NOTIFY"
+  #     service_queue_owner: ""
+  #     non_service_queue_owner: ""
+  #     aem_client_username: ""
+ 
+      ## access control (optional overrides)
+      #client_profile_name: "{{ global_vars.default_client_profile }}"
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+      #topic_prefix: "{{ global_vars.topic_prefix }}"
+      ## service queue
+      #service_queue_name: "{{ global_vars.default_to_service_queue_name }}"
+      #service_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #service_queue_dmq: "#DEAD_MSG_QUEUE"
+      #service_queue_permission: "no-access"
+      #service_queue_access: exclusive
+      #service_queue_reject_msg_sender: "{{ global_vars.default_service_queue_reject_msg_sender }}"
+      #service_queue_ttl: "{{ global_vars.default_service_queue_ttl }}"
+      #service_queue_max_redelivery: 5
+      #service_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #service_queue_subscription: "{{ global_vars.topic_prefix }}/{{ inputs.system_topic }}"
+      ## mirror queue
+      #mirror_queue_name: "{{ global_vars.default_mirror_queue_name }}"
+      #mirror_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #mirror_queue_dmq: "#DEAD_MSG_QUEUE"
+      #mirror_queue_permission: "no-access"
+      #mirror_queue_access: exclusive
+      #mirror_queue_reject_msg_sender: "{{ global_vars.default_mirror_queue_reject_msg_sender }}"
+      #mirror_queue_ttl: "{{ global_vars.default_mirror_queue_ttl }}"
+      #mirror_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #mirror_queue_subscription: "{{ global_vars.topic_prefix }}/{{ inputs.system_topic }}"
+      ## dmq
+      #dmq_name: "{{ global_vars.default_outbound_dmq_name }}"
+      #dmq_owner: "{{ global_vars.default_queue_owner }}"
+      #dmq_dmq: "#DEAD_MSG_QUEUE"
+      #dmq_permission: "no-access"
+      #dmq_access: exclusive
+      #dmq_ttl: "{{ global_vars.default_dmq_ttl }}"
+      #dmq_enabled: "{{ global_vars.queues_enabled }}"
+
+  # ---------------------------------------------------------------------------
+  # Outbound - Delete
+  # ---------------------------------------------------------------------------
+  # - template: "app-outbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEB.ORDERS.ORDER-CREATE"
+  #     aem_client_username: ""
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+      #service_queue_name: "{{ global_vars.default_to_service_queue_name }}"
+      #mirror_queue_name: "{{ global_vars.default_mirror_queue_name }}"
+      #dmq_name: "{{ global_vars.default_outbound_dmq_name }}"
+ 
+  # ---------------------------------------------------------------------------
+  # Inbound - Sequential delivery (topic: domain/system/topic)
+  # ---------------------------------------------------------------------------
+  # - template: "app-inbound.new-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "PLM.MASTERDATA.RECORD.UPDATE"
+  #     non_service_queue_owner: "queue-owner-02"
+  #     aem_client_username: ""
+      ## access control (optional overrides)
+      #client_profile_name: "{{ global_vars.default_client_profile }}"
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+
+  # - template: "app-inbound.delete" # (this is a delete!!!!!!!!)
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "PLM.MASTERDATA.RECORD.UPDATE"
+  #     aem_client_username: ""
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+      ## service queue
+      # service_queue_name: "{{ global_vars.default_from_service_queue_name }}"
+      #service_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #service_queue_dmq: "#DEAD_MSG_QUEUE"
+      #service_queue_permission: "no-access"
+      #service_queue_access: exclusive
+      #service_queue_reject_msg_sender: "{{ global_vars.default_service_queue_reject_msg_sender }}"
+      #service_queue_ttl: "{{ global_vars.default_service_queue_ttl }}"
+      #service_queue_max_redelivery: -1
+      #service_queue_max_spool: 0
+      #service_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #service_queue_subscription: "{{ inputs.domain }}/{{ inputs.system }}/{{ inputs.system_topic }}"
+      ## mirror queue
+      #mirror_queue_name: "{{ global_vars.default_mirror_queue_name }}"
+      #mirror_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #mirror_queue_dmq: "#DEAD_MSG_QUEUE"
+      #mirror_queue_permission: "no-access"
+      #mirror_queue_access: exclusive
+      #mirror_queue_reject_msg_sender: "{{ global_vars.default_mirror_queue_reject_msg_sender }}"
+      #mirror_queue_ttl: "{{ global_vars.default_mirror_queue_ttl }}"
+      #mirror_queue_max_spool: 0
+      #mirror_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #mirror_queue_subscription: "{{ inputs.domain }}/{{ inputs.system }}/{{ inputs.system_topic }}"
+      ## dmq
+      #dmq_name: "{{ global_vars.default_inbound_dmq_name }}"
+      #dmq_owner: "{{ global_vars.default_queue_owner }}"
+      #dmq_dmq: "#DEAD_MSG_QUEUE"
+      #dmq_permission: "no-access"
+      #dmq_access: exclusive
+      #dmq_ttl: "{{ global_vars.default_dmq_ttl }}"
+      #dmq_max_spool: 0
+      #dmq_enabled: "{{ global_vars.queues_enabled }}"
+      ## rdp
+      #rdp_name: "{{ global_vars.default_rdp_name }}"
+      #rdp_client_profile: "{{ global_vars.default_rdp_client_profile }}"
+      #rdp_enabled: true
+      ## rest consumer
+      #rc_name: "{{ global_vars.default_rc_name }}"
+      # rc_remote_host: "{{ global_vars.default_rc_remote_host }}" # remark
+      #rc_remote_port: "{{ global_vars.default_rc_remote_port }}"
+      #rc_tls_enabled: "{{ global_vars.default_rc_tls_enabled }}"
+      #rc_http_method: "post"
+      #rc_outgoing_connection_count: 3
+      #rc_auth_scheme: "{{ global_vars.default_rc_auth_scheme }}"
+      #rc_auth_username: ""
+      #rc_auth_password: ""
+      #rc_enabled: true
+      ## queue binding
+      #qb_post_request_target: "{{ global_vars.default_qb_post_request_target }}"
+      #qb_gateway_replace_target_authority: false
+ 
+  # ---------------------------------------------------------------------------
+  # Inbound - Non-sequential delivery (topic: topic_prefix/system_topic)
+  # ---------------------------------------------------------------------------
+  # - template: "app-inbound.new-non-seq"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "PLM.MASTERDATA.RECORD.UPDATE"
+  #     non_service_queue_owner: "queue-owner-02"
+  #     aem_client_username: ""
+      ## access control (optional overrides)
+      #client_profile_name: "{{ global_vars.default_client_profile }}"
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+
+  # - template: "app-inbound.delete" # (this is a delete!!!!!!!!)
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "PLM.MASTERDATA.RECORD.UPDATE"
+  #     aem_client_username: ""
+      #acl_profile_name: "{{ global_vars.default_acl_profile }}"
+      #topic_prefix: "{{ global_vars.topic_prefix }}"
+      ## service queue
+      #service_queue_name: "{{ global_vars.default_from_service_queue_name }}"
+      #service_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #service_queue_dmq: "#DEAD_MSG_QUEUE"
+      #service_queue_permission: "no-access"
+      #service_queue_access: exclusive
+      #service_queue_reject_msg_sender: "{{ global_vars.default_service_queue_reject_msg_sender }}"
+      #service_queue_ttl: "{{ global_vars.default_service_queue_ttl }}"
+      #service_queue_max_redelivery: 5
+      #service_queue_max_spool: 0
+      #service_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #service_queue_subscription: "{{ global_vars.topic_prefix }}/{{ inputs.system_topic }}"
+      ## mirror queue
+      #mirror_queue_name: "{{ global_vars.default_mirror_queue_name }}"
+      #mirror_queue_owner: "{{ global_vars.default_queue_owner }}"
+      #mirror_queue_dmq: "#DEAD_MSG_QUEUE"
+      #mirror_queue_permission: "no-access"
+      #mirror_queue_access: exclusive
+      #mirror_queue_reject_msg_sender: "{{ global_vars.default_mirror_queue_reject_msg_sender }}"
+      #mirror_queue_ttl: "{{ global_vars.default_mirror_queue_ttl }}"
+      #mirror_queue_max_spool: 0
+      #mirror_queue_enabled: "{{ global_vars.queues_enabled }}"
+      #mirror_queue_subscription: "{{ global_vars.topic_prefix }}/{{ inputs.system_topic }}"
+      ## dmq
+      #dmq_name: "{{ global_vars.default_inbound_dmq_name }}"
+      #dmq_owner: "{{ global_vars.default_queue_owner }}"
+      #dmq_dmq: "#DEAD_MSG_QUEUE"
+      #dmq_permission: "no-access"
+      #dmq_ttl: "{{ global_vars.default_dmq_ttl }}"
+      #dmq_access: exclusive
+      #dmq_max_spool: 0
+      #dmq_enabled: "{{ global_vars.queues_enabled }}"
+      ## rdp
+      #rdp_name: "{{ global_vars.default_rdp_name }}"
+      #rdp_client_profile: "{{ global_vars.default_rdp_client_profile }}"
+      #rdp_enabled: true
+      ## rest consumer
+      #rc_name: "{{ global_vars.default_rc_name }}"
+      # rc_remote_host: "{{ global_vars.default_rc_remote_host }}" # remark
+      #rc_remote_port: "{{ global_vars.default_rc_remote_port }}"
+      #rc_tls_enabled: "{{ global_vars.default_rc_tls_enabled }}"
+      #rc_http_method: "post"
+      #rc_outgoing_connection_count: 3
+      #rc_auth_scheme: "{{ global_vars.default_rc_auth_scheme }}"
+      #rc_auth_username: ""
+      #rc_auth_password: ""
+      #rc_enabled: true
+      ## queue binding
+      #qb_post_request_target: "{{ global_vars.default_qb_post_request_target }}"
+      #qb_gateway_replace_target_authority: false
+ 
+  # ---------------------------------------------------------------------------
+  # Inbound - Delete
+  # ---------------------------------------------------------------------------
+  # - template: "app-inbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "PLM.MASTERDATA.RECORD.UPDATE"
+  #     aem_client_username: ""
+
+  # - template: "app-outbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.ORDER-UPDATE"
+  #     aem_client_username: ""
+
+  # - template: "app-outbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.ORDER-CREATE"
+  #     aem_client_username: ""
+
+  # - template: "app-outbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.DAILY.SUMMARY"
+  #     aem_client_username: ""
+
+  # - template: "app-outbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.STATUS.REPORT"
+  #     aem_client_username: ""
+
+  # - template: "app-outbound.delete"
+  #   inputs:
+  #     domain: "CENTRAL"
+  #     system: "APPSYS"
+  #     system_topic: "SITEA.ORDERS.DELIVERY.NOTIFY"
+  #     aem_client_username: ""
+ 
+      #service_queue_name: "{{ global_vars.default_from_service_queue_name }}"
+      #mirror_queue_name: "{{ global_vars.default_mirror_queue_name }}"
+      #dmq_name: "{{ global_vars.default_inbound_dmq_name }}"
+      #rdp_name: "{{ global_vars.default_rdp_name }}"

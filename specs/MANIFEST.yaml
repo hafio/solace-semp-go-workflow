@@ -1,0 +1,68 @@
+# Provenance of the SEMP schemas the code generator reads.
+#
+# These files are the source of truth for every generated module. They are
+# committed so generation is reproducible from a fresh clone with no network
+# access, and are never read by the shipped binary -- only by tools/semp-gen.
+#
+# Downloaded from the Solace product portal. Note the counter-intuitive
+# semp-version prefix inside the v1 schemas: "app/" denotes an appliance and
+# "broker/" denotes a software broker.
+#
+# Adding a broker version: create specs/<platform>/<version>/, drop the three
+# files in, add the entry here with its sha256, then run the `gen` dev task and
+# review the resulting diff under internal/modules/gen_*.go.
+#
+# Retention: current plus one prior version. Prune older ones -- git does not
+# deduplicate large, mostly-different JSON/XML blobs between releases.
+
+specs:
+  - platform: software
+    brokerVersion: 10.26.0.8755
+    importedDate: 2026-08-11
+    notes: >-
+      Superset of the appliance spec by path count: adds kafkaReceivers (and
+      topicBindings), kafkaSenders (and queueBindings) and
+      authenticationKerberosRealms. 177 config paths, 431 definitions.
+    files:
+      - name: semp-v2-config.json
+        role: SEMP v2 config API (Swagger 2.0)
+        bytes: 2021447
+        sha256: db2be277890bbc9fe9416852877df46e6e7a9bce9ab8c79e8afea0efd6971885
+      - name: semp-v1-request.xsd
+        role: SEMP v1 RPC request schema (cli2xsd)
+        bytes: 1936171
+        sha256: 38bc4d95db183e6b6fef726575535ce44daba06967f6d2d614322315b002e7c9
+      - name: semp-v1-reply.xsd
+        role: SEMP v1 RPC reply schema
+        bytes: 558806
+        sha256: 88bfdbd50e1bdf6e53c7457e6492e1ea7c73094ae1fa09622e691ade911a174b
+
+  - platform: appliance
+    brokerVersion: 10.26.0.8755
+    importedDate: 2026-08-11
+    notes: >-
+      Not a strict subset of the software spec. Carries ten attributes software
+      lacks (Broker.configSyncClientProfileTcpSlowStartAfterIdleEnabled,
+      Broker.guaranteedMsgingDiskArrayWwn, Broker.guaranteedMsgingDiskLocation,
+      Broker.guaranteedMsgingVirtualRouterWhenActiveActive,
+      Broker.tlsBlockVersion10Enabled,
+      DmrClusterLink.clientProfileTcpSlowStartAfterIdleEnabled,
+      MsgVpn.preferIpVersion, MsgVpn.sempOverMsgBusLegacyShowClearEnabled,
+      MsgVpnClientProfile.tcpSlowStartAfterIdleEnabled,
+      MsgVpnTelemetryProfile.receiverTcpSlowStartAfterIdleEnabled) and one wider
+      enum (MsgVpnDistributedCache.cacheVirtualRouter allows primary and backup).
+      Both specs must therefore be merged as a union. 167 config paths, 411
+      definitions.
+    files:
+      - name: semp-v2-config.json
+        role: SEMP v2 config API (Swagger 2.0)
+        bytes: 1873499
+        sha256: ce13d85e805b91d93da20e42fe9d42cd7a33711c8b9a6e9fd6dc8ca79775eadd
+      - name: semp-v1-request.xsd
+        role: SEMP v1 RPC request schema (cli2xsd)
+        bytes: 1848825
+        sha256: f2a4ddf99e602bae5b659a2edc0bfa50f495bf616e04dc1110d80a2c01f1a425
+      - name: semp-v1-reply.xsd
+        role: SEMP v1 RPC reply schema
+        bytes: 533148
+        sha256: 1767d380fa843fd2f271c583b6d4760c1e570c8fc4c6b2cb44d59be3be5b248b

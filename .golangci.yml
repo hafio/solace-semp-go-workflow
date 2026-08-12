@@ -1,0 +1,44 @@
+# golangci-lint configuration for the Go implementation (v2 config schema).
+# Run: golangci-lint run ./...   (from the repo root; requires golangci-lint v2)
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - govet
+    - staticcheck
+    - errcheck
+    - ineffassign
+    - unused
+    - misspell
+    - revive
+  settings:
+    revive:
+      rules:
+        - name: exported
+          disabled: true # doc comments follow Go style but we don't enforce the linter's phrasing
+  exclusions:
+    # Keep the default exclusions golangci-lint v1 applied out of the box (v1's
+    # exclude-use-default: true). These four presets are the v2 equivalent, so
+    # the v1 -> v2 upgrade does not surface issues v1 silently ignored.
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      # Error message strings are deliberately capitalized / end with punctuation
+      # to match the required user-facing text exactly. ST1005 flags this; it is
+      # intentional here.
+      - linters: [staticcheck]
+        text: "ST1005:"
+      # Test files exercise error paths where checking every return is noise.
+      - path: _test\.go
+        linters: [errcheck]
+
+issues:
+  # Do not hide multiple reports of the same issue.
+  max-same-issues: 0
+  max-issues-per-linter: 0
