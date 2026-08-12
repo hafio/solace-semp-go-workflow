@@ -1,0 +1,142 @@
+workflow-templates:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # create: provisions every supported broker artifact type
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: "create"
+
+    inputs:
+      required:
+      - prefix
+
+      optional:
+        # access-control resources
+        acl_name:   "{{ inputs.prefix }}-ACL"
+        cp_name:    "{{ inputs.prefix }}-CP"
+        cu_name:    "{{ inputs.prefix }}-USER"
+        cu_password: ""
+
+        # queue + subscription
+        queue_name:  "{{ inputs.prefix }}-QUEUE"
+        sub_topic:   "TEST/{{ inputs.prefix }}/>"
+
+        # RDP (rest delivery point) + consumer + binding
+        rdp_name:    "{{ inputs.prefix }}-RDP"
+        rc_name:     "{{ inputs.prefix }}-RC"
+        rc_host:     "backend.example.com"
+        rc_port:     443
+        rc_tls:      true
+        post_target: "/api/test"
+
+    actions:
+    - name: "Create ACL Profile"
+      module: "acl_profile.add"
+      args:
+        aclProfileName:             "{{ inputs.acl_name }}"
+        clientConnectDefaultAction: "allow"
+
+    - name: "Create Client Profile"
+      module: "client_profile.add"
+      args:
+        clientProfileName:                "{{ inputs.cp_name }}"
+        allowGuaranteedMsgSendEnabled:    true
+        allowGuaranteedMsgReceiveEnabled: true
+
+    - name: "Create Client Username"
+      module: "client_username.add"
+      args:
+        clientUsername:    "{{ inputs.cu_name }}"
+        clientProfileName: "{{ inputs.cp_name }}"
+        aclProfileName:    "{{ inputs.acl_name }}"
+        enabled:           true
+
+    - name: "Create Queue"
+      module: "queue.add"
+      args:
+        queueName:       "{{ inputs.queue_name }}"
+        accessType:      exclusive
+        ingressEnabled:  true
+        egressEnabled:   true
+        maxTtl:          0
+        maxRedeliveryCount: -1
+
+    - name: "Add Queue Subscription"
+      module: "q_sub.add"
+      args:
+        queueName:         "{{ inputs.queue_name }}"
+        subscriptionTopic: "{{ inputs.sub_topic }}"
+
+    - name: "Create RDP"
+      module: "rdp.add"
+      args:
+        restDeliveryPointName: "{{ inputs.rdp_name }}"
+
+    - name: "Create REST Consumer"
+      module: "rdp_rc.add"
+      args:
+        restDeliveryPointName: "{{ inputs.rdp_name }}"
+        restConsumerName:      "{{ inputs.rc_name }}"
+        remoteHost:            "{{ inputs.rc_host }}"
+        remotePort:            "{{ inputs.rc_port }}"
+        tlsEnabled:            "{{ inputs.rc_tls }}"
+
+    - name: "Create Queue Binding"
+      module: "rdp_qb.add"
+      args:
+        restDeliveryPointName: "{{ inputs.rdp_name }}"
+        queueBindingName:      "{{ inputs.queue_name }}"
+        postRequestTarget:     "{{ inputs.post_target }}"
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # delete: removes all artifact types in reverse dependency order
+  # ─────────────────────────────────────────────────────────────────────────────
+  - name: "delete"
+
+    inputs:
+      required:
+      - prefix
+
+      optional:
+        acl_name:   "{{ inputs.prefix }}-ACL"
+        cp_name:    "{{ inputs.prefix }}-CP"
+        cu_name:    "{{ inputs.prefix }}-USER"
+        queue_name: "{{ inputs.prefix }}-QUEUE"
+        rdp_name:   "{{ inputs.prefix }}-RDP"
+        rc_name:    "{{ inputs.prefix }}-RC"
+
+    actions:
+    - name: "Delete Queue Binding"
+      module: "rdp_qb.delete"
+      args:
+        restDeliveryPointName: "{{ inputs.rdp_name }}"
+        queueBindingName:      "{{ inputs.queue_name }}"
+
+    - name: "Delete REST Consumer"
+      module: "rdp_rc.delete"
+      args:
+        restDeliveryPointName: "{{ inputs.rdp_name }}"
+        restConsumerName:      "{{ inputs.rc_name }}"
+
+    - name: "Delete RDP"
+      module: "rdp.delete"
+      args:
+        restDeliveryPointName: "{{ inputs.rdp_name }}"
+
+    - name: "Delete Queue"
+      module: "queue.delete"
+      args:
+        queueName: "{{ inputs.queue_name }}"
+
+    - name: "Delete Client Username"
+      module: "client_username.delete"
+      args:
+        clientUsername: "{{ inputs.cu_name }}"
+
+    - name: "Delete Client Profile"
+      module: "client_profile.delete"
+      args:
+        clientProfileName: "{{ inputs.cp_name }}"
+
+    - name: "Delete ACL Profile"
+      module: "acl_profile.delete"
+      args:
+        aclProfileName: "{{ inputs.acl_name }}"
