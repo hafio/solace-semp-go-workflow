@@ -31,16 +31,6 @@ func Extract(software, appliance *specmodel.Doc) (*Spec, error) {
 
 	objects := union(sw, ap)
 
-	ids := map[string]bool{}
-	for _, o := range objects {
-		if o.OperationID != "" {
-			ids[o.OperationID] = true
-		}
-	}
-	if err := ValidateAliases(ids); err != nil {
-		return nil, err
-	}
-
 	for i := range objects {
 		applyLegacy(&objects[i])
 	}
@@ -48,6 +38,9 @@ func Extract(software, appliance *specmodel.Doc) (*Spec, error) {
 		return nil, err
 	}
 	if err := checkLegacyMatched(objects); err != nil {
+		return nil, err
+	}
+	if err := CheckSnakeRoundTrip(objects); err != nil {
 		return nil, err
 	}
 
@@ -60,10 +53,10 @@ func Extract(software, appliance *specmodel.Doc) (*Spec, error) {
 func checkLegacyMatched(objects []Object) error {
 	got := map[string]bool{}
 	for _, o := range objects {
-		got[o.Prefix] = true
+		got[o.Definition] = true
 	}
 	var missing []string
-	for _, p := range LegacyPrefixes() {
+	for _, p := range LegacyDefinitions() {
 		if !got[p] {
 			missing = append(missing, p)
 		}
@@ -200,7 +193,7 @@ func extractCollection(doc *specmodel.Doc, path string, post specmodel.Operation
 		}
 		hop := ParentHop{Collection: lit}
 		for _, k := range keyNames(keySeg) {
-			hop.Keys = append(hop.Keys, Key{Name: k, Desc: firstSentence(pathDescs[k])})
+			hop.Keys = append(hop.Keys, Key{Name: k, Canon: canonOf(k), Desc: firstSentence(pathDescs[k])})
 		}
 		parents = append(parents, hop)
 	}
@@ -216,7 +209,7 @@ func extractCollection(doc *specmodel.Doc, path string, post specmodel.Operation
 		}
 	}
 	for _, k := range keyNames(itemSegs[len(itemSegs)-1]) {
-		ownKey = append(ownKey, Key{Name: k, Desc: firstSentence(itemDescs[k])})
+		ownKey = append(ownKey, Key{Name: k, Canon: canonOf(k), Desc: firstSentence(itemDescs[k])})
 	}
 
 	itemOps := doc.Paths[itemPath]
@@ -243,7 +236,7 @@ func extractCollection(doc *specmodel.Doc, path string, post specmodel.Operation
 	o := &Object{
 		Definition:         def,
 		OperationID:        post.OperationID,
-		Prefix:             Prefix(post.OperationID),
+		Prefix:             Prefix(def),
 		FriendlyName:       friendly,
 		Article:            indefiniteArticle(friendly),
 		Scope:              scope,
@@ -369,6 +362,7 @@ func buildAttribute(doc *specmodel.Doc, name string, prop specmodel.Property,
 	f mdtable.Flags, combos map[string][]mdtable.Combination) (*Attribute, error) {
 	attr := &Attribute{
 		Name:            name,
+		Canon:           canonOf(name),
 		Enum:            prop.Enum,
 		Desc:            describe(prop.Description, f),
 		Deprecated:      prop.Deprecated || f["Deprecated"],

@@ -7,6 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"solace-semp-workflow/internal/models"
+	"solace-semp-workflow/internal/semp"
 )
 
 // The three drivers implement every action in the registry, so they are tested
@@ -132,7 +133,7 @@ func TestVPNScopedActionFailsWhenNoVPNIsAvailable(t *testing.T) {
 	res := collectionAdd{queueLike()}.Execute(fc, map[string]any{"thingName": "orders"}, false)
 
 	assert.Equal(t, models.StatusFailed, res.Status)
-	assert.Contains(t, res.Message, "msgVpnName")
+	assert.Contains(t, res.Message, "msg_vpn_name")
 	assert.Equal(t, 0, fc.createdCount)
 }
 
@@ -332,8 +333,9 @@ func TestUpdateAlwaysResendsWriteOnlyAttributes(t *testing.T) {
 	assert.Equal(t, map[string]any{"tlsServerCertPassword": "hunter2"}, fc.updateBody)
 }
 
-func TestUpdateDropsConstAttributes(t *testing.T) {
-	d := desc(objectDesc{
+// constDesc has one create-only attribute and one ordinary one.
+func constDesc() objectDesc {
+	return desc(objectDesc{
 		Prefix: "thing", FriendlyName: "thing", Scope: scopeVPN, Collection: "things",
 		OwnKey:    []keyDesc{{Name: "thingName"}},
 		HasUpdate: true,
@@ -342,17 +344,39 @@ func TestUpdateDropsConstAttributes(t *testing.T) {
 			{Name: "label", Kind: kindString},
 		},
 	})
+}
+
+func TestUpdateRejectsConstAttributes(t *testing.T) {
+	// Asking to update a create-only attribute used to succeed with the attribute
+	// silently dropped, which told the operator a change had been made that had
+	// not. Failing says what is actually true.
 	fc := &fakeClient{onExists: func(string) (bool, map[string]any, error) {
 		return true, map[string]any{"flavour": "old", "label": "old"}, nil
 	}}
-	res := collectionUpdate{d}.Execute(fc, map[string]any{
+	res := collectionUpdate{constDesc()}.Execute(fc, map[string]any{
 		"thingName": "orders", "flavour": "new", "label": "new",
 	}, false)
 
-	require.Equal(t, models.StatusOK, res.Status)
-	// flavour is settable only at creation, so it never reaches a PATCH even
-	// when the caller supplies a different value.
-	assert.Equal(t, map[string]any{"label": "new"}, fc.updateBody)
+	require.Equal(t, models.StatusFailed, res.Status)
+	assert.Contains(t, res.Message, "'flavour' can only be set when the object is created")
+	assert.Equal(t, 0, fc.updatedCount, "nothing should be sent when the call is rejected")
+}
+
+func TestUpdatePayloadDropsConstAttributes(t *testing.T) {
+	// Validation rejects a const attribute before a payload is ever built, so this
+	// filtering is defence in depth rather than the primary guard. It is covered
+	// directly because nothing else reaches it.
+	d := constDesc()
+	r, missing, lenErr := d.resolve(absent(), map[string]any{"thingName": "orders"})
+	require.Empty(t, missing)
+	require.Empty(t, lenErr)
+
+	payload, err := d.buildPayload(r, map[string]any{
+		"thingName": "orders", "flavour": "new", "label": "new",
+	}, true)
+
+	require.NoError(t, err)
+	assert.Equal(t, map[string]any{"label": "new"}, payload)
 }
 
 func TestUpdateWidensCoDependentAttributeGroups(t *testing.T) {
@@ -571,7 +595,8 @@ func TestParamsByMode(t *testing.T) {
 	// optional VPN override last so the required identifier reads first.
 	assert.Equal(t, "bridgeName", add[0].Name)
 	assert.True(t, add[0].Required)
-	assert.Equal(t, "msgVpnName", add[len(add)-1].Name)
+	// Params is the documented surface, so it publishes the canonical spelling.
+	assert.Equal(t, "msg_vpn_name", add[len(add)-1].Name)
 	assert.False(t, add[len(add)-1].Required)
 
 	del := buildParams(d, paramDelete)
@@ -753,6 +778,62 @@ func TestDeprecatedObjectSaysSoOnUpdateToo(t *testing.T) {
 	d.Deprecated = "superseded by thing_v2."
 
 	assert.Contains(t, collectionUpdate{d}.Description(), "Deprecated: superseded by thing_v2.")
+}
+
+// unlimitedKeys are the identifying attributes deliberately left out of
+// semp.NameMaxLengths, with the reason. Everything else must have a curated
+// limit, so a spec bump that introduces a new identifying attribute fails here
+// rather than silently shipping an unchecked one.
+var unlimitedKeys = map[string]string{
+	// Enums: a length limit is meaningless.
+	"publishTopicExceptionSyntax":       "enum: smf, mqtt",
+	"subscribeTopicExceptionSyntax":     "enum: smf, mqtt",
+	"subscribeShareNameExceptionSyntax": "enum: smf, mqtt",
+	"topicSyntax":                       "enum: smf, mqtt",
+	"subscriptionSyntax":                "enum: smf, mqtt",
+	"bridgeVirtualRouter":               "enum: auto, backup, primary",
+	"mqttSessionVirtualRouter":          "enum: auto, backup, primary",
+	"source":                            "enum: certificate source",
+
+	// Free-form values whose documented limit is a format rather than a length.
+	// The broker rejects a bad one; no local limit is curated.
+	"allowedHost":                        "host or address",
+	"remoteAddress":                      "host or address",
+	"clientConnectExceptionAddress":      "IP or CIDR",
+	"receiverAclConnectExceptionAddress": "IP or CIDR",
+	"remoteMsgVpnLocation":               "host:port or v:router",
+	"remoteMsgVpnInterface":              "physical interface name",
+	"mqttSessionClientId":                "client-supplied identifier",
+	"attributeValue":                     "arbitrary attribute value",
+}
+
+func TestEveryIdentifyingKeyHasALimitOrAStatedReason(t *testing.T) {
+	seen := map[string]bool{}
+	for _, d := range descriptors {
+		keys := append([]keyDesc{}, d.OwnKey...)
+		for _, p := range d.Parents {
+			keys = append(keys, p.Keys...)
+		}
+		for _, k := range keys {
+			if seen[k.Name] {
+				continue
+			}
+			seen[k.Name] = true
+
+			_, hasLimit := semp.NameMaxLengths[k.Name]
+			_, exempt := unlimitedKeys[k.Name]
+			assert.Truef(t, hasLimit || exempt,
+				"identifying attribute %q (used by %s) has no length limit and no stated exemption: "+
+					"add it to semp.NameMaxLengths, or to unlimitedKeys with the reason", k.Name, d.Prefix)
+			assert.Falsef(t, hasLimit && exempt,
+				"%q is both limited and exempt; remove one", k.Name)
+		}
+	}
+	// Guard the exemption list against rot: an entry naming an attribute no object
+	// uses is stale and should go.
+	for name := range unlimitedKeys {
+		assert.Truef(t, seen[name], "unlimitedKeys names %q, which no object uses as a key", name)
+	}
 }
 
 func TestCapitalizeFirstLeavesAcronymsAlone(t *testing.T) {

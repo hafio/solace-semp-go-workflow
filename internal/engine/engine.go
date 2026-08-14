@@ -107,18 +107,25 @@ func (e *Engine) Run() []models.WorkflowResult {
 	return results
 }
 
-// runWorkflow executes a single workflow entry.
-func (e *Engine) runWorkflow(entry config.WorkflowEntry, index int) (*models.WorkflowResult, error) {
+// resolveEntry resolves a workflow entry's template and inputs: schema
+// validation and defaults, multi-pass rendering until values stabilise, then a
+// check that nothing is still unresolved. It returns the template, the resolved
+// inputs and the rendering context.
+//
+// Shared by Run and ValidateWorkflows so an offline check sees exactly what a run
+// would send. Duplicating the multi-pass loop instead would give two copies of
+// subtle logic that drift.
+func (e *Engine) resolveEntry(entry config.WorkflowEntry) (*config.WorkflowTemplate, map[string]any, map[string]any, error) {
 	template, err := e.resolveTemplate(entry.Template)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 
 	// First pass: validate and apply defaults with global_vars context only.
 	baseContext := map[string]any{"global_vars": e.config.GlobalVars}
 	validatedInputs, err := templating.ValidateInputs(entry.Inputs, template.Inputs, e.templateEngine, baseContext)
 	if err != nil {
-		return nil, err
+		return nil, nil, nil, err
 	}
 
 	// Full context with resolved inputs.
@@ -138,7 +145,7 @@ func (e *Engine) runWorkflow(entry config.WorkflowEntry, index int) (*models.Wor
 			}
 			newValRaw, rerr := e.templateEngine.Render(val, context)
 			if rerr != nil {
-				return nil, wferrors.NewWorkflowError(fmt.Sprintf("Failed to resolve input '%s': %s", key, rerr))
+				return nil, nil, nil, wferrors.NewWorkflowError(fmt.Sprintf("Failed to resolve input '%s': %s", key, rerr))
 			}
 			newVal, _ := newValRaw.(string)
 			if newVal != val {
@@ -151,14 +158,62 @@ func (e *Engine) runWorkflow(entry config.WorkflowEntry, index int) (*models.Wor
 		}
 	}
 
-	// Detect unresolved expressions after all passes — a circular reference or a
+	// Detect unresolved expressions after all passes -- a circular reference or a
 	// typo referencing a non-existent input.
 	for key, v := range validatedInputs {
 		if s, ok := v.(string); ok && (strings.Contains(s, "{{") || strings.Contains(s, "{%")) {
-			return nil, wferrors.NewWorkflowError(fmt.Sprintf(
-				"Input '%s' still contains an unresolved Jinja2 expression after rendering — "+
+			return nil, nil, nil, wferrors.NewWorkflowError(fmt.Sprintf(
+				"Input '%s' still contains an unresolved Jinja2 expression after rendering -- "+
 					"possible circular reference or undefined variable: '%s'", key, s))
 		}
+	}
+
+	return template, validatedInputs, context, nil
+}
+
+// ValidateWorkflows checks every configured workflow without contacting the
+// broker: its template resolves, its inputs resolve, every action names a
+// registered module, and each action's rendered args satisfy that module's
+// schema. Every problem is collected rather than stopping at the first, so one
+// run lists everything to fix.
+func (e *Engine) ValidateWorkflows() []error {
+	var problems []error
+	for i, entry := range e.config.Workflows {
+		label := fmt.Sprintf("workflow %d (%s)", i+1, entry.Template)
+
+		template, _, context, err := e.resolveEntry(entry)
+		if err != nil {
+			problems = append(problems, fmt.Errorf("%s: %w", label, err))
+			continue
+		}
+
+		for _, action := range template.Actions {
+			where := fmt.Sprintf("%s, task '%s' [%s]", label, action.Name, action.Module)
+
+			module, err := modules.Get(action.Module)
+			if err != nil {
+				problems = append(problems, fmt.Errorf("%s: %w", where, err))
+				continue
+			}
+			resolvedRaw, err := e.templateEngine.Render(action.Args, context)
+			if err != nil {
+				problems = append(problems, fmt.Errorf("%s: %w", where, err))
+				continue
+			}
+			resolvedArgs, _ := resolvedRaw.(map[string]any)
+			if err := module.Validate(resolvedArgs); err != nil {
+				problems = append(problems, fmt.Errorf("%s: %w", where, err))
+			}
+		}
+	}
+	return problems
+}
+
+// runWorkflow executes a single workflow entry.
+func (e *Engine) runWorkflow(entry config.WorkflowEntry, index int) (*models.WorkflowResult, error) {
+	template, validatedInputs, context, err := e.resolveEntry(entry)
+	if err != nil {
+		return nil, err
 	}
 
 	output.PrintWorkflowHeader(template.Name, entry.Template, validatedInputs, index)

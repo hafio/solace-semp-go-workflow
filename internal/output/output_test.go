@@ -166,6 +166,62 @@ func TestRenderModuleDocsMDMasksSensitiveDefault(t *testing.T) {
 	assert.Contains(t, md, "| `enabled` | boolean | No | `True` |")
 }
 
+func TestRenderModuleDocsIndexMD(t *testing.T) {
+	md := RenderModuleDocsIndexMD(docsFixture())
+
+	assert.True(t, strings.HasPrefix(md, "# SEMP Workflow Automation - Module Reference"))
+	// The counts orient a reader before they open anything.
+	assert.Contains(t, md, "2 actions across 2 object families.")
+	assert.Contains(t, md, "| Family | Actions | Reference |")
+	// Each row links to the family's own page, by the same filename the writer uses.
+	assert.Contains(t, md, "| `queue` | add | [queue](queue.md) |")
+	assert.Contains(t, md, "| `acl_publish_exception` | add | [acl_publish_exception](acl_publish_exception.md) |")
+	// The index lists families; it must not inline their parameter tables.
+	assert.NotContains(t, md, "| Parameter |")
+}
+
+func TestRenderModuleDocsFamilyMD(t *testing.T) {
+	info := map[string]modules.ModuleInfo{
+		"queue.add": {
+			Description: "Create a queue.",
+			Params:      []modules.ParamSpec{{Name: "queueName", Type: "string", Required: true, Description: "Name of the queue"}},
+		},
+		"queue.delete": {Description: "Delete a queue.", Params: []modules.ParamSpec{{Name: "queueName", Type: "string", Required: true}}},
+		"rdp.add":      {Description: "Create an RDP."},
+	}
+	md := RenderModuleDocsFamilyMD("queue", info)
+
+	assert.True(t, strings.HasPrefix(md, "# `queue`"))
+	assert.Contains(t, md, "[Back to the index](index.md)")
+	// Actions are one heading level up from the single-file document, since the
+	// family is now the page title rather than a section.
+	assert.Contains(t, md, "## `queue.add`")
+	assert.Contains(t, md, "## `queue.delete`")
+	assert.Contains(t, md, "| `queueName` | string | Yes |")
+	// Only this family's actions appear.
+	assert.NotContains(t, md, "rdp.add")
+}
+
+func TestModuleFamiliesAndFileName(t *testing.T) {
+	assert.Equal(t, []string{"acl_publish_exception", "queue"}, ModuleFamilies(docsFixture()))
+	assert.Equal(t, "queue.md", FamilyFileName("queue"))
+}
+
+func TestParameterDescriptionPipesAreEscaped(t *testing.T) {
+	// Descriptions come from the SEMP specification. A pipe in one would end the
+	// table cell early and corrupt every row after it, so it is escaped. None
+	// carry a pipe today; this is what keeps a future spec from breaking the docs.
+	md := RenderModuleDocsMD(map[string]modules.ModuleInfo{
+		"thing.add": {
+			Description: "Create a thing.",
+			Params:      []modules.ParamSpec{{Name: "mode", Type: "string", Description: "Either a | b"}},
+		},
+	})
+
+	assert.Contains(t, md, `Either a \| b`)
+	assert.NotContains(t, md, "| Either a | b |")
+}
+
 func TestPrintWorkflowHeaderMasksSecrets(t *testing.T) {
 	out, _ := capture(t)
 	PrintWorkflowHeader("wf", "tmpl.Ref", map[string]any{

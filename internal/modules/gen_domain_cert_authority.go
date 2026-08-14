@@ -11,11 +11,11 @@ func init() {
 		Scope:        scopeGlobal,
 		Collection:   "domainCertAuthorities",
 		OwnKey: []keyDesc{
-			{Name: "certAuthorityName", Desc: "The name of the Certificate Authority."},
+			{Name: "certAuthorityName", Canon: "cert_authority_name", Desc: "The name of the Certificate Authority."},
 		},
 		HasUpdate: true,
 		Fields: []fieldDesc{
-			{Name: "certContent", Kind: kindString, Desc: "The PEM formatted content for the trusted root certificate of a domain Certificate Authority."},
+			{Name: "certContent", Canon: "cert_content", Kind: kindString, Desc: "The PEM formatted content for the trusted root certificate of a domain Certificate Authority."},
 		},
 	})
 }

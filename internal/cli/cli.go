@@ -11,6 +11,7 @@ import (
 	"os/signal"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
@@ -165,6 +166,23 @@ func newValidateCmd(code *int) *cobra.Command {
 				}
 			}
 
+			// Check every action's module and arguments. The engine builds a client
+			// struct but opens no connection, and ValidateWorkflows issues no
+			// requests, so this stays an offline check.
+			eng, err := engine.NewEngine(appConfig, true, false)
+			if err != nil {
+				*code = classifyExit(err)
+				output.PrintError(err.Error())
+				return nil
+			}
+			if problems := eng.ValidateWorkflows(); len(problems) > 0 {
+				for _, p := range problems {
+					output.PrintError(p.Error())
+				}
+				*code = 2
+				return nil
+			}
+
 			output.PrintValidationOK(configPath, len(tmpls), len(appConfig.Workflows))
 			return nil
 		},
@@ -176,7 +194,7 @@ func newValidateCmd(code *int) *cobra.Command {
 }
 
 func newListModulesCmd() *cobra.Command {
-	var outputFile string
+	var outputFile, outputDir string
 	cmd := &cobra.Command{
 		Use:           "list-modules",
 		Short:         "List all available action modules.",
@@ -192,11 +210,67 @@ func newListModulesCmd() *cobra.Command {
 				}
 				fmt.Fprintf(output.Out, "Module reference written to: %s\n", outputFile)
 			}
+			if outputDir != "" {
+				if err := writeModuleDocsDir(outputDir); err != nil {
+					output.PrintError(fmt.Sprintf("Failed to write module reference: %s", err))
+					return nil
+				}
+			}
 			return nil
 		},
 	}
-	cmd.Flags().StringVarP(&outputFile, "output", "o", "", "Write module reference docs to a Markdown file (e.g. all-modules.md).")
+	cmd.Flags().StringVarP(&outputFile, "output", "o", "", "Write the whole module reference to one Markdown file.")
+	cmd.Flags().StringVar(&outputDir, "output-dir", "", "Write the module reference as an index plus one file per object family (e.g. docs/modules).")
 	return cmd
+}
+
+// writeModuleDocsDir writes the split module reference: an index plus one page
+// per object family. The whole reference in a single file runs past ten thousand
+// lines at full SEMP coverage, so the split is what makes it readable and its
+// diffs reviewable.
+func writeModuleDocsDir(dir string) error {
+	info := modules.Info()
+
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		return fmt.Errorf("create %s: %w", dir, err)
+	}
+
+	files := map[string]string{"index.md": output.RenderModuleDocsIndexMD(info)}
+	for _, family := range output.ModuleFamilies(info) {
+		files[output.FamilyFileName(family)] = output.RenderModuleDocsFamilyMD(family, info)
+	}
+
+	// A family that disappears from a spec bump must not leave a stale page
+	// behind claiming actions the registry no longer has.
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		return fmt.Errorf("read %s: %w", dir, err)
+	}
+	removed := 0
+	for _, e := range entries {
+		if e.IsDir() || !strings.HasSuffix(e.Name(), ".md") {
+			continue
+		}
+		if _, keep := files[e.Name()]; keep {
+			continue
+		}
+		if err := os.Remove(filepath.Join(dir, e.Name())); err != nil {
+			return fmt.Errorf("remove stale %s: %w", e.Name(), err)
+		}
+		removed++
+	}
+
+	for name, body := range files {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte(body), 0o644); err != nil {
+			return fmt.Errorf("write %s: %w", name, err)
+		}
+	}
+
+	fmt.Fprintf(output.Out, "Module reference written to: %s (%d files)\n", dir, len(files))
+	if removed > 0 {
+		fmt.Fprintf(output.Out, "Removed %d stale reference file(s)\n", removed)
+	}
+	return nil
 }
 
 func newInitCmd(code *int) *cobra.Command {

@@ -119,6 +119,9 @@ func Object(o ir.Object, specVersion string) (*File, error) {
 func renderKey(k ir.Key) string {
 	var b strings.Builder
 	fmt.Fprintf(&b, "{Name: %s", quote(k.Name))
+	if k.Canon != "" {
+		fmt.Fprintf(&b, ", Canon: %s", quote(k.Canon))
+	}
 	if k.Desc != "" {
 		fmt.Fprintf(&b, ", Desc: %s", quote(k.Desc))
 	}
@@ -135,7 +138,11 @@ func renderAttribute(b *strings.Builder, a ir.Attribute, depth int) {
 	// A nested group needs its own block; a scalar fits on one line, which keeps
 	// a 62-attribute object reviewable in a diff.
 	if a.Kind == ir.KindObject {
-		fmt.Fprintf(b, "%s{Name: %s, Kind: kindObject,", ind, quote(a.Name))
+		fmt.Fprintf(b, "%s{Name: %s,", ind, quote(a.Name))
+		if a.Canon != "" {
+			fmt.Fprintf(b, " Canon: %s,", quote(a.Canon))
+		}
+		b.WriteString(" Kind: kindObject,")
 		if a.Desc != "" {
 			fmt.Fprintf(b, " Desc: %s,", quote(a.Desc))
 		}
@@ -147,7 +154,11 @@ func renderAttribute(b *strings.Builder, a ir.Attribute, depth int) {
 		return
 	}
 
-	fmt.Fprintf(b, "%s{Name: %s, Kind: %s", ind, quote(a.Name), a.Kind.RuntimeConst())
+	fmt.Fprintf(b, "%s{Name: %s", ind, quote(a.Name))
+	if a.Canon != "" {
+		fmt.Fprintf(b, ", Canon: %s", quote(a.Canon))
+	}
+	fmt.Fprintf(b, ", Kind: %s", a.Kind.RuntimeConst())
 	if len(a.Enum) > 0 {
 		b.WriteString(", Enum: []string{")
 		for i, v := range a.Enum {

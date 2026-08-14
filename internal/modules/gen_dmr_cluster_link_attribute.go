@@ -11,14 +11,14 @@ func init() {
 		Article:      "an",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Desc: "The name of the Cluster."}}},
-			{Collection: "links", Keys: []keyDesc{{Name: "remoteNodeName", Desc: "The name of the node at the remote end of the Link."}}},
+			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Canon: "dmr_cluster_name", Desc: "The name of the Cluster."}}},
+			{Collection: "links", Keys: []keyDesc{{Name: "remoteNodeName", Canon: "remote_node_name", Desc: "The name of the node at the remote end of the Link."}}},
 		},
 		ParentFriendlyName: "DMR cluster link",
 		Collection:         "attributes",
 		OwnKey: []keyDesc{
-			{Name: "attributeName", Desc: "The name of the Attribute."},
-			{Name: "attributeValue", Desc: "The value of the Attribute."},
+			{Name: "attributeName", Canon: "attribute_name", Desc: "The name of the Attribute."},
+			{Name: "attributeValue", Canon: "attribute_value", Desc: "The value of the Attribute."},
 		},
 	})
 }

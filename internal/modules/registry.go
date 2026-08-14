@@ -42,25 +42,39 @@ func registerObject(d objectDesc) {
 	applyMsgDefaults(&d)
 	descriptors = append(descriptors, d)
 
+	// A carried-over family answers to its old short prefix as well. The same
+	// Module value is registered under both, so the two names cannot drift.
+	legacy, hasLegacy := legacyActionPrefixes[d.Prefix]
+	reg := func(verb string, m Module) {
+		register(d.Prefix+"."+verb, m)
+		if hasLegacy {
+			legacyRegistry[legacy+"."+verb] = m
+		}
+	}
+
 	if d.IsSingleton {
-		register(d.Prefix+".update", collectionUpdate{d})
+		reg("update", collectionUpdate{d})
 		return
 	}
-	register(d.Prefix+".add", collectionAdd{d})
+	reg("add", collectionAdd{d})
 	if d.HasUpdate {
-		register(d.Prefix+".update", collectionUpdate{d})
+		reg("update", collectionUpdate{d})
 	}
-	register(d.Prefix+".delete", collectionDelete{d})
+	reg("delete", collectionDelete{d})
 }
 
-// Get looks up a registered module by "object.verb" name. The error message
-// lists the available modules.
+// Get looks up a registered module by "object.verb" name, falling back to the
+// legacy short names so a template written against the previous implementation
+// still resolves. The error message lists the canonical modules only, which is
+// what a new template should use.
 func Get(name string) (Module, error) {
-	m, ok := registry[name]
-	if !ok {
-		return nil, fmt.Errorf("Unknown module '%s'. Available: %s", name, strings.Join(List(), ", ")) //nolint:staticcheck // message text is an intentional exact wording
+	if m, ok := registry[name]; ok {
+		return m, nil
 	}
-	return m, nil
+	if m, ok := legacyRegistry[name]; ok {
+		return m, nil
+	}
+	return nil, fmt.Errorf("Unknown module '%s'. Available: %s", name, strings.Join(List(), ", ")) //nolint:staticcheck // message text is an intentional exact wording
 }
 
 // List returns the sorted names of all registered modules.

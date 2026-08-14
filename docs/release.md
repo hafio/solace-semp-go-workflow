@@ -61,19 +61,27 @@ SEMP_HOST=... SEMP_USERNAME=... SEMP_PASSWORD=... SEMP_MSG_VPN=... \
 ./scripts/dev.sh vet lint scan
 ```
 
-### 3. Regenerate documentation
+### 3. Regenerate the descriptors and the module reference
 
-If any modules or parameters changed, regenerate the module reference from the
-binary:
+Both are committed output. One task regenerates the module descriptors from the
+schemas in `specs/` and then re-renders the reference from the registry:
 
 ```bash
-go run ./cmd/semp-workflow list-modules --output docs/all-modules.md
+./scripts/dev.sh gen
 ```
 
-Also update counts in:
-- [README.md](../README.md) -- "All N built-in modules"
-- [docs/HOWTO.md](HOWTO.md) + [docs/HOWTO-zh.md](HOWTO-zh.md) — module tables
-- [docs/TESTS.md](TESTS.md) — test count, module count, registry table
+This must leave a clean `git diff`. If it does not, the checked-in output had
+drifted from `specs/`; commit the regenerated files. The `gencheck` task in
+`full` and in CI fails when they disagree, so drift cannot reach a tag.
+
+Run it after any change to `specs/`, to `tools/semp-gen`, or to the legacy
+overlay -- not after ordinary code changes, which do not affect the output.
+
+The module reference under [docs/modules/](modules/index.md) is generated, so its
+counts never need updating by hand. Prose that quotes a count does:
+
+- [README.md](../README.md) and [docs/HOWTO.md](HOWTO.md) + [docs/HOWTO-zh.md](HOWTO-zh.md) -- the action and object-family totals
+- [docs/TESTS.md](TESTS.md) -- test counts and the layout table
 
 ### 4. Build the release binary
 
@@ -94,7 +102,8 @@ Smoke-test the binary (the name carries the host os/arch -- adjust the suffix):
 ### 5. Commit the release
 
 ```bash
-git add docs/all-modules.md README.md docs/HOWTO.md docs/HOWTO-zh.md docs/TESTS.md
+git add internal/modules/gen_*.go internal/modules/manifest_generated.go docs/modules/
+git add README.md docs/HOWTO.md docs/HOWTO-zh.md docs/TESTS.md
 git commit -m "Release v0.4.0"
 ```
 

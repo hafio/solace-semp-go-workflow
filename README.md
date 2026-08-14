@@ -11,12 +11,13 @@ Define reusable, parameterised workflows in YAML and run them against your broke
 This repository supersedes the earlier `SEMP-Workflow_Automation` implementation, which
 covered 24 hand-written actions across 10 object families. Here the action modules are
 **generated from the committed SEMP schemas**, so coverage tracks the API rather than
-whatever happened to be written by hand.
+whatever happened to be written by hand: **225 actions across 86 object families**,
+every object the SEMP v2 config API exposes.
 
-The 10 original action names and their parameters are preserved, so existing workflow
-templates and configs run unchanged.
+The 10 original action names, their parameters and their result wording are preserved, so
+existing workflow templates and configs run unchanged.
 
-Build-out is staged; see [docs/roadmap.md](docs/roadmap.md) for what has landed.
+See [docs/roadmap.md](docs/roadmap.md) for how it is built and what is still open.
 
 ---
 
@@ -26,6 +27,8 @@ Build-out is staged; see [docs/roadmap.md](docs/roadmap.md) for what has landed.
   Delivery Points, subscriptions, ACL profiles, client profiles and usernames, bridges,
   DMR clusters, message VPNs, OAuth profiles, certificate authorities, telemetry profiles,
   Kafka senders and receivers, and broker-level settings
+- Catch mistakes before they reach the broker: `validate` checks every action's arguments
+  against the object's real attribute set, offline
 - Preview changes with dry-run mode before touching the broker
 - Use Jinja2 templates and global variables to build dynamic, reusable workflows
 - Run multiple workflows in a single execution with shared configuration
@@ -98,7 +101,7 @@ For full technical details -- configuration reference, template authoring, modul
 |---|---|
 | [docs/HOWTO.md](docs/HOWTO.md) | Full technical guide: configuration, templates, modules, and troubleshooting |
 | [docs/HOWTO-zh.md](docs/HOWTO-zh.md) | Chinese translation of the How-To guide |
-| Module reference | Generated on demand: `semp-workflow list-modules --output all-modules.md`. A committed per-family reference under `docs/modules/` lands with M3 |
+| [docs/modules/index.md](docs/modules/index.md) | Generated module reference: 225 actions across 86 object families, one page each |
 | [docs/roadmap.md](docs/roadmap.md) | Build-out stages and what has landed |
 | [docs/TESTS.md](docs/TESTS.md) | Test suite overview, layout, and module registry |
 | [docs/template-app-inbound.md](docs/template-app-inbound.md) | `app-inbound` template: inputs, action sequence, examples |

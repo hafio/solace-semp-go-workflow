@@ -42,7 +42,10 @@ func buildGoldenSpec() *ir.Spec {
 				IsSingleton:  true,
 				HasUpdate:    true,
 				Attributes: []ir.Attribute{
-					{Name: "maintenanceModeEnabled", Kind: ir.KindBool, Desc: "Enable or disable maintenance mode"},
+					// Canon is emitted only where it differs from Name, so a scalar
+					// with a camelCase name carries it and a single-word one below
+					// does not.
+					{Name: "maintenanceModeEnabled", Canon: "maintenance_mode_enabled", Kind: ir.KindBool, Desc: "Enable or disable maintenance mode"},
 				},
 			},
 			{
@@ -64,7 +67,7 @@ func buildGoldenSpec() *ir.Spec {
 				FriendlyName: "widget",
 				Scope:        ir.ScopeVPN,
 				Collection:   "widgets",
-				OwnKey:       []ir.Key{{Name: "widgetName", Desc: "Name of the widget"}},
+				OwnKey:       []ir.Key{{Name: "widgetName", Canon: "widget_name", Desc: "Name of the widget"}},
 				HasUpdate:    true,
 				Attributes: []ir.Attribute{
 					{Name: "label", Kind: ir.KindString, Desc: "A label"},
@@ -99,9 +102,9 @@ func buildGoldenSpec() *ir.Spec {
 				OwnKey:       []ir.Key{{Name: "gaugeGroupName"}},
 				HasUpdate:    true,
 				Attributes: []ir.Attribute{
-					{Name: "threshold", Kind: ir.KindObject, Desc: "Threshold settings", Fields: []ir.Attribute{
-						{Name: "clearPercent", Kind: ir.KindInt, Desc: "Clear percent"},
-						{Name: "setPercent", Kind: ir.KindInt, Desc: "Set percent"},
+					{Name: "eventThreshold", Canon: "event_threshold", Kind: ir.KindObject, Desc: "Threshold settings", Fields: []ir.Attribute{
+						{Name: "clearPercent", Canon: "clear_percent", Kind: ir.KindInt, Desc: "Clear percent"},
+						{Name: "setPercent", Canon: "set_percent", Kind: ir.KindInt, Desc: "Set percent"},
 					}},
 				},
 			},

@@ -93,15 +93,100 @@ func TestCleanPayload(t *testing.T) {
 	assert.Equal(t, false, out["falseVal"])
 }
 
-func TestCheckNameLength(t *testing.T) {
-	assert.Equal(t, "", CheckNameLength("queueName", "short"))
-	assert.Equal(t, "", CheckNameLength("unknownField", strings.Repeat("x", 500)))
+// checkLen looks up and reports under the same name, which is the case for an
+// attribute spelled identically in both conventions. The two names diverging is
+// exercised in TestCheckNameLengthReportsTheNameTheCallerTyped.
+func checkLen(field, value string) string { return CheckNameLength(field, field, value) }
 
-	msg := CheckNameLength("queueName", strings.Repeat("x", 201))
+// The limits are keyed by the SEMP spelling because they come from Solace's
+// documentation, but an operator writing the canonical snake_case name must not
+// be told about a name they never typed.
+func TestCheckNameLengthReportsTheNameTheCallerTyped(t *testing.T) {
+	msg := CheckNameLength("queueName", "queue_name", strings.Repeat("x", 201))
+
+	require.NotEmpty(t, msg, "the limit must still be found under the SEMP spelling")
+	assert.Contains(t, msg, "queue_name")
+	assert.NotContains(t, msg, "queueName")
+	assert.Contains(t, msg, "200")
+}
+
+func TestCheckNameLength(t *testing.T) {
+	assert.Equal(t, "", checkLen("queueName", "short"))
+	assert.Equal(t, "", checkLen("unknownField", strings.Repeat("x", 500)))
+
+	msg := checkLen("queueName", strings.Repeat("x", 201))
 	assert.Contains(t, msg, "200")
 	assert.Contains(t, msg, "queueName")
 
 	// Boundary: exactly the limit is allowed.
-	assert.Equal(t, "", CheckNameLength("restConsumerName", strings.Repeat("x", 32)))
-	assert.NotEqual(t, "", CheckNameLength("restConsumerName", strings.Repeat("x", 33)))
+	assert.Equal(t, "", checkLen("restConsumerName", strings.Repeat("x", 32)))
+	assert.NotEqual(t, "", checkLen("restConsumerName", strings.Repeat("x", 33)))
+}
+
+func TestCheckNameLengthCountsBytesNotRunes(t *testing.T) {
+	// The broker limits bytes. A rune count would accept this locally and have the
+	// broker reject it, which is the failure mode the local check exists to avoid.
+	// "e" with a combining acute is 2 bytes per character.
+	value := strings.Repeat("é", 20) // 20 runes, 40 bytes
+	assert.Equal(t, 40, len(value))
+
+	// telemetryProfileName has the tightest limit in the map, at 21.
+	msg := checkLen("telemetryProfileName", value)
+	assert.NotEqual(t, "", msg, "40 bytes must exceed a 21-byte limit even though it is 20 characters")
+	assert.Contains(t, msg, "40 bytes")
+	assert.Contains(t, msg, "limit is 21")
+}
+
+func TestTopicIdentifiersUseTheTopicLimit(t *testing.T) {
+	// Subscriptions, exceptions and topic filters are topic strings rather than
+	// object names, so they share the broker's topic limit.
+	for _, field := range []string{
+		"subscriptionTopic", "remoteSubscriptionTopic", "topicFilterSubscription",
+		"subscription", "publishTopicException", "subscribeTopicException",
+		"publishExceptionTopic", "subscribeExceptionTopic", "subscribeShareNameException",
+		"replicatedTopic", "sequencedTopic", "topic", "topicPrefix",
+	} {
+		t.Run(field, func(t *testing.T) {
+			assert.Equal(t, TopicMaxLength, NameMaxLengths[field])
+			assert.Equal(t, "", checkLen(field, strings.Repeat("a", TopicMaxLength)))
+			assert.NotEqual(t, "", checkLen(field, strings.Repeat("a", TopicMaxLength+1)))
+		})
+	}
+}
+
+// The limits are curated from product documentation rather than derived, so this
+// pins the set: a limit cannot be dropped or mistyped without failing here.
+// Coverage of the descriptors' identifying keys is asserted in the modules
+// package, which is where the descriptors live.
+func TestCuratedLimitsAreSane(t *testing.T) {
+	assert.Len(t, NameMaxLengths, 75, "44 identifying names, 13 topic-shaped, 18 body attributes")
+	for field, limit := range NameMaxLengths {
+		assert.Positivef(t, limit, "%s has a non-positive limit", field)
+		assert.LessOrEqualf(t, limit, 1024, "%s exceeds any documented SEMP limit", field)
+	}
+}
+
+// Three attributes look like they should inherit the limit of the thing they
+// name and do not. Each was verified against the product documentation, and each
+// inferred value was wrong, so they are pinned here against a future "tidy-up".
+func TestAttributesThatDoNotInheritTheObviousLimit(t *testing.T) {
+	// A substitution expression that generates a topic, not a topic.
+	assert.Equal(t, 1024, NameMaxLengths["localTopic"])
+	assert.NotEqual(t, TopicMaxLength, NameMaxLengths["localTopic"])
+
+	// A Kafka topic, bound by Kafka's limit rather than Solace's.
+	assert.Equal(t, 249, NameMaxLengths["remoteTopic"])
+	assert.NotEqual(t, TopicMaxLength, NameMaxLengths["remoteTopic"])
+
+	// A JMS destination name, not a Solace queue name.
+	assert.Equal(t, 256, NameMaxLengths["physicalName"])
+	assert.NotEqual(t, NameMaxLengths["queueName"], NameMaxLengths["physicalName"])
+}
+
+// owner is a client username, which a name-suffix reading of the attribute list
+// misses entirely. It appears on three object types.
+func TestOwnerTakesTheClientUsernameLimit(t *testing.T) {
+	assert.Equal(t, NameMaxLengths["clientUsername"], NameMaxLengths["owner"])
+	assert.Equal(t, "", checkLen("owner", strings.Repeat("u", 189)))
+	assert.NotEqual(t, "", checkLen("owner", strings.Repeat("u", 190)))
 }

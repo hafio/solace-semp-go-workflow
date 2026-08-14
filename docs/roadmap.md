@@ -30,9 +30,22 @@ Two facts from the schemas shape the design:
 |---|---|---|
 | M0 | Fork the engine, client, templating, config, output and CLI packages; rewrite the module path; commit the specs; make the client root-relative; add the composite-key path helper; mask secrets in output | Landed |
 | M1 | Table-driven driver, spec-driven coercion, and the 10 legacy object families re-expressed as descriptors, proving the driver against the carried-over test suite | Landed |
-| M2 | `tools/semp-gen`: spec to intermediate representation to generated descriptors, all 225 actions | Next |
-| M3 | Generated per-family docs and module manifest, curated HOWTO tables, per-family integration fixtures | Planned |
-| M4 | Cutover: verify every existing template against the new binary, then retire the old repository | Planned |
+| M2 | `tools/semp-gen`: spec to intermediate representation to generated descriptors, all 225 actions, with a drift gate in `full` and CI | Landed |
+| M3 | Generated per-family module reference; local argument validation consumed by `validate`; curated name and topic length limits; curated HOWTO tables | Landed |
+| M3a | Per-family integration fixtures, platform-gated | Open |
+| M4 | Cutover: verify every existing template against the new binary, then retire the old repository | Open |
+
+### Open work
+
+- **Per-family integration fixtures.** `testdata/integration/test-artifacts.yaml` exercises
+  the 6 legacy families against a live broker. The other 80 have no live coverage, and
+  appliance-only and software-only objects cannot both be exercised on one broker, so the
+  suite needs splitting and platform-gating.
+- **Length limits for name-valued body attributes.** 59 identifying attributes have curated
+  limits. Around 36 name-shaped body attributes do not -- `dead_msg_queue`, `localTopic`, the
+  various claim and LDAP identifiers. An over-long value is still rejected by the broker;
+  the cost is a round trip rather than a local error.
+- **SEMP v1 fallback**, deferred -- see below.
 
 ## Design decisions
 
@@ -53,20 +66,38 @@ Two facts from the schemas shape the design:
   the whole specification, on the Broker object, for the two SEMP listener ports.
   Disabling those to apply a change could strand the client issuing it, so the
   broker's own error is surfaced instead.
-- **The 10 original action names are preserved**, along with their parameter
+- **The 10 original action names still resolve**, along with their parameter
   names, defaults and result wording, so existing templates and configs run
   unchanged. `internal/modules/modules_test.go` was carried over from the old
   repository to enforce that.
 
 ## Naming
 
-Registry prefixes derive mechanically from the create `operationId`: strip
-`create`, split CamelCase, drop a leading `Msg`+`Vpn`, lower-snake-join. A
-committed 24-entry alias table overrides that for the 10 legacy names, the one
-genuine collision (`Proxy` and `MsgVpnProxy` both reduce to `proxy`, resolved as
-`broker_proxy` and `proxy`), and the 13 names that would otherwise exceed 45
-characters. The other 62 take the mechanical name, so they are predictable from
-the SEMP object without consulting the table.
+Operator-facing names match the Solace Terraform provider
+(`SolaceProducts/solacebroker`), so one spelling serves both tools.
+
+A registry prefix is the snake_case form of the SEMP definition name --
+`MsgVpnQueue` gives `msg_vpn_queue` -- which is the provider's resource name
+without its `solacebroker_` prefix. Attribute names follow the same rule, so
+`egressEnabled` is written `egress_enabled`.
+
+There is no alias table. All 86 prefixes are mechanical, and the two reasons the
+earlier scheme needed exceptions are both gone: retaining the VPN scope separates
+`Proxy` (`proxy`) from `MsgVpnProxy` (`msg_vpn_proxy`), which used to collide, and
+there is no length budget now that Terraform's own lengths are the target -- the
+longest is 73 characters.
+
+The descriptors carry both spellings. `Name` is the SEMP attribute, which is what
+goes on the wire and what a GET returns; `Canon` is the snake_case name shown to
+operators. Keeping `Name` as the wire identity is what leaves the payload builder,
+the diff and the curated length limits untouched by the rename, and what makes
+accepting the old camelCase spelling free rather than a second code path.
+
+A generation-time round-trip check asserts that every name survives snake_case and
+back. The scheme depends on no SEMP name containing two adjacent capitals (Solace
+writes `Tls`, not `TLS`); that holds across both specifications today, but it is a
+property of the published schema rather than a guarantee, so it is verified on
+every run instead of assumed.
 
 ## Deferred: SEMP v1
 

@@ -56,6 +56,12 @@ type Module interface {
 	Description() string
 	// Params returns the ordered parameter schema used for documentation.
 	Params() []ParamSpec
+	// Validate checks resolved args against the action's schema without
+	// contacting the broker: unknown arguments, missing required ones, enum
+	// membership, create-only attributes on an update, and the specification's
+	// attribute co-dependency rules. Execute calls it before issuing any request,
+	// and `semp-workflow validate` calls it to catch a bad template offline.
+	Validate(args map[string]any) error
 }
 
 // argStr returns args[key] rendered as a string via Stringify, or def when the

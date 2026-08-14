@@ -10,8 +10,8 @@ func init() {
 		FriendlyName: "condition",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Desc: "The name of the Cluster."}}},
-			{Collection: "certMatchingRules", Keys: []keyDesc{{Name: "ruleName", Desc: "The name of the rule."}}},
+			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Canon: "dmr_cluster_name", Desc: "The name of the Cluster."}}},
+			{Collection: "certMatchingRules", Keys: []keyDesc{{Name: "ruleName", Canon: "rule_name", Desc: "The name of the rule."}}},
 		},
 		ParentFriendlyName: "DMR cluster cert matching rule",
 		Collection:         "conditions",

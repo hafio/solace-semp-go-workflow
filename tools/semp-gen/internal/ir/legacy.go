@@ -71,7 +71,7 @@ func addedRemovedMsgs(nameInErrors bool) map[string]string {
 var pluralMissingArg = map[string]string{"MissingArg": "Missing required args: {arg}"}
 
 var legacyOverlays = map[string]legacyOverlay{
-	"queue": {
+	"MsgVpnQueue": {
 		FriendlyName: "queue",
 		// respectTtlEnabled and redeliveryEnabled are derived from maxTtl and
 		// maxRedeliveryCount by the queue hook.
@@ -85,7 +85,7 @@ var legacyOverlays = map[string]legacyOverlay{
 		},
 	},
 
-	"q_sub": {
+	"MsgVpnQueueSubscription": {
 		FriendlyName:       "subscription",
 		ParentFriendlyName: "queue",
 		Messages:           merge(addedRemovedMsgs(false), pluralMissingArg),
@@ -95,13 +95,13 @@ var legacyOverlays = map[string]legacyOverlay{
 		},
 	},
 
-	"rdp": {
+	"MsgVpnRestDeliveryPoint": {
 		FriendlyName: "RDP",
 		Article:      "an",
 		KeyDescs:     map[string]string{"restDeliveryPointName": "Name of the REST Delivery Point"},
 	},
 
-	"rdp_rc": {
+	"MsgVpnRestDeliveryPointRestConsumer": {
 		FriendlyName:       "REST consumer",
 		ParentFriendlyName: "RDP",
 		Messages:           pluralMissingArg,
@@ -111,7 +111,7 @@ var legacyOverlays = map[string]legacyOverlay{
 		},
 	},
 
-	"rdp_qb": {
+	"MsgVpnRestDeliveryPointQueueBinding": {
 		FriendlyName:       "queue binding",
 		ParentFriendlyName: "RDP",
 		Messages:           pluralMissingArg,
@@ -121,23 +121,23 @@ var legacyOverlays = map[string]legacyOverlay{
 		},
 	},
 
-	"client_profile": {
+	"MsgVpnClientProfile": {
 		FriendlyName: "client profile",
 		KeyDescs:     map[string]string{"clientProfileName": "Name of the client profile"},
 	},
 
-	"client_username": {
+	"MsgVpnClientUsername": {
 		FriendlyName: "client username",
 		KeyDescs:     map[string]string{"clientUsername": "The client username"},
 	},
 
-	"acl_profile": {
+	"MsgVpnAclProfile": {
 		FriendlyName: "ACL profile",
 		Article:      "an",
 		KeyDescs:     map[string]string{"aclProfileName": "Name of the ACL profile"},
 	},
 
-	"acl_publish_exception": {
+	"MsgVpnAclProfilePublishTopicException": {
 		FriendlyName:       "publish topic exception",
 		ParentFriendlyName: "ACL profile",
 		Messages:           addedRemovedMsgs(true),
@@ -150,7 +150,7 @@ var legacyOverlays = map[string]legacyOverlay{
 		DisplayKey: 1,
 	},
 
-	"acl_subscribe_exception": {
+	"MsgVpnAclProfileSubscribeTopicException": {
 		FriendlyName:       "subscribe topic exception",
 		ParentFriendlyName: "ACL profile",
 		Messages:           addedRemovedMsgs(true),
@@ -178,7 +178,11 @@ func merge(maps ...map[string]string) map[string]string {
 // object. Objects with no overlay -- the other 76 -- are untouched and take the
 // spec-derived naming and the runtime's default wording.
 func applyLegacy(o *Object) {
-	ov, ok := legacyOverlays[o.Prefix]
+	// Keyed by Definition, not Prefix: the definition name is Solace's own stable
+	// identifier, so this table survives a change to how prefixes are derived. It
+	// did not survive the last one silently -- checkLegacyMatched would have
+	// failed the build -- but keying off the stable name means it will not have to.
+	ov, ok := legacyOverlays[o.Definition]
 	if !ok {
 		return
 	}
@@ -228,9 +232,9 @@ func applyLegacy(o *Object) {
 	o.Attributes = kept
 }
 
-// LegacyPrefixes is the set of prefixes the overlay pins, so the generator can
-// report that each was actually matched by a real object.
-func LegacyPrefixes() []string {
+// LegacyDefinitions is the set of definitions the overlay pins, so the generator
+// can report that each was actually matched by a real object.
+func LegacyDefinitions() []string {
 	out := make([]string, 0, len(legacyOverlays))
 	for p := range legacyOverlays {
 		out = append(out, p)

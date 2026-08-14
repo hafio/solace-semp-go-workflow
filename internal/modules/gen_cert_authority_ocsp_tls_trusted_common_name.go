@@ -11,12 +11,12 @@ func init() {
 		Article:      "an",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "certAuthorities", Keys: []keyDesc{{Name: "certAuthorityName", Desc: "The name of the Certificate Authority."}}},
+			{Collection: "certAuthorities", Keys: []keyDesc{{Name: "certAuthorityName", Canon: "cert_authority_name", Desc: "The name of the Certificate Authority."}}},
 		},
 		ParentFriendlyName: "cert authority",
 		Collection:         "ocspTlsTrustedCommonNames",
 		OwnKey: []keyDesc{
-			{Name: "ocspTlsTrustedCommonName", Desc: "The expected Trusted Common Name of the OCSP responder remote certificate."},
+			{Name: "ocspTlsTrustedCommonName", Canon: "ocsp_tls_trusted_common_name", Desc: "The expected Trusted Common Name of the OCSP responder remote certificate."},
 		},
 		Deprecated: "every attribute of this object is marked deprecated in the SEMP specification.",
 	})

@@ -74,131 +74,131 @@ workflow-templates:
 
     # ── Access Control ──────────────────────────────────────────────────────
     - name: "Create Client Profile"
-      module: "client_profile.add"
+      module: "msg_vpn_client_profile.add"
       args:
-        clientProfileName: "{{ inputs.client_profile_name }}"
+        client_profile_name: "{{ inputs.client_profile_name }}"
 
     - name: "Update Client Profile"
-      module: "client_profile.update"
+      module: "msg_vpn_client_profile.update"
       args:
-        clientProfileName: "{{ inputs.client_profile_name }}"
-        allowGuaranteedMsgSendEnabled: true
-        allowGuaranteedMsgReceiveEnabled: true
+        client_profile_name: "{{ inputs.client_profile_name }}"
+        allow_guaranteed_msg_send_enabled: true
+        allow_guaranteed_msg_receive_enabled: true
 
     - name: "Create ACL Profile"
-      module: "acl_profile.add"
+      module: "msg_vpn_acl_profile.add"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
-        clientConnectDefaultAction: "allow"
-        publishTopicDefaultAction: "disallow"
-        subscribeTopicDefaultAction: "disallow"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
+        client_connect_default_action: "allow"
+        publish_topic_default_action: "disallow"
+        subscribe_topic_default_action: "disallow"
 
     - name: "Create Client Username"
-      module: "client_username.add"
+      module: "msg_vpn_client_username.add"
       args:
-        clientUsername: "{{ inputs.aem_client_username }}"
-        clientProfileName: "{{ inputs.client_profile_name }}"
-        aclProfileName: "{{ inputs.acl_profile_name }}"
+        client_username: "{{ inputs.aem_client_username }}"
+        client_profile_name: "{{ inputs.client_profile_name }}"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
         enabled: true
 
     - name: "Update Client Username Association"
-      module: "client_username.update"
+      module: "msg_vpn_client_username.update"
       args:
-        clientUsername: "{{ inputs.aem_client_username }}"
-        clientProfileName: "{{ inputs.client_profile_name }}"
-        aclProfileName: "{{ inputs.acl_profile_name }}"
+        client_username: "{{ inputs.aem_client_username }}"
+        client_profile_name: "{{ inputs.client_profile_name }}"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
 
     - name: "Add ACL Publish Topic Exception"
-      module: "acl_publish_exception.add"
+      module: "msg_vpn_acl_profile_publish_topic_exception.add"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
-        publishTopicException: "{{ inputs.service_queue_subscription }}"
-        publishTopicExceptionSyntax: "smf"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
+        publish_topic_exception: "{{ inputs.service_queue_subscription }}"
+        publish_topic_exception_syntax: "smf"
 
     # ── Queues ──────────────────────────────────────────────────────────────
     - name: "Create Service Queue"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.service_queue_name }}"
+        queue_name: "{{ inputs.service_queue_name }}"
         owner: "{{ inputs.service_queue_owner }}"
-        accessType: "{{ inputs.service_queue_access }}"
+        access_type: "{{ inputs.service_queue_access }}"
         permission: "{{ inputs.service_queue_permission }}"
-        deadMsgQueue: "{{ inputs.service_queue_dmq }}"
-        ingressEnabled: "{{ inputs.service_queue_enabled }}"
-        egressEnabled: "{{ inputs.service_queue_enabled }}"
-        maxTtl: "{{ inputs.service_queue_ttl }}"
-        maxMsgSpoolUsage: "{{ inputs.service_queue_max_spool }}"
-        maxRedeliveryCount: "{{ inputs.service_queue_max_redelivery }}"
-        rejectMsgToSenderOnDiscardBehavior: "{{ inputs.service_queue_reject_msg_sender }}"
+        dead_msg_queue: "{{ inputs.service_queue_dmq }}"
+        ingress_enabled: "{{ inputs.service_queue_enabled }}"
+        egress_enabled: "{{ inputs.service_queue_enabled }}"
+        max_ttl: "{{ inputs.service_queue_ttl }}"
+        max_msg_spool_usage: "{{ inputs.service_queue_max_spool }}"
+        max_redelivery_count: "{{ inputs.service_queue_max_redelivery }}"
+        reject_msg_to_sender_on_discard_behavior: "{{ inputs.service_queue_reject_msg_sender }}"
     - name: "Create Mirror Queue"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.mirror_queue_name }}"
+        queue_name: "{{ inputs.mirror_queue_name }}"
         owner: "{{ inputs.mirror_queue_owner }}"
-        accessType: "{{ inputs.mirror_queue_access }}"
+        access_type: "{{ inputs.mirror_queue_access }}"
         permission: "{{ inputs.mirror_queue_permission }}"
-        deadMsgQueue: "{{ inputs.mirror_queue_dmq }}"
-        ingressEnabled: "{{ inputs.mirror_queue_enabled }}"
-        egressEnabled: "{{ inputs.mirror_queue_enabled }}"
-        maxTtl: "{{ inputs.mirror_queue_ttl }}"
-        maxMsgSpoolUsage: "{{ inputs.mirror_queue_max_spool }}"
-        rejectMsgToSenderOnDiscardBehavior: "{{ inputs.mirror_queue_reject_msg_sender }}"
+        dead_msg_queue: "{{ inputs.mirror_queue_dmq }}"
+        ingress_enabled: "{{ inputs.mirror_queue_enabled }}"
+        egress_enabled: "{{ inputs.mirror_queue_enabled }}"
+        max_ttl: "{{ inputs.mirror_queue_ttl }}"
+        max_msg_spool_usage: "{{ inputs.mirror_queue_max_spool }}"
+        reject_msg_to_sender_on_discard_behavior: "{{ inputs.mirror_queue_reject_msg_sender }}"
     - name: "Create DMQ"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.dmq_name }}"
+        queue_name: "{{ inputs.dmq_name }}"
         owner: "{{ inputs.dmq_owner }}"
-        accessType: "{{ inputs.dmq_access }}"
+        access_type: "{{ inputs.dmq_access }}"
         permission: "{{ inputs.dmq_permission }}"
-        deadMsgQueue: "{{ inputs.dmq_dmq }}"
-        ingressEnabled: "{{ inputs.dmq_enabled }}"
-        egressEnabled: "{{ inputs.dmq_enabled }}"
-        maxMsgSpoolUsage: "{{ inputs.dmq_max_spool }}"
-        maxTtl: "{{ inputs.dmq_ttl }}"
+        dead_msg_queue: "{{ inputs.dmq_dmq }}"
+        ingress_enabled: "{{ inputs.dmq_enabled }}"
+        egress_enabled: "{{ inputs.dmq_enabled }}"
+        max_msg_spool_usage: "{{ inputs.dmq_max_spool }}"
+        max_ttl: "{{ inputs.dmq_ttl }}"
 
     # ── Subscriptions ───────────────────────────────────────────────────────
     - name: "Add Service Queue Subscription"
-      module: "q_sub.add"
+      module: "msg_vpn_queue_subscription.add"
       args:
-        queueName: "{{ inputs.service_queue_name }}"
-        subscriptionTopic: "{{ inputs.service_queue_subscription }}"
+        queue_name: "{{ inputs.service_queue_name }}"
+        subscription_topic: "{{ inputs.service_queue_subscription }}"
 
     - name: "Add Mirror Queue Subscription"
-      module: "q_sub.add"
+      module: "msg_vpn_queue_subscription.add"
       args:
-        queueName: "{{ inputs.mirror_queue_name }}"
-        subscriptionTopic: "{{ inputs.mirror_queue_subscription }}"
+        queue_name: "{{ inputs.mirror_queue_name }}"
+        subscription_topic: "{{ inputs.mirror_queue_subscription }}"
 
     # ── RDP ──────────────────────────────────────────────────────────────────
     - name: "Create REST Delivery Point"
-      module: "rdp.add"
+      module: "msg_vpn_rest_delivery_point.add"
       args:
-        restDeliveryPointName: "{{ inputs.rdp_name }}"
-        clientProfileName: "{{ inputs.rdp_client_profile }}"
+        rest_delivery_point_name: "{{ inputs.rdp_name }}"
+        client_profile_name: "{{ inputs.rdp_client_profile }}"
         enabled: "{{ inputs.rdp_enabled }}"
 
     - name: "Create REST Consumer"
-      module: "rdp_rc.add"
+      module: "msg_vpn_rest_delivery_point_rest_consumer.add"
       args:
-        restDeliveryPointName: "{{ inputs.rdp_name }}"
-        restConsumerName: "{{ inputs.rc_name }}"
-        remoteHost: "{{ inputs.rc_remote_host }}"
-        remotePort: "{{ inputs.rc_remote_port }}"
-        tlsEnabled: "{{ inputs.rc_tls_enabled }}"
-        httpMethod: "{{ inputs.rc_http_method }}"
-        outgoingConnectionCount: "{{ inputs.rc_outgoing_connection_count }}"
-        authenticationScheme: "{{ inputs.rc_auth_scheme }}"
-        authenticationHttpBasicUsername: "{{ inputs.rc_auth_username }}"
-        authenticationHttpBasicPassword: "{{ inputs.rc_auth_password }}"
+        rest_delivery_point_name: "{{ inputs.rdp_name }}"
+        rest_consumer_name: "{{ inputs.rc_name }}"
+        remote_host: "{{ inputs.rc_remote_host }}"
+        remote_port: "{{ inputs.rc_remote_port }}"
+        tls_enabled: "{{ inputs.rc_tls_enabled }}"
+        http_method: "{{ inputs.rc_http_method }}"
+        outgoing_connection_count: "{{ inputs.rc_outgoing_connection_count }}"
+        authentication_scheme: "{{ inputs.rc_auth_scheme }}"
+        authentication_http_basic_username: "{{ inputs.rc_auth_username }}"
+        authentication_http_basic_password: "{{ inputs.rc_auth_password }}"
         enabled: "{{ inputs.rc_enabled }}"
 
     - name: "Create Queue Binding"
-      module: "rdp_qb.add"
+      module: "msg_vpn_rest_delivery_point_queue_binding.add"
       args:
-        restDeliveryPointName: "{{ inputs.rdp_name }}"
-        queueBindingName: "{{ inputs.service_queue_name }}"
-        postRequestTarget: "{{ inputs.qb_post_request_target }}"
-        gatewayReplaceTargetAuthorityEnabled: "{{ inputs.qb_gateway_replace_target_authority }}"
+        rest_delivery_point_name: "{{ inputs.rdp_name }}"
+        queue_binding_name: "{{ inputs.service_queue_name }}"
+        post_request_target: "{{ inputs.qb_post_request_target }}"
+        gateway_replace_target_authority_enabled: "{{ inputs.qb_gateway_replace_target_authority }}"
 
   - name: "new-non-seq"
 
@@ -232,38 +232,38 @@ workflow-templates:
     actions:
     # ── RDP Cleanup ─────────────────────────────────────────────────────────
     - name: "Delete REST Delivery Point"
-      module: "rdp.delete"
+      module: "msg_vpn_rest_delivery_point.delete"
       args:
-        restDeliveryPointName: "{{ inputs.rdp_name }}"
+        rest_delivery_point_name: "{{ inputs.rdp_name }}"
 
     # ── Queue Cleanup ───────────────────────────────────────────────────────
     - name: "Delete Service Queue"
-      module: "queue.delete"
+      module: "msg_vpn_queue.delete"
       args:
-        queueName: "{{ inputs.service_queue_name }}"
+        queue_name: "{{ inputs.service_queue_name }}"
     - name: "Delete Mirror Queue"
-      module: "queue.delete"
+      module: "msg_vpn_queue.delete"
       args:
-        queueName: "{{ inputs.mirror_queue_name }}"
+        queue_name: "{{ inputs.mirror_queue_name }}"
     - name: "Delete DMQ"
-      module: "queue.delete"
+      module: "msg_vpn_queue.delete"
       args:
-        queueName: "{{ inputs.dmq_name }}"
+        queue_name: "{{ inputs.dmq_name }}"
 
     # ── Access Control Cleanup ──────────────────────────────────────────────
     - name: "Remove ACL Publish Topic Exception"
-      module: "acl_publish_exception.delete"
+      module: "msg_vpn_acl_profile_publish_topic_exception.delete"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
-        publishTopicException: "{{ inputs.service_queue_subscription }}"
-        publishTopicExceptionSyntax: "smf"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
+        publish_topic_exception: "{{ inputs.service_queue_subscription }}"
+        publish_topic_exception_syntax: "smf"
 
     - name: "Delete Client Username"
-      module: "client_username.delete"
+      module: "msg_vpn_client_username.delete"
       args:
-        clientUsername: "{{ inputs.aem_client_username }}"
+        client_username: "{{ inputs.aem_client_username }}"
 
     - name: "Delete ACL Profile"
-      module: "acl_profile.delete"
+      module: "msg_vpn_acl_profile.delete"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"

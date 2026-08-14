@@ -13,7 +13,7 @@ func init() {
 		IsSingleton:  true,
 		HasUpdate:    true,
 		Fields: []fieldDesc{
-			{Name: "maintenanceModeEnabled", Kind: kindBool, Desc: "Enable or disable maintenance mode"},
+			{Name: "maintenanceModeEnabled", Canon: "maintenance_mode_enabled", Kind: kindBool, Desc: "Enable or disable maintenance mode"},
 		},
 	})
 }
@@ -54,7 +54,7 @@ func init() {
 		Scope:        scopeVPN,
 		Collection:   "widgets",
 		OwnKey: []keyDesc{
-			{Name: "widgetName", Desc: "Name of the widget"},
+			{Name: "widgetName", Canon: "widget_name", Desc: "Name of the widget"},
 		},
 		HasUpdate: true,
 		Fields: []fieldDesc{
@@ -111,9 +111,9 @@ func init() {
 		},
 		HasUpdate: true,
 		Fields: []fieldDesc{
-			{Name: "threshold", Kind: kindObject, Desc: "Threshold settings", Fields: []fieldDesc{
-				{Name: "clearPercent", Kind: kindInt, Desc: "Clear percent"},
-				{Name: "setPercent", Kind: kindInt, Desc: "Set percent"},
+			{Name: "eventThreshold", Canon: "event_threshold", Kind: kindObject, Desc: "Threshold settings", Fields: []fieldDesc{
+				{Name: "clearPercent", Canon: "clear_percent", Kind: kindInt, Desc: "Clear percent"},
+				{Name: "setPercent", Canon: "set_percent", Kind: kindInt, Desc: "Set percent"},
 			}},
 		},
 	})

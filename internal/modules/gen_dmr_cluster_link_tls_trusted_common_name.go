@@ -10,13 +10,13 @@ func init() {
 		FriendlyName: "TLS trusted common name",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Desc: "The name of the Cluster."}}},
-			{Collection: "links", Keys: []keyDesc{{Name: "remoteNodeName", Desc: "The name of the node at the remote end of the Link."}}},
+			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Canon: "dmr_cluster_name", Desc: "The name of the Cluster."}}},
+			{Collection: "links", Keys: []keyDesc{{Name: "remoteNodeName", Canon: "remote_node_name", Desc: "The name of the node at the remote end of the Link."}}},
 		},
 		ParentFriendlyName: "DMR cluster link",
 		Collection:         "tlsTrustedCommonNames",
 		OwnKey: []keyDesc{
-			{Name: "tlsTrustedCommonName", Desc: "The expected trusted common name of the remote certificate."},
+			{Name: "tlsTrustedCommonName", Canon: "tls_trusted_common_name", Desc: "The expected trusted common name of the remote certificate."},
 		},
 		Deprecated: "every attribute of this object is marked deprecated in the SEMP specification.",
 	})

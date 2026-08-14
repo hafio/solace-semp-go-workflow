@@ -56,10 +56,15 @@ func TestGetUnknownModule(t *testing.T) {
 func TestInfoHasParams(t *testing.T) {
 	info := Info()
 	assert.Len(t, info, len(ExpectedModules))
-	qa := info["queue.add"]
+	// Info is the documented surface, so it is keyed by canonical names only --
+	// the legacy short names resolve through Get but are deliberately not listed.
+	assert.NotContains(t, info, "queue.add")
+	qa := info["msg_vpn_queue.add"]
 	assert.NotEmpty(t, qa.Description)
 	require.NotEmpty(t, qa.Params)
-	assert.Equal(t, "queueName", qa.Params[0].Name) // required name is first (ordered)
+	// Params documents the canonical snake_case spelling; queueName still works
+	// as an argument (see TestLegacyAndCanonicalArgsProduceTheSamePayload).
+	assert.Equal(t, "queue_name", qa.Params[0].Name) // required name is first (ordered)
 	assert.True(t, qa.Params[0].Required)
 }
 
@@ -109,7 +114,7 @@ func TestQueueAddDryRun(t *testing.T) {
 func TestQueueAddMissingName(t *testing.T) {
 	res := exec(t, "queue.add", absent(), map[string]any{}, false)
 	assert.Equal(t, models.StatusFailed, res.Status)
-	assert.Contains(t, res.Message, "Missing required arg: queueName")
+	assert.Contains(t, res.Message, "Missing required arg: queue_name")
 }
 
 func TestQueueAddNameTooLong(t *testing.T) {
@@ -138,9 +143,18 @@ func TestQueueAddCreateError(t *testing.T) {
 }
 
 func TestQueueAddBadIntFails(t *testing.T) {
-	res := exec(t, "queue.add", absent(), map[string]any{"queueName": "Q", "maxTtl": "abc"}, false)
+	fc := absent()
+	res := exec(t, "queue.add", fc, map[string]any{"queueName": "Q", "maxTtl": "abc"}, false)
 	assert.Equal(t, models.StatusFailed, res.Status)
-	assert.Contains(t, res.Message, "invalid literal for int()")
+
+	// Deliberate change from the previous implementation, which surfaced the raw
+	// strconv error ("invalid literal for int(): 'abc'") without saying which
+	// attribute it came from. An object can declare a dozen integers, so the
+	// attribute name is the part the operator actually needs.
+	assert.Contains(t, res.Message, "'max_ttl'")
+	assert.Contains(t, res.Message, "must be an integer")
+	// The value is now rejected before any request is issued.
+	assert.Empty(t, fc.existsCalls)
 }
 
 func TestQueueDelete(t *testing.T) {
@@ -340,11 +354,11 @@ func TestPublishExceptionAddCompositePath(t *testing.T) {
 func TestPublishExceptionMissingArgs(t *testing.T) {
 	res := exec(t, "acl_publish_exception.add", absent(), map[string]any{"publishTopicException": "t"}, false)
 	assert.Equal(t, models.StatusFailed, res.Status)
-	assert.Contains(t, res.Message, "aclProfileName")
+	assert.Contains(t, res.Message, "acl_profile_name")
 
 	res = exec(t, "acl_publish_exception.add", absent(), map[string]any{"aclProfileName": "P"}, false)
 	assert.Equal(t, models.StatusFailed, res.Status)
-	assert.Contains(t, res.Message, "publishTopicException")
+	assert.Contains(t, res.Message, "publish_topic_exception")
 }
 
 func TestSubscribeExceptionAdd(t *testing.T) {

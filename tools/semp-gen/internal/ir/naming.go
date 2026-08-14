@@ -2,13 +2,13 @@ package ir
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
-// Registry prefixes are derived from the create operationId, then overridden by
-// the alias table below. Only 24 of the 86 objects need an alias; the rest take
-// the mechanical name so it is predictable from the SEMP object without anyone
-// consulting a table.
+// Registry prefixes and canonical attribute names are both the snake_case form of
+// their SEMP identifier, which is what the Solace Terraform provider publishes.
+// Every one of the 86 prefixes is mechanical -- there is no alias table.
 
 // splitCamel splits a CamelCase identifier into its words. It is hand-written
 // rather than a regexp because the rule needs lookahead -- the last capital of a
@@ -41,105 +41,121 @@ func splitCamel(s string) []string {
 	return words
 }
 
-// DefaultPrefix derives a registry prefix from a create operationId: strip
-// "create", split CamelCase, drop a leading Msg+Vpn because the VPN is implicit,
-// lower-case and join with underscores. The Msg+Vpn guard leaves "createMsgVpn"
-// itself alone, which would otherwise reduce to nothing.
-func DefaultPrefix(operationID string) string {
-	s := strings.TrimPrefix(operationID, "create")
-	words := splitCamel(s)
-	if len(words) > 2 && words[0] == "Msg" && words[1] == "Vpn" {
-		words = words[2:]
-	}
+// ToSnake converts a SEMP attribute or path-parameter name to the snake_case
+// spelling the Solace Terraform provider publishes: split on CamelCase word
+// boundaries, lower-case, join with underscores. Digits stay attached to the word
+// they follow, so tlsBlockVersion11Enabled becomes tls_block_version11_enabled --
+// which is byte-for-byte what the provider documents.
+func ToSnake(name string) string {
+	words := splitCamel(name)
 	for i, w := range words {
 		words[i] = strings.ToLower(w)
 	}
 	return strings.Join(words, "_")
 }
 
-// prefixAliases overrides DefaultPrefix. Every entry is here for one of three
-// stated reasons, and nothing else earns a place:
-//
-//  1. Backward compatibility. The ten prefixes carried over from the previous
-//     implementation are load-bearing: existing templates and customer configs
-//     name them. These are not negotiable.
-//  2. A genuine collision. createProxy and createMsgVpnProxy both reduce to
-//     "proxy". Aliasing only the broker-global one resolves it and leaves the
-//     VPN-scoped object, the common case, with the natural name.
-//  3. A mechanical name over 45 characters. Thirteen qualify; the tail is
-//     shortened and the family root kept so siblings still sort together.
-var prefixAliases = map[string]string{
-	// 1. Backward compatibility.
-	"createMsgVpnQueue":                             "queue",
-	"createMsgVpnQueueSubscription":                 "q_sub",
-	"createMsgVpnRestDeliveryPoint":                 "rdp",
-	"createMsgVpnRestDeliveryPointRestConsumer":     "rdp_rc",
-	"createMsgVpnRestDeliveryPointQueueBinding":     "rdp_qb",
-	"createMsgVpnClientProfile":                     "client_profile",
-	"createMsgVpnClientUsername":                    "client_username",
-	"createMsgVpnAclProfile":                        "acl_profile",
-	"createMsgVpnAclProfilePublishTopicException":   "acl_publish_exception",
-	"createMsgVpnAclProfileSubscribeTopicException": "acl_subscribe_exception",
-
-	// 2. Collision.
-	"createProxy": "broker_proxy",
-
-	// 3. Over the 45-character budget.
-	"createMsgVpnDistributedCacheClusterGlobalCachingHomeClusterTopicPrefix": "distributed_cache_home_cluster_prefix",
-	"createOauthProfileAccessLevelGroupMsgVpnAccessLevelException":           "oauth_profile_access_group_vpn_exception",
-	"createMsgVpnAuthenticationOauthProfileResourceServerRequiredClaim":      "authentication_oauth_rs_claim",
-	"createMsgVpnRestDeliveryPointQueueBindingProtectedRequestHeader":        "rdp_qb_protected_header",
-	"createMsgVpnRestDeliveryPointRestConsumerTlsTrustedCommonName":          "rdp_rc_tls_cn",
-	"createMsgVpnDistributedCacheClusterGlobalCachingHomeCluster":            "distributed_cache_home_cluster",
-	"createOauthProfileDefaultMsgVpnAccessLevelException":                    "oauth_profile_default_vpn_exception",
-	"createClientCertAuthorityOcspTlsTrustedCommonName":                      "client_cert_authority_ocsp_cn",
-	"createMsgVpnAuthenticationOauthProfileClientRequiredClaim":              "authentication_oauth_client_claim",
-	"createMsgVpnRestDeliveryPointRestConsumerOauthJwtClaim":                 "rdp_rc_jwt_claim",
-	"createMsgVpnRestDeliveryPointQueueBindingRequestHeader":                 "rdp_qb_header",
-	"createMsgVpnTelemetryProfileReceiverAclConnectException":                "telemetry_profile_receiver_acl_exception",
-	"createDmrClusterCertMatchingRuleAttributeFilter":                        "dmr_cluster_cert_matching_rule_filter",
-}
-
-// maxPrefixLen is the budget above which a mechanical name earns an alias. Two
-// aliased names land at 40 and 44 characters, which is accepted: shortening them
-// further would mean inventing jargon.
-const maxPrefixLen = 45
-
-// Prefix resolves the registry prefix for a create operationId.
-func Prefix(operationID string) string {
-	if alias, ok := prefixAliases[operationID]; ok {
-		return alias
+// canonOf is ToSnake, but empty when the name is already snake_case -- an
+// all-lower-case name such as "owner" or "permission" needs no second spelling.
+// Emitting the field only where it differs keeps the generated descriptors free
+// of ~27 redundant lines and makes a real rename visible in a diff.
+func canonOf(name string) string {
+	if s := ToSnake(name); s != name {
+		return s
 	}
-	return DefaultPrefix(operationID)
+	return ""
 }
 
-// ValidateAliases reports aliases that no longer match any operationId in the
-// specification, which is how a Solace rename surfaces as a reviewed change
-// rather than a silently ignored table entry.
-func ValidateAliases(operationIDs map[string]bool) error {
-	var stale []string
-	for id := range prefixAliases {
-		if !operationIDs[id] {
-			stale = append(stale, id)
+// FromSnake is ToSnake's inverse. Nothing converts in this direction at runtime;
+// it exists so CheckSnakeRoundTrip can prove ToSnake loses no information.
+func FromSnake(name string) string {
+	var b strings.Builder
+	for i, p := range strings.Split(name, "_") {
+		if p == "" {
+			continue
+		}
+		if i == 0 {
+			b.WriteString(p)
+			continue
+		}
+		b.WriteString(strings.ToUpper(p[:1]))
+		b.WriteString(p[1:])
+	}
+	return b.String()
+}
+
+// CheckSnakeRoundTrip reports names whose snake_case spelling cannot be converted
+// back, which means ToSnake lost information.
+//
+// Every attribute and key in both specifications round-trips today, because SEMP
+// writes Tls and Http rather than TLS and HTTP: no property name anywhere in
+// either file contains two adjacent capitals. That is an observed property of the
+// specification, not a promise from Solace, and the whole canonical-naming scheme
+// rests on it. So it is asserted at generation time -- a spec bump that
+// introduces "TLSEnabled" (or an underscore) fails the build here rather than
+// silently publishing a canonical name that maps back to something else.
+func CheckSnakeRoundTrip(objects []Object) error {
+	var bad []string
+	seen := map[string]bool{}
+
+	report := func(owner, name string) {
+		if name == "" || seen[owner+"."+name] {
+			return
+		}
+		seen[owner+"."+name] = true
+		if back := FromSnake(ToSnake(name)); back != name {
+			bad = append(bad, fmt.Sprintf("%s.%s -> %s -> %s", owner, name, ToSnake(name), back))
 		}
 	}
-	if len(stale) == 0 {
+	var walk func(owner string, attrs []Attribute)
+	walk = func(owner string, attrs []Attribute) {
+		for _, a := range attrs {
+			report(owner, a.Name)
+			walk(owner, a.Fields)
+		}
+	}
+	for _, o := range objects {
+		for _, k := range o.OwnKey {
+			report(o.Definition, k.Name)
+		}
+		for _, p := range o.Parents {
+			for _, k := range p.Keys {
+				report(o.Definition, k.Name)
+			}
+		}
+		walk(o.Definition, o.Attributes)
+	}
+	if len(bad) == 0 {
 		return nil
 	}
-	return fmt.Errorf("prefix aliases match no operationId in the specification (renamed or removed upstream): %s",
-		strings.Join(stale, ", "))
+	return fmt.Errorf("names do not survive the snake_case round trip, so the canonical spelling would be ambiguous (a name with two adjacent capitals or an underscore does this):\n  %s",
+		strings.Join(bad, "\n  "))
 }
 
-// CheckPrefixes reports objects that collide on a prefix, and mechanical names
-// that exceed the budget and so need an alias adding.
+// Prefix is the registry prefix for an object: the snake_case form of its SEMP
+// definition name, which is exactly what the Solace Terraform provider calls the
+// equivalent resource once its own "solacebroker_" provider prefix is dropped.
+// MsgVpnQueue becomes msg_vpn_queue, matching the provider's msg_vpn_queue.
+//
+// There is no alias table. All 86 prefixes are mechanical, so a name is
+// predictable from the SEMP object without consulting anything, and the two
+// reasons the old table existed are both gone:
+//
+//   - The createProxy / createMsgVpnProxy collision disappears, because the VPN
+//     scope is no longer stripped: Proxy is proxy, MsgVpnProxy is msg_vpn_proxy.
+//   - There is no length budget to keep names short. Aligning with Terraform
+//     means accepting Terraform's lengths, up to 73 characters.
+func Prefix(definition string) string {
+	return ToSnake(definition)
+}
+
+// CheckPrefixes reports objects that collide on a prefix. Two definitions cannot
+// produce the same snake_case name unless SEMP itself introduces an ambiguity, so
+// this is defence in depth rather than a routine occurrence -- but a collision
+// would silently shadow one object's actions with another's, so it stops the run.
 func CheckPrefixes(objects []Object) error {
 	seen := map[string][]string{}
-	var tooLong []string
 	for _, o := range objects {
 		seen[o.Prefix] = append(seen[o.Prefix], o.Definition)
-		if _, aliased := prefixAliases[o.OperationID]; !aliased && len(o.Prefix) > maxPrefixLen {
-			tooLong = append(tooLong, fmt.Sprintf("%s (%d chars, from %s)", o.Prefix, len(o.Prefix), o.OperationID))
-		}
 	}
 	var problems []string
 	for prefix, defs := range seen {
@@ -147,12 +163,10 @@ func CheckPrefixes(objects []Object) error {
 			problems = append(problems, fmt.Sprintf("prefix %q claimed by %s", prefix, strings.Join(defs, " and ")))
 		}
 	}
-	for _, t := range tooLong {
-		problems = append(problems, "prefix over the "+fmt.Sprint(maxPrefixLen)+"-character budget, add an alias: "+t)
-	}
 	if len(problems) == 0 {
 		return nil
 	}
+	sort.Strings(problems)
 	return fmt.Errorf("naming problems:\n  %s", strings.Join(problems, "\n  "))
 }
 

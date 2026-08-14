@@ -11,19 +11,19 @@ func init() {
 		Scope:        scopeGlobal,
 		Collection:   "certAuthorities",
 		OwnKey: []keyDesc{
-			{Name: "certAuthorityName", Desc: "The name of the Certificate Authority."},
+			{Name: "certAuthorityName", Canon: "cert_authority_name", Desc: "The name of the Certificate Authority."},
 		},
 		HasUpdate:  true,
 		Deprecated: "every attribute of this object is marked deprecated in the SEMP specification.",
 		Fields: []fieldDesc{
-			{Name: "certContent", Kind: kindString, Deprecated: true, Desc: "The PEM formatted content for the trusted root certificate of a Certificate Authority. Deprecated."},
-			{Name: "crlDayList", Kind: kindString, Default: "daily", Deprecated: true, Desc: "The scheduled CRL refresh day(s), specified as \"daily\" or a comma-separated list of days. Days must be specified as \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", or \"Sat\", with no spaces, and in sorted order from Sunday to Saturday. Deprecated."},
-			{Name: "crlTimeList", Kind: kindString, Default: "3:00", Deprecated: true, Desc: "The scheduled CRL refresh time(s), specified as \"hourly\" or a comma-separated list of 24-hour times in the form hh:mm, or h:mm. There must be no spaces, and times must be in sorted order from 0:00 to 23:59. Deprecated."},
-			{Name: "crlUrl", Kind: kindString, Deprecated: true, Desc: "The URL for the CRL source. This is a required attribute for CRL to be operational and the URL must be complete with http:// included. IPv6 addresses must be enclosed in square-brackets. Deprecated. Changing this may briefly interrupt the affected service."},
-			{Name: "ocspNonResponderCertEnabled", Kind: kindBool, Default: false, Deprecated: true, Desc: "Enable or disable allowing a non-responder certificate to sign an OCSP response. Typically used with an OCSP override URL in cases where a single certificate is used to sign client certificates and OCSP responses. Deprecated."},
-			{Name: "ocspOverrideUrl", Kind: kindString, Deprecated: true, Desc: "The OCSP responder URL to use for overriding the one supplied in the client certificate. The URL must be complete with http:// included. Deprecated."},
-			{Name: "ocspTimeout", Kind: kindInt, Default: 5, Deprecated: true, Desc: "The timeout in seconds to receive a response from the OCSP responder after sending a request or making the initial connection attempt. Deprecated."},
-			{Name: "revocationCheckEnabled", Kind: kindBool, Default: false, Deprecated: true, Desc: "Enable or disable Certificate Authority revocation checking. Deprecated."},
+			{Name: "certContent", Canon: "cert_content", Kind: kindString, Deprecated: true, Desc: "The PEM formatted content for the trusted root certificate of a Certificate Authority. Deprecated."},
+			{Name: "crlDayList", Canon: "crl_day_list", Kind: kindString, Default: "daily", Deprecated: true, Desc: "The scheduled CRL refresh day(s), specified as \"daily\" or a comma-separated list of days. Days must be specified as \"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", or \"Sat\", with no spaces, and in sorted order from Sunday to Saturday. Deprecated."},
+			{Name: "crlTimeList", Canon: "crl_time_list", Kind: kindString, Default: "3:00", Deprecated: true, Desc: "The scheduled CRL refresh time(s), specified as \"hourly\" or a comma-separated list of 24-hour times in the form hh:mm, or h:mm. There must be no spaces, and times must be in sorted order from 0:00 to 23:59. Deprecated."},
+			{Name: "crlUrl", Canon: "crl_url", Kind: kindString, Deprecated: true, Desc: "The URL for the CRL source. This is a required attribute for CRL to be operational and the URL must be complete with http:// included. IPv6 addresses must be enclosed in square-brackets. Deprecated. Changing this may briefly interrupt the affected service."},
+			{Name: "ocspNonResponderCertEnabled", Canon: "ocsp_non_responder_cert_enabled", Kind: kindBool, Default: false, Deprecated: true, Desc: "Enable or disable allowing a non-responder certificate to sign an OCSP response. Typically used with an OCSP override URL in cases where a single certificate is used to sign client certificates and OCSP responses. Deprecated."},
+			{Name: "ocspOverrideUrl", Canon: "ocsp_override_url", Kind: kindString, Deprecated: true, Desc: "The OCSP responder URL to use for overriding the one supplied in the client certificate. The URL must be complete with http:// included. Deprecated."},
+			{Name: "ocspTimeout", Canon: "ocsp_timeout", Kind: kindInt, Default: 5, Deprecated: true, Desc: "The timeout in seconds to receive a response from the OCSP responder after sending a request or making the initial connection attempt. Deprecated."},
+			{Name: "revocationCheckEnabled", Canon: "revocation_check_enabled", Kind: kindBool, Default: false, Deprecated: true, Desc: "Enable or disable Certificate Authority revocation checking. Deprecated."},
 		},
 	})
 }

@@ -10,16 +10,16 @@ func init() {
 		FriendlyName: "client authorization parameter",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Desc: "The name of the OAuth profile."}}},
+			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Canon: "oauth_profile_name", Desc: "The name of the OAuth profile."}}},
 		},
 		ParentFriendlyName: "OAuth profile",
 		Collection:         "clientAuthorizationParameters",
 		OwnKey: []keyDesc{
-			{Name: "authorizationParameterName", Desc: "The name of the authorization parameter."},
+			{Name: "authorizationParameterName", Canon: "authorization_parameter_name", Desc: "The name of the authorization parameter."},
 		},
 		HasUpdate: true,
 		Fields: []fieldDesc{
-			{Name: "authorizationParameterValue", Kind: kindString, Desc: "The authorization parameter value."},
+			{Name: "authorizationParameterValue", Canon: "authorization_parameter_value", Kind: kindString, Desc: "The authorization parameter value."},
 		},
 	})
 }

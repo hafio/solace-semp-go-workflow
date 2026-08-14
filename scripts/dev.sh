@@ -157,8 +157,11 @@ task_build() {
 }
 
 task_gen() {
-  step "gen (module descriptors from specs/)"
+  step "gen (module descriptors from specs/, then the module reference)"
   run_logged gen "$GO_ROOT" go generate ./internal/modules/... || return
+  # The reference is rendered from the registry, so it has to run after the
+  # descriptors are regenerated and compiled. Both outputs are committed.
+  run_logged gen "$GO_ROOT" go run ./cmd/semp-workflow list-modules --output-dir docs/modules || return
   ok "gen"
 }
 

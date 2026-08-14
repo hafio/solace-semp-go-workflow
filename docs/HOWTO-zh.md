@@ -1,7 +1,7 @@
 # SEMP Workflow Automation — 操作指南
 
-> 版本：0.2.2
 > 適用平台：Solace PubSub+（SEMP v2）
+> 動作模組由 `specs/` 中的 SEMP 10.26.0.8755 結構描述（Schema）產生
 
 ---
 
@@ -23,13 +23,20 @@
 
 ## 1. 簡介
 
-SEMP Workflow Automation 是一套類似 Ansible Playbook 的命令列工具，專為 Solace PubSub+ 訊息代理人（Message Broker）設計。透過宣告式 YAML 設定檔，您可以批次建立、刪除或更新佇列（Queue）、REST 遞送點（RDP）及其他 SEMP v2 資源，無需手動操作管理介面。
+SEMP Workflow Automation 是一套類似 Ansible Playbook 的命令列工具，專為 Solace PubSub+ 訊息代理人（Message Broker）設計。透過宣告式 YAML 設定檔，您可以批次建立、刪除或更新佇列（Queue）、REST 遞送點（RDP），以及 SEMP v2 設定 API 所提供的任何物件，無需手動操作管理介面。
 
 **主要特色：**
-- 冪等操作（Idempotent）：每次執行前先檢查資源是否存在，避免重複建立
-- Jinja2 變數渲染：支援動態命名與跨變數參考
-- 試運行模式（Dry-run）：可預覽變更內容而不實際執行
-- 模組化設計：每種 SEMP 資源對應獨立模組，易於擴充
+
+- **完整涵蓋 SEMP v2 設定 API**：共 225 個動作、86 種物件家族，全部由 Broker 自身的結構描述產生，而非人工逐一撰寫。除訊息 VPN 層級的物件外，也包含 Broker 層級的物件：訊息 VPN 本身、DMR 叢集與連線、OAuth 設定檔、憑證授權單位（CA）、虛擬主機名稱，以及 Broker 設定物件。
+- **冪等操作（Idempotent）**：每個動作在執行前先檢查目前狀態，因此可安全地重複執行。`add` 若物件已存在則跳過；`update` 會比對 Broker 上的現有值，若已符合預期則回報未變更。
+- **在送出前於本機驗證**：屬性名稱拼錯、值不在允許範圍內、缺少必填屬性，或指定了建立後不可變更的屬性，都會在本機回報並指出對應的工作流程與任務，而不是送到 Broker 後才被拒絕。
+- **Jinja2 變數渲染**：支援動態命名與跨變數參考。
+- **試運行模式（Dry-run）**：可預覽變更內容而不實際執行。
+
+**若您曾使用舊版，以下兩項行為已變更：**
+
+- `update` 在物件已符合指定值時會回報 `skipped`，而非一律回報 `changed`。Broker 不會回傳的屬性（例如密碼）無法比對，因此每次都會重新送出。
+- 動作的參數會依該物件的完整屬性集合檢查。若參數不屬於該物件的屬性，視為錯誤，不再直接轉送至 Broker。
 
 ---
 
@@ -223,13 +230,13 @@ workflow-templates:
 
     actions:
     - name: "建立佇列"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.queue_name }}"
+        queue_name: "{{ inputs.queue_name }}"
         owner: "{{ inputs.queue_owner }}"
 ```
 
-**說明：** 範本定義了一個契約：哪些輸入是必填的、哪些是選填的（含預設值），以及要執行哪些動作。動作按順序執行，每個動作對應一個內建模組（如 `queue.add` 或 `rdp.delete`）。`args` 區塊支援完整的 Jinja2 運算式，因此您可以從輸入和全域變數組合動態值。
+**說明：** 範本定義了一個契約：哪些輸入是必填的、哪些是選填的（含預設值），以及要執行哪些動作。動作按順序執行，每個動作對應一個內建模組（如 `msg_vpn_queue.add` 或 `msg_vpn_rest_delivery_point.delete`）。`args` 區塊支援完整的 Jinja2 運算式，因此您可以從輸入和全域變數組合動態值。
 
 ### 輸入結構
 
@@ -272,9 +279,9 @@ workflow-templates:
         access_type: exclusive
     actions: &create-actions
       - name: "Create Queue"
-        module: "queue.add"
+        module: "msg_vpn_queue.add"
         args:
-          queueName: "{{ inputs.queue_name }}"
+          queue_name: "{{ inputs.queue_name }}"
 
   - name: "create-non-seq"
     inputs:
@@ -376,12 +383,28 @@ Flags:
   -t, --templates-dir string   Override the workflow templates directory.
 ```
 
-**說明：** 載入設定檔、載入範本目錄中的所有範本，並檢查 `workflows` 清單中的每個 `template` 引用是否對應實際範本。不會連線至 Broker，因此可即時執行。
+**說明：** 完全在本機檢查整份設定，不連線至 Broker，因此可即時執行。檢查項目如下：
+
+1. 設定檔與所有範本可正確解析；
+2. `workflows` 清單中的每個 `template` 引用對應到實際範本；
+3. 每個必填輸入皆已提供，且所有輸入皆可解析（無法解析或互相循環參照的 Jinja2 運算式會被指出）；
+4. 每個動作所指定的模組皆已註冊；
+5. 每個動作的參數對該模組皆為有效 —— 沒有未知屬性、值落在允許範圍內、必填屬性齊備、`update` 中未出現僅能於建立時設定的屬性、沒有超出長度上限的屬性，也沒有 Broker 不允許的屬性組合。
+
+一次執行會列出所有問題，因此可一次修正整份設定，不需逐一試錯。
 
 **範例：**
 ```bash
 semp-workflow validate -c config.yaml
 ```
+
+錯誤訊息會指出工作流程、任務與屬性：
+
+```
+ERROR: workflow 1 (app-inbound.new-seq), task 'Create queue' [msg_vpn_queue.add]: unknown argument: acessType (see docs/modules/msg_vpn_queue.md for the accepted attributes)
+```
+
+在對正式環境 Broker 執行 `run` 之前請先執行此指令。它不需任何成本，卻能攔截原本要等到工作流程執行到一半才會發現的錯誤。
 
 ---
 
@@ -396,17 +419,24 @@ Usage:
   semp-workflow list-modules [flags]
 
 Flags:
-  -h, --help            help for list-modules
-  -o, --output string   Write module reference docs to a Markdown file (e.g. all-modules.md).
+  -h, --help                help for list-modules
+  -o, --output string       Write the whole module reference to one Markdown file.
+      --output-dir string   Write the module reference as an index plus one file per object family (e.g. docs/modules).
 ```
 
-**說明：** 顯示所有已註冊的動作模組及其說明。`--output` 選項可產生包含每個模組完整參數表的參考文件。
+**說明：** 顯示所有已註冊的動作模組及其說明。
+
+`--output-dir` 會以本專案所採用的形式輸出參考文件：一份列出所有物件家族的 `index.md`，加上每個家族一份頁面，其中包含各動作的參數表。建議使用此形式 —— 在完整涵蓋 SEMP 的情況下，單一文件會超過一萬行。若某個家族已不存在，其頁面會一併移除，因此目錄不會殘留新版結構描述已移除物件的頁面。
+
+`--output` 仍可將全部內容寫入單一檔案，偶爾便於搜尋。
 
 **範例：**
 ```bash
 semp-workflow list-modules
-semp-workflow list-modules --output docs/all-modules.md
+semp-workflow list-modules --output-dir docs/modules
 ```
+
+已納入版本控制的參考文件位於 [docs/modules/index.md](modules/index.md)。
 
 ---
 
@@ -489,45 +519,72 @@ semp-workflow init --output-dir templates --force
 
 ## 9. 可用模組
 
-所有操作均為**冪等**（Idempotent）：執行前先檢查資源狀態，若已是目標狀態則跳過（`skipped`）。
+共有 **225 個動作、86 種物件家族**，每種家族對應 SEMP v2 設定 API 所提供的一種物件型別。完整參考文件（含每個動作的參數表）由 Broker 結構描述產生，並納入版本控制，位於 **[docs/modules/index.md](modules/index.md)**。執行 `semp-workflow list-modules` 可列出您手上這份執行檔所支援的模組。
+
+動作的命名格式為 `<家族>.<動詞>`：
+
+| 動詞 | 何時可用 | 行為 |
+|---|---|---|
+| `add` | 物件可被建立時 | 建立物件；若已存在則跳過。 |
+| `update` | 物件建立後仍可變更時 | 比對目前狀態，只送出有差異的部分；若已符合則跳過，物件不存在則失敗。 |
+| `delete` | 物件可被移除時 | 刪除物件；若不存在則跳過。 |
+
+大多數家族支援全部三種動詞。部分家族僅支援建立與移除 —— 訂閱、ACL 例外、受信任的通用名稱（Trusted Common Name）—— 因為 SEMP 在這些物件建立後並無可變更的內容。Broker 設定物件僅支援 `update`，因為它無法被建立或刪除。
+
+### 內建範本所使用的模組
+
+以下是內建 `app-inbound` 與 `app-outbound` 範本所使用的模組，也是最快上手的一組。其餘模組請參閱產生的參考文件。
 
 | 模組 | 說明 |
 |---|---|
-| `queue.add` | 建立佇列 |
-| `queue.delete` | 刪除佇列 |
-| `queue.update` | 更新佇列屬性 |
-| `q_sub.add` | 新增佇列訂閱主題 |
-| `q_sub.delete` | 移除佇列訂閱主題 |
-| `rdp.add` | 建立 REST Delivery Point |
-| `rdp.delete` | 刪除 REST Delivery Point |
-| `rdp.update` | 更新 REST Delivery Point |
-| `rdp_rc.add` | 新增 REST Consumer 至 RDP |
-| `rdp_rc.delete` | 移除 RDP 的 REST Consumer |
-| `rdp_qb.add` | 建立佇列與 RDP 的繫結（Queue Binding） |
-| `rdp_qb.delete` | 移除佇列繫結 |
-| `acl_profile.add` | 建立 ACL Profile |
-| `acl_profile.delete` | 刪除 ACL Profile |
-| `acl_publish_exception.add` | 新增 ACL Profile 的發佈主題例外 |
-| `acl_publish_exception.delete` | 移除 ACL Profile 的發佈主題例外 |
-| `acl_subscribe_exception.add` | 新增 ACL Profile 的訂閱主題例外 |
-| `acl_subscribe_exception.delete` | 移除 ACL Profile 的訂閱主題例外 |
-| `client_profile.add` | 建立 Client Profile |
-| `client_profile.delete` | 刪除 Client Profile |
-| `client_profile.update` | 更新 Client Profile 屬性 |
-| `client_username.add` | 建立 Client Username |
-| `client_username.delete` | 刪除 Client Username |
-| `client_username.update` | 更新 Client Username 屬性 |
+| `msg_vpn_queue.add` | 建立佇列；若已存在則跳過。 |
+| `msg_vpn_queue.delete` | 刪除佇列；若不存在則跳過。 |
+| `msg_vpn_queue_subscription.add` | 建立訂閱；若已存在則跳過。 |
+| `msg_vpn_rest_delivery_point.add` | 建立 RDP；若已存在則跳過。 |
+| `msg_vpn_rest_delivery_point.delete` | 刪除 RDP；若不存在則跳過。 |
+| `msg_vpn_rest_delivery_point_rest_consumer.add` | 建立 REST Consumer；若已存在則跳過。 |
+| `msg_vpn_rest_delivery_point_queue_binding.add` | 建立佇列繫結（Queue Binding）；若已存在則跳過。 |
+| `msg_vpn_acl_profile.add` | 建立 ACL Profile；若已存在則跳過。 |
+| `msg_vpn_acl_profile.delete` | 刪除 ACL Profile；若不存在則跳過。 |
+| `msg_vpn_acl_profile_publish_topic_exception.add` | 建立發佈主題例外；若已存在則跳過。 |
+| `msg_vpn_acl_profile_publish_topic_exception.delete` | 刪除發佈主題例外；若不存在則跳過。 |
+| `msg_vpn_client_profile.add` | 建立 Client Profile；若已存在則跳過。 |
+| `msg_vpn_client_profile.update` | 更新現有 Client Profile；物件不存在則失敗，已符合預期則跳過。 |
+| `msg_vpn_client_username.add` | 建立 Client Username；若已存在則跳過。 |
+| `msg_vpn_client_username.delete` | 刪除 Client Username；若不存在則跳過。 |
+| `msg_vpn_client_username.update` | 更新現有 Client Username；物件不存在則失敗，已符合預期則跳過。 |
+
+### 命名規則
+
+動作與屬性名稱皆與 [Solace Terraform provider](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs) 一致，因此同一套拼寫方式可在兩種工具中通用。
+
+家族名稱是 SEMP 物件名稱的 snake_case 形式：`MsgVpnQueue` 對應 `msg_vpn_queue`、`MsgVpnTopicEndpoint` 對應 `msg_vpn_topic_endpoint`、`DmrClusterLink` 對應 `dmr_cluster_link`。這正是該 provider 的資源名稱去掉 `solacebroker_` 前綴後的結果，因此 `solacebroker_msg_vpn_queue` 與 `msg_vpn_queue.add` 指的是同一個物件。
+
+屬性遵循相同規則：SEMP 屬性 `egressEnabled` 寫成 `egress_enabled`，`maxMsgSpoolUsage` 寫成 `max_msg_spool_usage`。[docs/modules/index.md](modules/index.md) 的模組參考列出每個動作每個屬性的確切拼寫。
+
+#### 從舊版升級
+
+依舊版撰寫的工作流程無需修改即可繼續使用，升級時不需要重寫任何內容：
+
+- 原有的十個簡短家族名稱仍可解析：`queue`、`q_sub`、`rdp`、`rdp_rc`、`rdp_qb`、`client_profile`、`client_username`、`acl_profile`、`acl_publish_exception`、`acl_subscribe_exception`。
+- camelCase 屬性名稱仍被接受，因此 `egressEnabled` 與 `egress_enabled` 等效。
+
+兩種拼寫都可使用，但只有標準名稱會被列出：`list-modules` 與模組參考僅顯示標準名稱，新範本也應採用標準名稱。請勿在同一個 `args` 區塊中同時提供同一屬性的兩種拼寫 —— 這會被直接拒絕而非自動取捨，因為無從判斷你指的是哪一個值。
+
+### 指定訊息 VPN
+
+VPN 範圍的動作會使用設定檔中的 `msg_vpn`。若要在單一動作中指定不同的 VPN，請明確傳入 `msg_vpn_name`。當工作流程先以 `msg_vpn.add` 建立 VPN 再在其中建立物件時，這一點尤其重要。
 
 **執行結果狀態：**
 
 | 狀態 | 說明 |
 |---|---|
-| `changed` | 資源已成功建立／變更 |
-| `skipped` | 資源已存在，無需變更 |
-| `dryrun` | 試運行模式，顯示將執行的操作 |
-| `failed` | 操作失敗 |
+| `changed` | Broker 已被變更 |
+| `skipped` | 已是目標狀態，未送出任何請求 |
+| `dryrun` | 試運行模式：顯示將執行的操作 |
+| `failed` | 在本機被驗證擋下，或被 Broker 拒絕 |
 
-完整參數說明請執行 `semp-workflow list-modules`，或參閱 [all-modules.md](all-modules.md)。
+由於 `update` 會先比對再送出，同一份設定連續套用兩次時，第一次會回報 `changed`，第二次則回報 `skipped`。若第二次仍回報 `changed`，表示確實有內容每次都不同 —— 請參閱「故障排除」。
 
 ---
 
@@ -814,6 +871,54 @@ SEMPError: Connection refused / SSL error
 - 確認 `semp.host` URL 格式正確（含通訊協定 `https://` 及正確埠號）
 - 自簽憑證環境請設定 `verify_ssl: false`
 - 確認帳號密碼正確，且有 Message VPN 的管理權限
+
+---
+
+### 問題：未知的參數（Unknown argument）
+
+```
+unknown argument: acessType (see docs/modules/msg_vpn_queue.md for the accepted attributes)
+```
+
+**原因：** 該動作傳入了不屬於此物件的參數。參數會依 Broker 結構描述中該物件的完整屬性集合檢查，因此幾乎都是拼字錯誤。
+
+**解決方式：** 開啟 [docs/modules/](modules/index.md) 中該家族的頁面，對照參數表確認拼字。請注意 SEMP 屬性名稱採用小駝峰式（camelCase），而唯讀屬性不接受作為輸入 —— 因為 Broker 同樣不接受。
+
+---
+
+### 問題：屬性無法在 update 中設定
+
+```
+'flavour' can only be set when the object is created, so it cannot appear in an update
+```
+
+**原因：** SEMP 將部分屬性標記為建立後即固定。舊版會靜默地將其忽略，因而對一項並未實際發生的變更回報成功。
+
+**解決方式：** 從 `update` 動作中移除該屬性。若該值確實必須變更，則需刪除並重新建立該物件 —— 請將這兩個步驟明確寫入工作流程，使其一目了然。
+
+---
+
+### 問題：值超過長度上限
+
+```
+'queue_name' value is 203 bytes but the broker limit is 200: '...'
+```
+
+**原因：** Broker 對名稱與主題字串設有長度上限。此檢查在本機執行，因此請求不會被送出。
+
+**解決方式：** 縮短該值。上限以**位元組（byte）**計算而非字元數，因此含有重音符號或非拉丁字元的名稱，會比其顯示長度更早達到上限。
+
+---
+
+### 問題：第二次執行仍回報 `changed`
+
+`update` 會比對目前狀態，若物件已符合指定值則應回報 `skipped`，因此同一份設定套用兩次時，第二次應回報未變更。
+
+**可能原因：**
+- **Broker 不會回傳的屬性。** 密碼及其他唯寫（write-only）或不透明（opaque）屬性無法讀回比對，因此每次都會重新送出，動作也隨之回報 `changed`。這屬於預期行為。
+- **Broker 會正規化的值。** 若 Broker 儲存的形式與您提供的不同，每次比對都會出現差異。請對 Broker 執行 `GET` 查看該屬性，並改用其儲存的形式。
+
+**判斷方式：** 以 `--dry-run` 執行，試運行訊息會列出它將送出的屬性。
 
 ---
 

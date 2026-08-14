@@ -24,3 +24,5 @@ other-examples/
 
 # NOTE: specs/ is deliberately NOT ignored. The committed SEMP schemas are the
 # generator's only input and must be present in a fresh clone.
+
+m4-run

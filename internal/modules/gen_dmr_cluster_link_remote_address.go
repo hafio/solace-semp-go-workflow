@@ -10,13 +10,13 @@ func init() {
 		FriendlyName: "remote address",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Desc: "The name of the Cluster."}}},
-			{Collection: "links", Keys: []keyDesc{{Name: "remoteNodeName", Desc: "The name of the node at the remote end of the Link."}}},
+			{Collection: "dmrClusters", Keys: []keyDesc{{Name: "dmrClusterName", Canon: "dmr_cluster_name", Desc: "The name of the Cluster."}}},
+			{Collection: "links", Keys: []keyDesc{{Name: "remoteNodeName", Canon: "remote_node_name", Desc: "The name of the node at the remote end of the Link."}}},
 		},
 		ParentFriendlyName: "DMR cluster link",
 		Collection:         "remoteAddresses",
 		OwnKey: []keyDesc{
-			{Name: "remoteAddress", Desc: "The FQDN or IP address (and optional port) of the remote node."},
+			{Name: "remoteAddress", Canon: "remote_address", Desc: "The FQDN or IP address (and optional port) of the remote node."},
 		},
 	})
 }

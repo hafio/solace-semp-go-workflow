@@ -11,18 +11,18 @@ func init() {
 		Article:      "an",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Desc: "The name of the OAuth profile."}}},
+			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Canon: "oauth_profile_name", Desc: "The name of the OAuth profile."}}},
 		},
 		ParentFriendlyName: "OAuth profile",
 		Collection:         "accessLevelGroups",
 		OwnKey: []keyDesc{
-			{Name: "groupName", Desc: "The name of the group."},
+			{Name: "groupName", Canon: "group_name", Desc: "The name of the group."},
 		},
 		HasUpdate: true,
 		Fields: []fieldDesc{
 			{Name: "description", Kind: kindString, Desc: "A description for the group."},
-			{Name: "globalAccessLevel", Kind: kindString, Enum: []string{"none", "read-only", "mesh-manager", "read-write", "admin"}, Default: "none", Desc: "The global access level for this group."},
-			{Name: "msgVpnAccessLevel", Kind: kindString, Enum: []string{"none", "read-only", "read-write"}, Default: "none", Desc: "The default message VPN access level for this group."},
+			{Name: "globalAccessLevel", Canon: "global_access_level", Kind: kindString, Enum: []string{"none", "read-only", "mesh-manager", "read-write", "admin"}, Default: "none", Desc: "The global access level for this group."},
+			{Name: "msgVpnAccessLevel", Canon: "msg_vpn_access_level", Kind: kindString, Enum: []string{"none", "read-only", "read-write"}, Default: "none", Desc: "The default message VPN access level for this group."},
 		},
 	})
 }

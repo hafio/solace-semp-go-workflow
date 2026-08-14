@@ -67,8 +67,12 @@ func (k Kind) RuntimeConst() string {
 
 // Key is one identifying path parameter.
 type Key struct {
+	// Name is the SEMP spelling, which is what goes on the wire.
 	Name string
-	Desc string
+	// Canon is the snake_case spelling operators write and docs publish. Empty
+	// when it is identical to Name, so an all-lower-case name costs no field.
+	Canon string
+	Desc  string
 	// Default is supplied by the legacy overlay for keys that historically
 	// defaulted, so a workflow can omit them. The specification has no notion of
 	// a default for an identifying attribute.
@@ -83,7 +87,10 @@ type ParentHop struct {
 
 // Attribute is one body attribute of an object.
 type Attribute struct {
+	// Name is the SEMP spelling, which is what goes on the wire. Canon is the
+	// snake_case spelling operators write and docs publish, empty when identical.
 	Name     string
+	Canon    string
 	Kind     Kind
 	Enum     []string
 	Default  any

@@ -50,6 +50,65 @@ func newTestEngine(client modules.Client, tmpls map[string]*config.WorkflowTempl
 	}
 }
 
+func TestValidateWorkflowsAcceptsAGoodConfig(t *testing.T) {
+	eng := newTestEngine(&engineFake{}, queueTemplate(map[string]any{"queueName": "Q"}, nil), false, false)
+	eng.config.Workflows = []config.WorkflowEntry{{Template: "f.Flow"}}
+
+	assert.Empty(t, eng.ValidateWorkflows())
+}
+
+func TestValidateWorkflowsReportsEveryProblem(t *testing.T) {
+	// One pass should list everything wrong across every workflow, so an author
+	// fixes the config once rather than discovering faults one run at a time.
+	tmpls := map[string]*config.WorkflowTemplate{
+		"f.Flow": {
+			Name: "Flow",
+			Actions: []config.ActionSpec{
+				{Name: "Typo arg", Module: "queue.add", Args: map[string]any{"queueName": "Q", "acessType": "exclusive"}},
+				{Name: "Typo module", Module: "queue.crate", Args: map[string]any{"queueName": "Q"}},
+				{Name: "Bad enum", Module: "queue.add", Args: map[string]any{"queueName": "Q", "accessType": "sideways"}},
+			},
+		},
+	}
+	eng := newTestEngine(&engineFake{}, tmpls, false, false)
+	eng.config.Workflows = []config.WorkflowEntry{{Template: "f.Flow"}}
+
+	problems := eng.ValidateWorkflows()
+	require.Len(t, problems, 3)
+
+	joined := ""
+	for _, p := range problems {
+		joined += p.Error() + "\n"
+	}
+	assert.Contains(t, joined, "unknown argument: acessType")
+	assert.Contains(t, joined, "Unknown module 'queue.crate'")
+	assert.Contains(t, joined, "'access_type' must be one of")
+	// Each problem locates itself, since a config can hold many workflows.
+	assert.Contains(t, joined, "workflow 1 (f.Flow)")
+	assert.Contains(t, joined, "task 'Typo arg'")
+}
+
+func TestValidateWorkflowsIssuesNoRequests(t *testing.T) {
+	// Validation is an offline check: it must not touch the broker even when the
+	// config is entirely valid.
+	fc := &engineFake{}
+	eng := newTestEngine(fc, queueTemplate(map[string]any{"queueName": "Q"}, nil), false, false)
+	eng.config.Workflows = []config.WorkflowEntry{{Template: "f.Flow"}}
+
+	eng.ValidateWorkflows()
+	assert.Empty(t, fc.createPath)
+	assert.Nil(t, fc.createBody)
+}
+
+func TestValidateWorkflowsReportsAMissingTemplate(t *testing.T) {
+	eng := newTestEngine(&engineFake{}, map[string]*config.WorkflowTemplate{}, false, false)
+	eng.config.Workflows = []config.WorkflowEntry{{Template: "nope.Missing"}}
+
+	problems := eng.ValidateWorkflows()
+	require.Len(t, problems, 1)
+	assert.Contains(t, problems[0].Error(), "nope.Missing")
+}
+
 func queueTemplate(args map[string]any, inputs templating.InputSchema) map[string]*config.WorkflowTemplate {
 	return map[string]*config.WorkflowTemplate{
 		"f.Flow": {

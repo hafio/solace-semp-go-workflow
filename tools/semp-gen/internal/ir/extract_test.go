@@ -458,12 +458,12 @@ func TestUnionEnumKeepsTheWiderSetsOrder(t *testing.T) {
 // --- legacy.go ----------------------------------------------------------------
 
 func TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes(t *testing.T) {
-	// applyLegacy reads legacyOverlays by prefix. Rather than repurpose one of
-	// the real ten families (none of which exercises every field at once), a
-	// throwaway entry is added for the duration of this test: the point here is
-	// the overlay mechanism, not the real table's content.
-	const prefix = "extract_test_probe"
-	legacyOverlays[prefix] = legacyOverlay{
+	// applyLegacy reads legacyOverlays by SEMP definition name. Rather than
+	// repurpose one of the real ten families (none of which exercises every field
+	// at once), a throwaway entry is added for the duration of this test: the
+	// point here is the overlay mechanism, not the real table's content.
+	const definition = "ExtractTestProbe"
+	legacyOverlays[definition] = legacyOverlay{
 		FriendlyName:       "probe",
 		Article:            "an",
 		ParentFriendlyName: "harness",
@@ -473,10 +473,11 @@ func TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes(t *testing.T) {
 		DisplayKey:         1,
 		SkipAttributes:     []string{"derived"},
 	}
-	t.Cleanup(func() { delete(legacyOverlays, prefix) })
+	t.Cleanup(func() { delete(legacyOverlays, definition) })
 
 	o := Object{
-		Prefix:       prefix,
+		Definition:   definition,
+		Prefix:       Prefix(definition),
 		FriendlyName: "spec-derived name",
 		Article:      "a",
 		OwnKey:       []Key{{Name: "probeKey", Desc: "spec-derived desc"}},
@@ -502,7 +503,7 @@ func TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes(t *testing.T) {
 }
 
 func TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched(t *testing.T) {
-	o := Object{Prefix: "no_such_overlay", FriendlyName: "spec name", Article: "a"}
+	o := Object{Definition: "NoSuchOverlay", Prefix: "no_such_overlay", FriendlyName: "spec name", Article: "a"}
 	applyLegacy(&o)
 
 	assert.Equal(t, "spec name", o.FriendlyName)
@@ -510,15 +511,15 @@ func TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched(t *testing.T) {
 	assert.Nil(t, o.Messages)
 }
 
-func TestCheckLegacyMatchedErrorsWhenAnOverlayPrefixMatchesNoObject(t *testing.T) {
-	all := LegacyPrefixes()
+func TestCheckLegacyMatchedErrorsWhenAnOverlayDefinitionMatchesNoObject(t *testing.T) {
+	all := LegacyDefinitions()
 	require.NotEmpty(t, all, "the overlay table is expected to carry the ten backward-compatibility families")
 
 	full := make([]Object, 0, len(all))
 	for _, p := range all {
-		full = append(full, Object{Prefix: p})
+		full = append(full, Object{Definition: p})
 	}
-	assert.NoError(t, checkLegacyMatched(full), "every overlay prefix has a matching object")
+	assert.NoError(t, checkLegacyMatched(full), "every overlay definition has a matching object")
 
 	// Drop one, simulating a rename upstream that the extractor no longer
 	// produces: the overlay's backward-compatibility guarantee would silently

@@ -232,12 +232,7 @@ func RenderModuleDocsMD(moduleInfo map[string]modules.ModuleInfo) string {
 	add("Result states: `changed` (action ran), `skipped` (already in desired state), `dryrun` (would change), `failed` (error).")
 	add("")
 
-	// Group by object prefix (queue, rdp, …).
-	groups := map[string][]string{}
-	for name := range moduleInfo {
-		obj, _ := splitAction(name)
-		groups[obj] = append(groups[obj], name)
-	}
+	groups := groupByObject(moduleInfo)
 
 	// Table of contents.
 	add("## Contents")
@@ -254,64 +249,156 @@ func RenderModuleDocsMD(moduleInfo map[string]modules.ModuleInfo) string {
 		add(fmt.Sprintf("## %s", obj))
 		add("")
 
-		actionNames := groups[obj]
-		sort.Strings(actionNames)
-		for _, actionName := range actionNames {
-			info := moduleInfo[actionName]
-
-			add(fmt.Sprintf("### `%s`", actionName))
-			add("")
-			if info.Description != "" {
-				add(info.Description)
-				add("")
-			}
-
-			if len(info.Params) > 0 {
-				add("| Parameter | Type | Required | Default | Description |")
-				add("|-----------|------|----------|---------|-------------|")
-				for _, p := range info.Params {
-					ptype := p.Type
-					if ptype == "" {
-						ptype = "string"
-					}
-					required := "No"
-					if p.Required {
-						required = "Yes"
-					}
-					def := "-"
-					if p.Default != nil {
-						def = fmt.Sprintf("`%s`", semp.Stringify(p.Default))
-						if p.Sensitive {
-							def = fmt.Sprintf("`%s`", modules.Mask)
-						}
-					}
-					desc := p.Description
-					if p.Sensitive {
-						desc = strings.TrimSpace(desc + " Sensitive: never echoed in output or docs.")
-					}
-					if len(p.Enum) > 0 {
-						allowed := make([]string, len(p.Enum))
-						for i, v := range p.Enum {
-							allowed[i] = fmt.Sprintf("`%s`", v)
-						}
-						joined := strings.Join(allowed, ", ")
-						if desc != "" {
-							desc = fmt.Sprintf("%s (%s)", desc, joined)
-						} else {
-							desc = joined
-						}
-					}
-					add(fmt.Sprintf("| `%s` | %s | %s | %s | %s |", p.Name, ptype, required, def, desc))
-				}
-				add("")
-			} else {
-				add("_No parameters._")
-				add("")
-			}
+		for _, actionName := range groups[obj] {
+			renderActionSection(add, "###", actionName, moduleInfo[actionName])
 		}
 
 		add("---")
 		add("")
+	}
+
+	return strings.Join(lines, "\n")
+}
+
+// groupByObject buckets action names by their object prefix, each bucket sorted
+// so a rendered document is stable between runs.
+func groupByObject(moduleInfo map[string]modules.ModuleInfo) map[string][]string {
+	groups := map[string][]string{}
+	for name := range moduleInfo {
+		obj, _ := splitAction(name)
+		groups[obj] = append(groups[obj], name)
+	}
+	for _, names := range groups {
+		sort.Strings(names)
+	}
+	return groups
+}
+
+// renderActionSection renders one action's heading, description and parameter
+// table at the given heading level. Shared by the single-document, per-family and
+// index renderers so the three cannot drift apart.
+func renderActionSection(add func(string), level, actionName string, info modules.ModuleInfo) {
+	add(fmt.Sprintf("%s `%s`", level, actionName))
+	add("")
+	if info.Description != "" {
+		add(info.Description)
+		add("")
+	}
+
+	if len(info.Params) == 0 {
+		add("_No parameters._")
+		add("")
+		return
+	}
+
+	add("| Parameter | Type | Required | Default | Description |")
+	add("|-----------|------|----------|---------|-------------|")
+	for _, p := range info.Params {
+		ptype := p.Type
+		if ptype == "" {
+			ptype = "string"
+		}
+		required := "No"
+		if p.Required {
+			required = "Yes"
+		}
+		def := "-"
+		if p.Default != nil {
+			def = fmt.Sprintf("`%s`", semp.Stringify(p.Default))
+			if p.Sensitive {
+				def = fmt.Sprintf("`%s`", modules.Mask)
+			}
+		}
+		desc := p.Description
+		if p.Sensitive {
+			desc = strings.TrimSpace(desc + " Sensitive: never echoed in output or docs.")
+		}
+		if len(p.Enum) > 0 {
+			allowed := make([]string, len(p.Enum))
+			for i, v := range p.Enum {
+				allowed[i] = fmt.Sprintf("`%s`", v)
+			}
+			joined := strings.Join(allowed, ", ")
+			if desc != "" {
+				desc = fmt.Sprintf("%s (%s)", desc, joined)
+			} else {
+				desc = joined
+			}
+		}
+		add(fmt.Sprintf("| `%s` | %s | %s | %s | %s |", p.Name, ptype, required, def, mdCell(desc)))
+	}
+	add("")
+}
+
+// mdCell escapes a value for a Markdown table cell. Attribute descriptions come
+// from the SEMP specification, so a pipe in one would silently corrupt the table
+// for every row that follows. None carry one today; this is what stops a future
+// broker release from breaking the reference without anyone noticing.
+func mdCell(s string) string {
+	return strings.ReplaceAll(s, "|", `\|`)
+}
+
+// ModuleFamilies returns the object families present in moduleInfo, sorted.
+func ModuleFamilies(moduleInfo map[string]modules.ModuleInfo) []string {
+	return sortedKeys(groupByObject(moduleInfo))
+}
+
+// FamilyFileName is the per-family reference filename for an object prefix.
+func FamilyFileName(family string) string { return family + ".md" }
+
+// RenderModuleDocsIndexMD renders the index of the per-family reference. The
+// full reference is split because a single document covering every action would
+// run past ten thousand lines, which no one reads and every diff buries.
+func RenderModuleDocsIndexMD(moduleInfo map[string]modules.ModuleInfo) string {
+	var lines []string
+	add := func(s string) { lines = append(lines, s) }
+
+	groups := groupByObject(moduleInfo)
+	families := sortedKeys(groups)
+
+	add("# SEMP Workflow Automation - Module Reference")
+	add("")
+	add(fmt.Sprintf("%d actions across %d object families.", len(moduleInfo), len(families)))
+	add("")
+	add("All actions are **idempotent**: each checks current state before acting.")
+	add("Result states: `changed` (action ran), `skipped` (already in desired state), `dryrun` (would change), `failed` (error).")
+	add("")
+	add("An `update` compares the broker's current state and reports `skipped` when the")
+	add("object already matches, so re-running a workflow reports no change. Attributes")
+	add("the broker never returns, such as passwords, cannot be compared and are re-sent.")
+	add("")
+	add("Generated by `semp-workflow list-modules --output-dir`. Do not edit by hand.")
+	add("")
+	add("| Family | Actions | Reference |")
+	add("|--------|---------|-----------|")
+	for _, family := range families {
+		verbs := make([]string, 0, len(groups[family]))
+		for _, action := range groups[family] {
+			_, verb := splitAction(action)
+			verbs = append(verbs, verb)
+		}
+		add(fmt.Sprintf("| `%s` | %s | [%s](%s) |",
+			family, strings.Join(verbs, ", "), family, FamilyFileName(family)))
+	}
+	add("")
+
+	return strings.Join(lines, "\n")
+}
+
+// RenderModuleDocsFamilyMD renders the reference page for one object family.
+func RenderModuleDocsFamilyMD(family string, moduleInfo map[string]modules.ModuleInfo) string {
+	var lines []string
+	add := func(s string) { lines = append(lines, s) }
+
+	add(fmt.Sprintf("# `%s`", family))
+	add("")
+	add("Generated by `semp-workflow list-modules --output-dir`. Do not edit by hand.")
+	add("")
+	add("[Back to the index](index.md)")
+	add("")
+
+	for _, actionName := range groupByObject(moduleInfo)[family] {
+		renderActionSection(add, "##", actionName, moduleInfo[actionName])
 	}
 
 	return strings.Join(lines, "\n")

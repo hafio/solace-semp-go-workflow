@@ -2,7 +2,7 @@ module solace-semp-workflow
 
 go 1.26.0
 
-toolchain go1.26.5
+toolchain go1.26.6
 
 require (
 	github.com/fatih/color v1.17.0

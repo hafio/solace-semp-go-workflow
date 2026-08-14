@@ -201,8 +201,13 @@ function Task-Build {
 }
 
 function Task-Gen {
-    Step "gen (module descriptors from specs/)"
+    Step "gen (module descriptors from specs/, then the module reference)"
     $code = Invoke-Logged "gen" $GoRoot "go" @("generate", "./internal/modules/...")
+    if ($code -ne 0) { return $code }
+    # The reference is rendered from the registry, so it has to run after the
+    # descriptors are regenerated and compiled. Both outputs are committed.
+    $docArgs = @("run", "./cmd/semp-workflow", "list-modules", "--output-dir", "docs/modules")
+    $code = Invoke-Logged "gen" $GoRoot "go" $docArgs
     if ($code -eq 0) { Ok "gen" }
     return $code
 }

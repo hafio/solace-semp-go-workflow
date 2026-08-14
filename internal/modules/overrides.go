@@ -14,7 +14,7 @@ package modules
 // signal the driver is missing a descriptor field the specification could
 // supply for every object rather than just this one.
 var overrides = map[string]func(*objectDesc){
-	"queue": func(d *objectDesc) {
+	"msg_vpn_queue": func(d *objectDesc) {
 		d.AddHook = queueDerivedFields
 		d.UpdateHook = queueDerivedFields
 	},
@@ -22,19 +22,23 @@ var overrides = map[string]func(*objectDesc){
 	// The subscription add posts without a pre-check and lets the broker's
 	// AlreadyExists code report the skip. Carried over from the previous
 	// implementation, whose test asserts that no GET is issued on the live path.
-	"q_sub": func(d *objectDesc) {
+	"msg_vpn_queue_subscription": func(d *objectDesc) {
 		d.AddMode = addOptimistic
 	},
 
 	// An ACL exception's key is (topicSyntax, topic). Messages name the topic,
 	// which is what an operator recognises, not the syntax.
-	"acl_publish_exception": func(d *objectDesc) {
+	"msg_vpn_acl_profile_publish_topic_exception": func(d *objectDesc) {
 		d.DisplayKey = 1
 	},
-	"acl_subscribe_exception": func(d *objectDesc) {
+	"msg_vpn_acl_profile_subscribe_topic_exception": func(d *objectDesc) {
 		d.DisplayKey = 1
 	},
 }
+
+// overrideKeysAreReal is asserted by a test rather than at init: an entry that
+// matches no descriptor would silently stop applying, exactly the failure mode
+// the generator's checkLegacyMatched guards against on its side of the fence.
 
 // queueDerivedFields sets the two queue attributes the broker requires to be
 // consistent with the values an operator actually supplies, so a template can

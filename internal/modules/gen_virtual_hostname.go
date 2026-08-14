@@ -11,7 +11,7 @@ func init() {
 		Scope:        scopeGlobal,
 		Collection:   "virtualHostnames",
 		OwnKey: []keyDesc{
-			{Name: "virtualHostname", Desc: "The virtual hostname."},
+			{Name: "virtualHostname", Canon: "virtual_hostname", Desc: "The virtual hostname."},
 		},
 		HasUpdate: true,
 		Fields: []fieldDesc{

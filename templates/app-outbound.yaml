@@ -56,96 +56,96 @@ workflow-templates:
 
     # ── Access Control ──────────────────────────────────────────────────────
     - name: "Create Client Profile"
-      module: "client_profile.add"
+      module: "msg_vpn_client_profile.add"
       args:
-        clientProfileName: "{{ inputs.client_profile_name }}"
+        client_profile_name: "{{ inputs.client_profile_name }}"
 
     - name: "Update Client Profile"
-      module: "client_profile.update"
+      module: "msg_vpn_client_profile.update"
       args:
-        clientProfileName: "{{ inputs.client_profile_name }}"
-        allowGuaranteedMsgSendEnabled: true
-        allowGuaranteedMsgReceiveEnabled: true
+        client_profile_name: "{{ inputs.client_profile_name }}"
+        allow_guaranteed_msg_send_enabled: true
+        allow_guaranteed_msg_receive_enabled: true
 
     - name: "Create ACL Profile"
-      module: "acl_profile.add"
+      module: "msg_vpn_acl_profile.add"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
-        clientConnectDefaultAction: "allow"
-        publishTopicDefaultAction: "disallow"
-        subscribeTopicDefaultAction: "disallow"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
+        client_connect_default_action: "allow"
+        publish_topic_default_action: "disallow"
+        subscribe_topic_default_action: "disallow"
 
     - name: "Create Client Username"
-      module: "client_username.add"
+      module: "msg_vpn_client_username.add"
       args:
-        clientUsername: "{{ inputs.aem_client_username }}"
-        clientProfileName: "{{ inputs.client_profile_name }}"
-        aclProfileName: "{{ inputs.acl_profile_name }}"
+        client_username: "{{ inputs.aem_client_username }}"
+        client_profile_name: "{{ inputs.client_profile_name }}"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
         enabled: true
 
     - name: "Update Client Username Association"
-      module: "client_username.update"
+      module: "msg_vpn_client_username.update"
       args:
-        clientUsername: "{{ inputs.aem_client_username }}"
-        clientProfileName: "{{ inputs.client_profile_name }}"
-        aclProfileName: "{{ inputs.acl_profile_name }}"
+        client_username: "{{ inputs.aem_client_username }}"
+        client_profile_name: "{{ inputs.client_profile_name }}"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
 
     - name: "Add ACL Publish Topic Exception"
-      module: "acl_publish_exception.add"
+      module: "msg_vpn_acl_profile_publish_topic_exception.add"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
-        publishTopicException: "{{ inputs.service_queue_subscription }}"
-        publishTopicExceptionSyntax: "smf"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
+        publish_topic_exception: "{{ inputs.service_queue_subscription }}"
+        publish_topic_exception_syntax: "smf"
 
     # ── Queues ──────────────────────────────────────────────────────────────
     - name: "Create Service Queue"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.service_queue_name }}"
+        queue_name: "{{ inputs.service_queue_name }}"
         owner: "{{ inputs.service_queue_owner }}"
-        accessType: "{{ inputs.service_queue_access }}"
+        access_type: "{{ inputs.service_queue_access }}"
         permission: "{{ inputs.service_queue_permission }}"
-        deadMsgQueue: "{{ inputs.service_queue_dmq }}"
-        ingressEnabled: "{{ inputs.service_queue_enabled }}"
-        egressEnabled: "{{ inputs.service_queue_enabled }}"
-        maxTtl: "{{ inputs.service_queue_ttl }}"
-        maxRedeliveryCount: "{{ inputs.service_queue_max_redelivery }}"
-        rejectMsgToSenderOnDiscardBehavior: "{{ inputs.service_queue_reject_msg_sender }}"
+        dead_msg_queue: "{{ inputs.service_queue_dmq }}"
+        ingress_enabled: "{{ inputs.service_queue_enabled }}"
+        egress_enabled: "{{ inputs.service_queue_enabled }}"
+        max_ttl: "{{ inputs.service_queue_ttl }}"
+        max_redelivery_count: "{{ inputs.service_queue_max_redelivery }}"
+        reject_msg_to_sender_on_discard_behavior: "{{ inputs.service_queue_reject_msg_sender }}"
     - name: "Create Mirror Queue"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.mirror_queue_name }}"
+        queue_name: "{{ inputs.mirror_queue_name }}"
         owner: "{{ inputs.mirror_queue_owner }}"
-        accessType: "{{ inputs.mirror_queue_access }}"
+        access_type: "{{ inputs.mirror_queue_access }}"
         permission: "{{ inputs.mirror_queue_permission }}"
-        deadMsgQueue: "{{ inputs.mirror_queue_dmq }}"
-        ingressEnabled: "{{ inputs.mirror_queue_enabled }}"
-        egressEnabled: "{{ inputs.mirror_queue_enabled }}"
-        maxTtl: "{{ inputs.mirror_queue_ttl }}"
-        rejectMsgToSenderOnDiscardBehavior: "{{ inputs.mirror_queue_reject_msg_sender }}"
+        dead_msg_queue: "{{ inputs.mirror_queue_dmq }}"
+        ingress_enabled: "{{ inputs.mirror_queue_enabled }}"
+        egress_enabled: "{{ inputs.mirror_queue_enabled }}"
+        max_ttl: "{{ inputs.mirror_queue_ttl }}"
+        reject_msg_to_sender_on_discard_behavior: "{{ inputs.mirror_queue_reject_msg_sender }}"
     - name: "Create DMQ"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.dmq_name }}"
+        queue_name: "{{ inputs.dmq_name }}"
         owner: "{{ inputs.dmq_owner }}"
-        accessType: "{{ inputs.dmq_access }}"
+        access_type: "{{ inputs.dmq_access }}"
         permission: "{{ inputs.dmq_permission }}"
-        deadMsgQueue: "{{ inputs.dmq_dmq }}"
-        ingressEnabled: "{{ inputs.dmq_enabled }}"
-        egressEnabled: "{{ inputs.dmq_enabled }}"
-        maxTtl: "{{ inputs.dmq_ttl }}"
+        dead_msg_queue: "{{ inputs.dmq_dmq }}"
+        ingress_enabled: "{{ inputs.dmq_enabled }}"
+        egress_enabled: "{{ inputs.dmq_enabled }}"
+        max_ttl: "{{ inputs.dmq_ttl }}"
 
     # ── Subscriptions ───────────────────────────────────────────────────────
     - name: "Add Service Queue Subscription"
-      module: "q_sub.add"
+      module: "msg_vpn_queue_subscription.add"
       args:
-        queueName: "{{ inputs.service_queue_name }}"
-        subscriptionTopic: "{{ inputs.service_queue_subscription }}"
+        queue_name: "{{ inputs.service_queue_name }}"
+        subscription_topic: "{{ inputs.service_queue_subscription }}"
     - name: "Add Mirror Queue Subscription"
-      module: "q_sub.add"
+      module: "msg_vpn_queue_subscription.add"
       args:
-        queueName: "{{ inputs.mirror_queue_name }}"
-        subscriptionTopic: "{{ inputs.mirror_queue_subscription }}"
+        queue_name: "{{ inputs.mirror_queue_name }}"
+        subscription_topic: "{{ inputs.mirror_queue_subscription }}"
 
   - name: "new-non-seq"
 
@@ -178,32 +178,32 @@ workflow-templates:
     actions:
     # ── Queue Cleanup ───────────────────────────────────────────────────────
     - name: "Delete Service Queue"
-      module: "queue.delete"
+      module: "msg_vpn_queue.delete"
       args:
-        queueName: "{{ inputs.service_queue_name }}"
+        queue_name: "{{ inputs.service_queue_name }}"
     - name: "Delete Mirror Queue"
-      module: "queue.delete"
+      module: "msg_vpn_queue.delete"
       args:
-        queueName: "{{ inputs.mirror_queue_name }}"
+        queue_name: "{{ inputs.mirror_queue_name }}"
     - name: "Delete DMQ"
-      module: "queue.delete"
+      module: "msg_vpn_queue.delete"
       args:
-        queueName: "{{ inputs.dmq_name }}"
+        queue_name: "{{ inputs.dmq_name }}"
 
     # ── Access Control Cleanup ──────────────────────────────────────────────
     - name: "Remove ACL Publish Topic Exception"
-      module: "acl_publish_exception.delete"
+      module: "msg_vpn_acl_profile_publish_topic_exception.delete"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
-        publishTopicException: "{{ inputs.service_queue_subscription }}"
-        publishTopicExceptionSyntax: "smf"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"
+        publish_topic_exception: "{{ inputs.service_queue_subscription }}"
+        publish_topic_exception_syntax: "smf"
 
     - name: "Delete Client Username"
-      module: "client_username.delete"
+      module: "msg_vpn_client_username.delete"
       args:
-        clientUsername: "{{ inputs.aem_client_username }}"
+        client_username: "{{ inputs.aem_client_username }}"
 
     - name: "Delete ACL Profile"
-      module: "acl_profile.delete"
+      module: "msg_vpn_acl_profile.delete"
       args:
-        aclProfileName: "{{ inputs.acl_profile_name }}"
+        acl_profile_name: "{{ inputs.acl_profile_name }}"

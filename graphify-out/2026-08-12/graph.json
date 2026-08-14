@@ -45,8 +45,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_cli_cli",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "cli.go"
     },
     {
@@ -56,8 +56,8 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "internal_cli_cli_execute",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "execute()"
     },
     {
@@ -67,8 +67,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "internal_cli_cli_newrootcmd",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "newrootcmd()"
     },
     {
@@ -78,8 +78,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "command",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "command"
     },
     {
@@ -89,8 +89,8 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "internal_cli_cli_newruncmd",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "newruncmd()"
     },
     {
@@ -100,8 +100,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "internal_cli_cli_newvalidatecmd",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "newvalidatecmd()"
     },
     {
@@ -111,8 +111,8 @@
       "source_location": "L178",
       "_origin": "ast",
       "id": "internal_cli_cli_newlistmodulescmd",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "newlistmodulescmd()"
     },
     {
@@ -122,8 +122,8 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "internal_cli_cli_newinitcmd",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "newinitcmd()"
     },
     {
@@ -133,8 +133,8 @@
       "source_location": "L266",
       "_origin": "ast",
       "id": "internal_cli_cli_classifyexit",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "classifyexit()"
     },
     {
@@ -144,8 +144,8 @@
       "source_location": "L275",
       "_origin": "ast",
       "id": "internal_cli_cli_sortedkeys",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "sortedkeys()"
     },
     {
@@ -155,8 +155,8 @@
       "source_location": "L284",
       "_origin": "ast",
       "id": "internal_cli_cli_joincomma",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "joincomma()"
     },
     {
@@ -518,8 +518,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "config_sempconfig",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "sempconfig"
     },
     {
@@ -529,8 +529,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "config_workflowentry",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "workflowentry"
     },
     {
@@ -540,8 +540,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "config_appconfig",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "appconfig"
     },
     {
@@ -936,8 +936,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_engine_coverage_test",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "engine/coverage_test.go"
     },
     {
@@ -947,8 +947,8 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testnewenginebundledtemplates",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testnewenginebundledtemplates()"
     },
     {
@@ -958,8 +958,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_go_t",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "t"
     },
     {
@@ -969,8 +969,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testnewenginemissingtemplatesdir",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testnewenginemissingtemplatesdir()"
     },
     {
@@ -980,8 +980,8 @@
       "source_location": "L57",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testrunworkflowmissingrequiredinput",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunworkflowmissingrequiredinput()"
     },
     {
@@ -991,8 +991,8 @@
       "source_location": "L75",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testrunworkflowinputrendererror",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunworkflowinputrendererror()"
     },
     {
@@ -1002,8 +1002,8 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testrunfailfaststopsontemplateerror",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunfailfaststopsontemplateerror()"
     },
     {
@@ -1013,8 +1013,8 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testrunfailfaststopsafterfailedworkflow",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunfailfaststopsafterfailedworkflow()"
     },
     {
@@ -1024,8 +1024,8 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "internal_engine_coverage_test_testresolvetemplatenotfoundlistsavailable",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testresolvetemplatenotfoundlistsavailable()"
     },
     {
@@ -1035,8 +1035,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_engine_engine",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "engine.go"
     },
     {
@@ -1046,8 +1046,8 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "engine_engine",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "engine"
     },
     {
@@ -1057,8 +1057,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "internal_engine_engine_go_client",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "client"
     },
     {
@@ -1068,8 +1068,8 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "internal_engine_engine_newengine",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "newengine()"
     },
     {
@@ -1090,8 +1090,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "engine_engine_runworkflow",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".runworkflow()"
     },
     {
@@ -1101,8 +1101,8 @@
       "source_location": "L187",
       "_origin": "ast",
       "id": "engine_engine_runaction",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".runaction()"
     },
     {
@@ -1112,8 +1112,8 @@
       "source_location": "L230",
       "_origin": "ast",
       "id": "engine_engine_resolvetemplate",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".resolvetemplate()"
     },
     {
@@ -1123,8 +1123,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_engine_engine_test",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "engine_test.go"
     },
     {
@@ -1134,8 +1134,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "engine_enginefake",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "enginefake"
     },
     {
@@ -1145,8 +1145,8 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "engine_enginefake_exists",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": ".exists()"
     },
     {
@@ -1156,8 +1156,8 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "engine_enginefake_create",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": ".create()"
     },
     {
@@ -1167,8 +1167,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "engine_enginefake_update",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": ".update()"
     },
     {
@@ -1178,8 +1178,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "engine_enginefake_delete",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": ".delete()"
     },
     {
@@ -1189,8 +1189,8 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "engine_enginefake_defaultmsgvpn",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": ".defaultmsgvpn()"
     },
     {
@@ -1200,8 +1200,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "internal_engine_engine_test_silence",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "silence()"
     },
     {
@@ -1211,8 +1211,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "internal_engine_engine_test_go_t",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "t"
     },
     {
@@ -1222,8 +1222,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "internal_engine_engine_test_newtestengine",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "newtestengine()"
     },
     {
@@ -1233,8 +1233,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "internal_engine_engine_test_go_client",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "client"
     },
     {
@@ -1244,8 +1244,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "engine",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "engine"
     },
     {
@@ -1255,8 +1255,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "internal_engine_engine_test_queuetemplate",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "queuetemplate()"
     },
     {
@@ -1266,8 +1266,8 @@
       "source_location": "L63",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrunworkflowrendersargs",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunworkflowrendersargs()"
     },
     {
@@ -1277,8 +1277,8 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrunworkflowtwopassrender",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunworkflowtwopassrender()"
     },
     {
@@ -1288,8 +1288,8 @@
       "source_location": "L100",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrunworkflowcircularreference",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunworkflowcircularreference()"
     },
     {
@@ -1299,8 +1299,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testresolvetemplatenotfound",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testresolvetemplatenotfound()"
     },
     {
@@ -1310,8 +1310,8 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrunactionunknownmodule",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunactionunknownmodule()"
     },
     {
@@ -1321,8 +1321,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrunactiontemplateerror",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunactiontemplateerror()"
     },
     {
@@ -1332,8 +1332,8 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrunworkflowfailfaststopsactions",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrunworkflowfailfaststopsactions()"
     },
     {
@@ -1343,8 +1343,8 @@
       "source_location": "L159",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testrundryrun",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testrundryrun()"
     },
     {
@@ -1354,8 +1354,8 @@
       "source_location": "L174",
       "_origin": "ast",
       "id": "internal_engine_engine_test_testruntemplatenotfoundsynthesizesfailure",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 9,
+      "community_name": "newTestEngine",
       "norm_label": "testruntemplatenotfoundsynthesizesfailure()"
     },
     {
@@ -1365,8 +1365,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_engine_integration_test",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "engine/integration_test.go"
     },
     {
@@ -1376,8 +1376,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "internal_engine_integration_test_integrationsemp",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "integrationsemp()"
     },
     {
@@ -1387,8 +1387,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "internal_engine_integration_test_go_t",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "t"
     },
     {
@@ -1398,8 +1398,8 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "internal_engine_integration_test_makeconfig",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "makeconfig()"
     },
     {
@@ -1409,8 +1409,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "internal_engine_integration_test_testintegrationenginelifecycle",
-      "community": 4,
-      "community_name": "LoadConfig",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "testintegrationenginelifecycle()"
     },
     {
@@ -1794,8 +1794,8 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "models_workflowresult",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": "workflowresult"
     },
     {
@@ -1805,8 +1805,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "models_workflowresult_okcount",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".okcount()"
     },
     {
@@ -1816,8 +1816,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "models_workflowresult_skippedcount",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".skippedcount()"
     },
     {
@@ -1827,8 +1827,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "models_workflowresult_failedcount",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".failedcount()"
     },
     {
@@ -1838,8 +1838,8 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "models_workflowresult_dryruncount",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".dryruncount()"
     },
     {
@@ -1849,8 +1849,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "models_workflowresult_hasfailures",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".hasfailures()"
     },
     {
@@ -1860,8 +1860,8 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "models_workflowresult_count",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 3,
+      "community_name": "capture",
       "norm_label": ".count()"
     },
     {
@@ -2036,8 +2036,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_modules_coerce",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "coerce.go"
     },
     {
@@ -2047,8 +2047,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "internal_modules_coerce_coercefield",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "coercefield()"
     },
     {
@@ -2058,8 +2058,8 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "internal_modules_coerce_fieldnames",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "fieldnames()"
     },
     {
@@ -2069,8 +2069,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_modules_coerce_test",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "coerce_test.go"
     },
     {
@@ -2080,8 +2080,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_testcoercefieldscalars",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "testcoercefieldscalars()"
     },
     {
@@ -2091,8 +2091,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_go_t",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "t"
     },
     {
@@ -2102,8 +2102,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_testcoercefieldinterrornamestheattribute",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "testcoercefieldinterrornamestheattribute()"
     },
     {
@@ -2113,8 +2113,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_threshold",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "threshold()"
     },
     {
@@ -2124,8 +2124,8 @@
       "source_location": "L65",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_testcoercefieldnestedobject",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "testcoercefieldnestedobject()"
     },
     {
@@ -2135,8 +2135,8 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_testcoercefieldnestedobjectwrongshape",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "testcoercefieldnestedobjectwrongshape()"
     },
     {
@@ -2146,8 +2146,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "internal_modules_coerce_test_testcoercefieldnestedobjectinnererror",
-      "community": 25,
-      "community_name": "coerceField",
+      "community": 16,
+      "community_name": "objectDesc",
       "norm_label": "testcoercefieldnestedobjectinnererror()"
     },
     {
@@ -2575,8 +2575,8 @@
       "source_location": "L730",
       "_origin": "ast",
       "id": "internal_modules_driver_buildparams",
-      "community": 16,
-      "community_name": "objectDesc",
+      "community": 1,
+      "community_name": "driver_test.go",
       "norm_label": "buildparams()"
     },
     {
@@ -5666,8 +5666,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "internal_modules_registry",
-      "community": 3,
-      "community_name": "capture",
+      "community": 1,
+      "community_name": "driver_test.go",
       "norm_label": "registry.go"
     },
     {
@@ -5721,8 +5721,8 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "modules_moduleinfo",
-      "community": 3,
-      "community_name": "capture",
+      "community": 1,
+      "community_name": "driver_test.go",
       "norm_label": "moduleinfo"
     },
     {
@@ -5732,8 +5732,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "internal_modules_registry_info",
-      "community": 3,
-      "community_name": "capture",
+      "community": 1,
+      "community_name": "driver_test.go",
       "norm_label": "info()"
     },
     {
@@ -5919,8 +5919,8 @@
       "source_location": "L198",
       "_origin": "ast",
       "id": "internal_output_output_printerror",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "printerror()"
     },
     {
@@ -8430,8 +8430,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "templates_embed",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "embed.go"
     },
     {
@@ -8441,8 +8441,8 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "templates_embed_fs",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "fs()"
     },
     {
@@ -8452,8 +8452,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "templates_embed_test",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "embed_test.go"
     },
     {
@@ -8463,8 +8463,8 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "templates_embed_test_testfscontainsbundledtemplates",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "testfscontainsbundledtemplates()"
     },
     {
@@ -8474,8 +8474,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "templates_embed_test_go_t",
-      "community": 3,
-      "community_name": "capture",
+      "community": 4,
+      "community_name": "LoadConfig",
       "norm_label": "t"
     },
     {
@@ -8486,7 +8486,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "extract.go"
     },
     {
@@ -8496,8 +8496,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_extract",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "extract()"
     },
     {
@@ -8507,8 +8507,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_checklegacymatched",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "checklegacymatched()"
     },
     {
@@ -8519,7 +8519,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_extractone",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "extractone()"
     },
     {
@@ -8530,7 +8530,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_itempaths",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "itempaths()"
     },
     {
@@ -8541,7 +8541,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_pathsegments",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "pathsegments()"
     },
     {
@@ -8552,7 +8552,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_iskeysegment",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "iskeysegment()"
     },
     {
@@ -8563,7 +8563,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_keynames",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "keynames()"
     },
     {
@@ -8574,7 +8574,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_extractbroker",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "extractbroker()"
     },
     {
@@ -8585,7 +8585,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_extractcollection",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "extractcollection()"
     },
     {
@@ -8596,7 +8596,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_parentdefinition",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "parentdefinition()"
     },
     {
@@ -8606,8 +8606,8 @@
       "source_location": "L281",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_ownkeynames",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "ownkeynames()"
     },
     {
@@ -8618,7 +8618,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_attributes",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "attributes()"
     },
     {
@@ -8628,8 +8628,8 @@
       "source_location": "L368",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_buildattribute",
-      "community": 17,
-      "community_name": "buildAttribute",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "buildattribute()"
     },
     {
@@ -8639,8 +8639,8 @@
       "source_location": "L425",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_applycombos",
-      "community": 17,
-      "community_name": "buildAttribute",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "applycombos()"
     },
     {
@@ -8650,8 +8650,8 @@
       "source_location": "L443",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_parsedefault",
-      "community": 17,
-      "community_name": "buildAttribute",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "parsedefault()"
     },
     {
@@ -8661,8 +8661,8 @@
       "source_location": "L481",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_describe",
-      "community": 17,
-      "community_name": "buildAttribute",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "describe()"
     },
     {
@@ -8673,8 +8673,250 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_extract_firstsentence",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "firstsentence()"
+    },
+    {
+      "label": "extract_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "extract_test.go"
+    },
+    {
+      "label": "bodyParam()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "bodyparam()"
+    },
+    {
+      "label": "TestExtractOneStripsTheVPNHopAndMarksVPNScope()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractonestripsthevpnhopandmarksvpnscope",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractonestripsthevpnhopandmarksvpnscope()"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "t"
+    },
+    {
+      "label": "TestExtractOneBrokerGlobalObjectHasNoVPNHop()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractonebrokerglobalobjecthasnovpnhop",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractonebrokerglobalobjecthasnovpnhop()"
+    },
+    {
+      "label": "TestExtractOneNestedChildGetsAParentHopAndItsOwnKeyFromTheItemPath()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractonenestedchildgetsaparenthopanditsownkeyfromtheitempath",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractonenestedchildgetsaparenthopanditsownkeyfromtheitempath()"
+    },
+    {
+      "label": "TestExtractOneSplitsACompositeOwnKeyAndACompositeParentKeyOnTheComma()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractonesplitsacompositeownkeyandacompositeparentkeyonthecomma",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractonesplitsacompositeownkeyandacompositeparentkeyonthecomma()"
+    },
+    {
+      "label": "TestExtractBrokerRequiresAPatchOperation()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L153",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractbrokerrequiresapatchoperation",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractbrokerrequiresapatchoperation()"
+    },
+    {
+      "label": "TestExtractOneBuildsTheBrokerSingletonFromTheRootPath()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractonebuildsthebrokersingletonfromtherootpath",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractonebuildsthebrokersingletonfromtherootpath()"
+    },
+    {
+      "label": "TestExtractCollectionHasUpdateComesFromTheItemPathOnly()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L186",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testextractcollectionhasupdatecomesfromtheitempathonly",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testextractcollectionhasupdatecomesfromtheitempathonly()"
+    },
+    {
+      "label": "TestAttributesExcludesPathKeysAndReadOnlyProperties()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L236",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testattributesexcludespathkeysandreadonlyproperties",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testattributesexcludespathkeysandreadonlyproperties()"
+    },
+    {
+      "label": "TestParseDefaultReadsTheProseSentence()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L266",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testparsedefaultreadstheprosesentence",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testparsedefaultreadstheprosesentence()"
+    },
+    {
+      "label": "TestDescribeTrimsBoilerplateAfterTheFirstBlankLine()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L291",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testdescribetrimsboilerplateafterthefirstblankline",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testdescribetrimsboilerplateafterthefirstblankline()"
+    },
+    {
+      "label": "TestDescribeAppendsTheOperationalNoteForEachFlag()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L298",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testdescribeappendstheoperationalnoteforeachflag",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testdescribeappendstheoperationalnoteforeachflag()"
+    },
+    {
+      "label": "TestBuildAttributeResolvesANestedRefAndAppliesCombosByNestedDefinition()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L320",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition()"
+    },
+    {
+      "label": "TestBuildAttributeRejectsAnUnsupportedType()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L354",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testbuildattributerejectsanunsupportedtype",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testbuildattributerejectsanunsupportedtype()"
+    },
+    {
+      "label": "TestUnionTagsObjectsByWhichPlatformDefinesThem()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L369",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testuniontagsobjectsbywhichplatformdefinesthem",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testuniontagsobjectsbywhichplatformdefinesthem()"
+    },
+    {
+      "label": "TestUnionAttributesTagsThePlatformSpecificOneAndNotesItsDescription()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L389",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testunionattributestagstheplatformspecificoneandnotesitsdescription",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testunionattributestagstheplatformspecificoneandnotesitsdescription()"
+    },
+    {
+      "label": "TestUnionEnumKeepsTheWiderSetsOrder()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L430",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testunionenumkeepsthewidersetsorder",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testunionenumkeepsthewidersetsorder()"
+    },
+    {
+      "label": "TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L460",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testapplylegacypinsoverlayfieldsanddropsskippedattributes",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testapplylegacypinsoverlayfieldsanddropsskippedattributes()"
+    },
+    {
+      "label": "TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L504",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testapplylegacyleavesanobjectwithnooverlayuntouched",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testapplylegacyleavesanobjectwithnooverlayuntouched()"
+    },
+    {
+      "label": "TestCheckLegacyMatchedErrorsWhenAnOverlayPrefixMatchesNoObject()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L513",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testchecklegacymatchederrorswhenanoverlayprefixmatchesnoobject",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testchecklegacymatchederrorswhenanoverlayprefixmatchesnoobject()"
     },
     {
       "label": "ir.go",
@@ -8683,8 +8925,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_ir",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "ir.go"
     },
     {
@@ -8694,8 +8936,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "ir_scope",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "scope"
     },
     {
@@ -8705,8 +8947,8 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "ir_platform",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "platform"
     },
     {
@@ -8716,8 +8958,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ir_platform_note",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": ".note()"
     },
     {
@@ -8727,8 +8969,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "ir_kind",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "kind"
     },
     {
@@ -8738,8 +8980,8 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "ir_kind_runtimeconst",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": ".runtimeconst()"
     },
     {
@@ -8749,8 +8991,8 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "ir_key",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "key"
     },
     {
@@ -8760,8 +9002,8 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "ir_parenthop",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "parenthop"
     },
     {
@@ -8771,8 +9013,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "ir_attribute",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "attribute"
     },
     {
@@ -8782,8 +9024,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "ir_object",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "object"
     },
     {
@@ -8794,7 +9036,7 @@
       "_origin": "ast",
       "id": "ir_spec",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "spec"
     },
     {
@@ -8804,8 +9046,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_legacy",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "legacy.go"
     },
     {
@@ -8815,8 +9057,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ir_legacyoverlay",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "legacyoverlay"
     },
     {
@@ -8826,8 +9068,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_legacy_addedremovedmsgs",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "addedremovedmsgs()"
     },
     {
@@ -8837,8 +9079,8 @@
       "source_location": "L167",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_legacy_merge",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "merge()"
     },
     {
@@ -8848,8 +9090,8 @@
       "source_location": "L180",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_legacy_applylegacy",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "applylegacy()"
     },
     {
@@ -8859,8 +9101,8 @@
       "source_location": "L233",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_legacy_legacyprefixes",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "legacyprefixes()"
     },
     {
@@ -8870,8 +9112,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_merge",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "merge.go"
     },
     {
@@ -8881,8 +9123,8 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_merge_union",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "union()"
     },
     {
@@ -8892,8 +9134,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_merge_unionattributes",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "unionattributes()"
     },
     {
@@ -8903,8 +9145,8 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_merge_withnote",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "withnote()"
     },
     {
@@ -8914,8 +9156,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_merge_unionenum",
-      "community": 9,
-      "community_name": "Object",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "unionenum()"
     },
     {
@@ -8969,8 +9211,8 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_naming_validatealiases",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "validatealiases()"
     },
     {
@@ -8980,8 +9222,8 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_ir_naming_checkprefixes",
-      "community": 34,
-      "community_name": "Extract",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "checkprefixes()"
     },
     {
@@ -8996,15 +9238,15 @@
       "norm_label": "friendlyname()"
     },
     {
-      "label": "vowelArticle()",
+      "label": "indefiniteArticle()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/naming.go",
-      "source_location": "L199",
+      "source_location": "L239",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_naming_vowelarticle",
+      "id": "tools_semp_gen_internal_ir_naming_indefinitearticle",
       "community": 18,
       "community_name": "naming.go",
-      "norm_label": "vowelarticle()"
+      "norm_label": "indefinitearticle()"
     },
     {
       "label": "naming_test.go",
@@ -9084,15 +9326,15 @@
       "norm_label": "testfriendlynamepreservesinitialisms()"
     },
     {
-      "label": "TestVowelArticle()",
+      "label": "TestIndefiniteArticle()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/naming_test.go",
-      "source_location": "L102",
+      "source_location": "L115",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_naming_test_testvowelarticle",
+      "id": "tools_semp_gen_internal_ir_naming_test_testindefinitearticle",
       "community": 18,
       "community_name": "naming.go",
-      "norm_label": "testvowelarticle()"
+      "norm_label": "testindefinitearticle()"
     },
     {
       "label": "mdtable.go",
@@ -9102,7 +9344,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_mdtable_mdtable",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "mdtable.go"
     },
     {
@@ -9113,7 +9355,7 @@
       "_origin": "ast",
       "id": "mdtable_flags",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "flags"
     },
     {
@@ -9123,8 +9365,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "mdtable_combination",
-      "community": 17,
-      "community_name": "buildAttribute",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "combination"
     },
     {
@@ -9135,7 +9377,7 @@
       "_origin": "ast",
       "id": "mdtable_parsed",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "parsed"
     },
     {
@@ -9146,7 +9388,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_mdtable_mdtable_parse",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "parse()"
     },
     {
@@ -9157,7 +9399,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_mdtable_mdtable_readtable",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "readtable()"
     },
     {
@@ -9168,7 +9410,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_mdtable_mdtable_cells",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "cells()"
     },
     {
@@ -9179,7 +9421,7 @@
       "_origin": "ast",
       "id": "mdtable_parsed_addflagtable",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": ".addflagtable()"
     },
     {
@@ -9190,7 +9432,7 @@
       "_origin": "ast",
       "id": "mdtable_parsed_addcombinationtable",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": ".addcombinationtable()"
     },
     {
@@ -9201,8 +9443,129 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_mdtable_mdtable_splitlist",
       "community": 17,
-      "community_name": "buildAttribute",
+      "community_name": "Parse",
       "norm_label": "splitlist()"
+    },
+    {
+      "label": "mdtable_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "mdtable_test.go"
+    },
+    {
+      "label": "TestParseFlagTable_MarksOnlyDeclaredFlags()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_marksonlydeclaredflags",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparseflagtable_marksonlydeclaredflags()"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "t"
+    },
+    {
+      "label": "TestParseFlagTable_AccumulatesAcrossTablesInOneDescription()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_accumulatesacrosstablesinonedescription",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparseflagtable_accumulatesacrosstablesinonedescription()"
+    },
+    {
+      "label": "TestParseFlagTable_UnknownColumnErrorsAndNamesTheColumn()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_unknowncolumnerrorsandnamesthecolumn",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparseflagtable_unknowncolumnerrorsandnamesthecolumn()"
+    },
+    {
+      "label": "TestParse_NoTablesIsEmptyNotError()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_notablesisemptynoterror",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparse_notablesisemptynoterror()"
+    },
+    {
+      "label": "TestParseCombinationTable_WithAndWithoutConflictsColumn()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_withandwithoutconflictscolumn",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparsecombinationtable_withandwithoutconflictscolumn()"
+    },
+    {
+      "label": "TestParseCombinationTable_SplitsAndTrimsRequiresAndConflicts()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_splitsandtrimsrequiresandconflicts",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparsecombinationtable_splitsandtrimsrequiresandconflicts()"
+    },
+    {
+      "label": "TestParseFlagTable_XMarkIsCaseInsensitiveAndSelective()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_xmarkiscaseinsensitiveandselective",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparseflagtable_xmarkiscaseinsensitiveandselective()"
+    },
+    {
+      "label": "TestParse_TableLikeTextWithoutSeparatorIsIgnored()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L184",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_tableliketextwithoutseparatorisignored",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparse_tableliketextwithoutseparatorisignored()"
+    },
+    {
+      "label": "TestParse_RealSpecificationHasPlausibleRowCounts()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L200",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_realspecificationhasplausiblerowcounts",
+      "community": 17,
+      "community_name": "Parse",
+      "norm_label": "testparse_realspecificationhasplausiblerowcounts()"
     },
     {
       "label": "render.go",
@@ -9211,7 +9574,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "render.go"
     },
@@ -9223,7 +9586,7 @@
       "_origin": "ast",
       "id": "render_file",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "file"
     },
     {
@@ -9233,7 +9596,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_object",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "object()"
     },
@@ -9244,7 +9607,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_renderkey",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "renderkey()"
     },
@@ -9255,7 +9618,7 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_renderattribute",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "renderattribute()"
     },
@@ -9266,7 +9629,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "builder",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "builder"
     },
@@ -9277,7 +9640,7 @@
       "source_location": "L190",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_stringslice",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "stringslice()"
     },
@@ -9288,7 +9651,7 @@
       "source_location": "L214",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_literal",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "literal()"
     },
@@ -9299,7 +9662,7 @@
       "source_location": "L229",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_quote",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "quote()"
     },
@@ -9310,7 +9673,7 @@
       "source_location": "L231",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_scopeconst",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "scopeconst()"
     },
@@ -9321,7 +9684,7 @@
       "source_location": "L238",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_describeobject",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "describeobject()"
     },
@@ -9332,7 +9695,7 @@
       "source_location": "L248",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_countattrs",
-      "community": 23,
+      "community": 20,
       "community_name": "render.go",
       "norm_label": "countattrs()"
     },
@@ -9344,7 +9707,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_manifest",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "manifest()"
     },
     {
@@ -9355,7 +9718,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_all",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "all()"
     },
     {
@@ -9366,8 +9729,151 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_bytes",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "bytes()"
+    },
+    {
+      "label": "render_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "render_test.go"
+    },
+    {
+      "label": "buildGoldenSpec()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_buildgoldenspec",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "buildgoldenspec()"
+    },
+    {
+      "label": "dumpFiles()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L154",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_dumpfiles",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "dumpfiles()"
+    },
+    {
+      "label": "TestObjectGolden()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L166",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testobjectgolden",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testobjectgolden()"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_go_t",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "t"
+    },
+    {
+      "label": "TestObjectsAreValidGofmtStableGo()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L188",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testobjectsarevalidgofmtstablego",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testobjectsarevalidgofmtstablego()"
+    },
+    {
+      "label": "TestManifestNamesAreSortedAndCountMatchesComment()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L209",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testmanifestnamesaresortedandcountmatchescomment",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testmanifestnamesaresortedandcountmatchescomment()"
+    },
+    {
+      "label": "TestAllOneFilePerObjectPlusManifest()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L259",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testallonefileperobjectplusmanifest",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testallonefileperobjectplusmanifest()"
+    },
+    {
+      "label": "TestAllErrorsOnDuplicateFilename()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L280",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testallerrorsonduplicatefilename",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testallerrorsonduplicatefilename()"
+    },
+    {
+      "label": "TestDescriptionSurvivesQuotesBackslashesAndNewlines()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L298",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testdescriptionsurvivesquotesbackslashesandnewlines",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testdescriptionsurvivesquotesbackslashesandnewlines()"
+    },
+    {
+      "label": "findAttrDesc()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L319",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_findattrdesc",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "findattrdesc()"
+    },
+    {
+      "label": "TestArticleOmittedForIndefiniteArticleA()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L366",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testarticleomittedforindefinitearticlea",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testarticleomittedforindefinitearticlea()"
+    },
+    {
+      "label": "TestArticleEmittedForIndefiniteArticleAn()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L381",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_render_render_test_testarticleemittedforindefinitearticlean",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testarticleemittedforindefinitearticlean()"
     },
     {
       "label": "spec.go",
@@ -9377,7 +9883,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_specmodel_spec",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "spec.go"
     },
     {
@@ -9388,7 +9894,7 @@
       "_origin": "ast",
       "id": "specmodel_doc",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "doc"
     },
     {
@@ -9399,7 +9905,7 @@
       "_origin": "ast",
       "id": "specmodel_info",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "info"
     },
     {
@@ -9410,7 +9916,7 @@
       "_origin": "ast",
       "id": "specmodel_pathitem",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "pathitem"
     },
     {
@@ -9421,7 +9927,7 @@
       "_origin": "ast",
       "id": "specmodel_operation",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "operation"
     },
     {
@@ -9432,7 +9938,7 @@
       "_origin": "ast",
       "id": "specmodel_parameter",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "parameter"
     },
     {
@@ -9443,7 +9949,7 @@
       "_origin": "ast",
       "id": "specmodel_schema",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "schema"
     },
     {
@@ -9454,7 +9960,7 @@
       "_origin": "ast",
       "id": "specmodel_definition",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "definition"
     },
     {
@@ -9465,7 +9971,7 @@
       "_origin": "ast",
       "id": "specmodel_property",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "property"
     },
     {
@@ -9476,7 +9982,7 @@
       "_origin": "ast",
       "id": "specmodel_operation_bodydefinition",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": ".bodydefinition()"
     },
     {
@@ -9487,7 +9993,7 @@
       "_origin": "ast",
       "id": "specmodel_operation_pathparams",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": ".pathparams()"
     },
     {
@@ -9497,8 +10003,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "tools_semp_gen_internal_specmodel_spec_refname",
-      "community": 17,
-      "community_name": "buildAttribute",
+      "community": 2,
+      "community_name": "extract_test.go",
       "norm_label": "refname()"
     },
     {
@@ -9509,8 +10015,96 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_specmodel_spec_load",
       "community": 2,
-      "community_name": "extract.go",
+      "community_name": "extract_test.go",
       "norm_label": "load()"
+    },
+    {
+      "label": "spec_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "spec_test.go"
+    },
+    {
+      "label": "writeSpec()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "writespec()"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "t"
+    },
+    {
+      "label": "TestLoadValidMinimalSpec()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testloadvalidminimalspec()"
+    },
+    {
+      "label": "TestLoadErrors()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testloaderrors()"
+    },
+    {
+      "label": "TestBodyDefinition()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testbodydefinition",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testbodydefinition()"
+    },
+    {
+      "label": "TestPathParams()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L127",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testpathparams",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testpathparams()"
+    },
+    {
+      "label": "TestRefName()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L148",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testrefname",
+      "community": 2,
+      "community_name": "extract_test.go",
+      "norm_label": "testrefname()"
     },
     {
       "label": "semp-gen/main.go",
@@ -9520,7 +10114,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "semp-gen/main.go"
     },
     {
@@ -9531,7 +10125,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_main",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "main()"
     },
     {
@@ -9542,7 +10136,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_run",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "run()"
     },
     {
@@ -9553,7 +10147,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_stalefiles",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "stalefiles()"
     },
     {
@@ -9564,7 +10158,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_reportdrift",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "reportdrift()"
     },
     {
@@ -9575,7 +10169,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_truncate",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "truncate()"
     },
     {
@@ -9586,7 +10180,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_actioncount",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "actioncount()"
     },
     {
@@ -9597,8 +10191,74 @@
       "_origin": "ast",
       "id": "tools_semp_gen_main_summary",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "summary()"
+    },
+    {
+      "label": "main_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_test",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "main_test.go"
+    },
+    {
+      "label": "TestActionCount()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_test_testactioncount",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testactioncount()"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_test_go_t",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "t"
+    },
+    {
+      "label": "TestSummary()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_test_testsummary",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testsummary()"
+    },
+    {
+      "label": "TestTruncate()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_test_testtruncate",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "testtruncate()"
+    },
+    {
+      "label": "TestStaleFiles()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_test_teststalefiles",
+      "community": 20,
+      "community_name": "render.go",
+      "norm_label": "teststalefiles()"
     },
     {
       "label": "CLAUDE.md",
@@ -31714,6 +32374,18 @@
       "target": "tools_semp_gen_internal_ir_legacy_legacyprefixes"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L521",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testchecklegacymatchederrorswhenanoverlayprefixmatchesnoobject",
+      "target": "tools_semp_gen_internal_ir_extract_checklegacymatched"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -31772,6 +32444,78 @@
       "source": "tools_semp_gen_internal_ir_extract_extractone",
       "target": "tools_semp_gen_internal_ir_extract_itempaths",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L226",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractcollectionhasupdatecomesfromtheitempathonly",
+      "target": "tools_semp_gen_internal_ir_extract_extractone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonebrokerglobalobjecthasnovpnhop",
+      "target": "tools_semp_gen_internal_ir_extract_extractone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L172",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonebuildsthebrokersingletonfromtherootpath",
+      "target": "tools_semp_gen_internal_ir_extract_extractone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonenestedchildgetsaparenthopanditsownkeyfromtheitempath",
+      "target": "tools_semp_gen_internal_ir_extract_extractone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonesplitsacompositeownkeyandacompositeparentkeyonthecomma",
+      "target": "tools_semp_gen_internal_ir_extract_extractone"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonestripsthevpnhopandmarksvpnscope",
+      "target": "tools_semp_gen_internal_ir_extract_extractone"
     },
     {
       "relation": "references",
@@ -31906,6 +32650,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractbrokerrequiresapatchoperation",
+      "target": "tools_semp_gen_internal_ir_extract_extractbroker"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -32007,11 +32763,11 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tools/semp-gen/internal/ir/extract.go",
-      "source_location": "L246",
+      "source_location": "L248",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_extract_extractcollection",
-      "target": "tools_semp_gen_internal_ir_naming_prefix"
+      "target": "tools_semp_gen_internal_ir_naming_indefinitearticle"
     },
     {
       "relation": "calls",
@@ -32019,11 +32775,11 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tools/semp-gen/internal/ir/extract.go",
-      "source_location": "L248",
+      "source_location": "L246",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_extract_extractcollection",
-      "target": "tools_semp_gen_internal_ir_naming_vowelarticle"
+      "target": "tools_semp_gen_internal_ir_naming_prefix"
     },
     {
       "relation": "references",
@@ -32120,6 +32876,18 @@
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_extract_attributes",
       "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L254",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testattributesexcludespathkeysandreadonlyproperties",
+      "target": "tools_semp_gen_internal_ir_extract_attributes"
     },
     {
       "relation": "references",
@@ -32230,6 +32998,30 @@
       "target": "tools_semp_gen_internal_specmodel_spec_refname"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L358",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testbuildattributerejectsanunsupportedtype",
+      "target": "tools_semp_gen_internal_ir_extract_buildattribute"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L340",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition",
+      "target": "tools_semp_gen_internal_ir_extract_buildattribute"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -32266,6 +33058,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L284",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testparsedefaultreadstheprosesentence",
+      "target": "tools_semp_gen_internal_ir_extract_parsedefault"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -32276,6 +33080,634 @@
       "source": "tools_semp_gen_internal_ir_extract_describe",
       "target": "mdtable_flags",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L312",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testdescribeappendstheoperationalnoteforeachflag",
+      "target": "tools_semp_gen_internal_ir_extract_describe"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L295",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testdescribetrimsboilerplateafterthefirstblankline",
+      "target": "tools_semp_gen_internal_ir_extract_describe"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L504",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testapplylegacyleavesanobjectwithnooverlayuntouched",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L460",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testapplylegacypinsoverlayfieldsanddropsskippedattributes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L236",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testattributesexcludespathkeysandreadonlyproperties",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L354",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testbuildattributerejectsanunsupportedtype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L320",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L513",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testchecklegacymatchederrorswhenanoverlayprefixmatchesnoobject",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testdescribeappendstheoperationalnoteforeachflag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L291",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testdescribetrimsboilerplateafterthefirstblankline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L153",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractbrokerrequiresapatchoperation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L186",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractcollectionhasupdatecomesfromtheitempathonly",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractonebrokerglobalobjecthasnovpnhop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractonebuildsthebrokersingletonfromtherootpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractonenestedchildgetsaparenthopanditsownkeyfromtheitempath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractonesplitsacompositeownkeyandacompositeparentkeyonthecomma",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testextractonestripsthevpnhopandmarksvpnscope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L266",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testparsedefaultreadstheprosesentence",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L389",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testunionattributestagstheplatformspecificoneandnotesitsdescription",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L430",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testunionenumkeepsthewidersetsorder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L369",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test",
+      "target": "tools_semp_gen_internal_ir_extract_test_testuniontagsobjectsbywhichplatformdefinesthem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "return_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "target": "specmodel_parameter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L211",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractcollectionhasupdatecomesfromtheitempathonly",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonebrokerglobalobjecthasnovpnhop",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonebuildsthebrokersingletonfromtherootpath",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonenestedchildgetsaparenthopanditsownkeyfromtheitempath",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonesplitsacompositeownkeyandacompositeparentkeyonthecomma",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonestripsthevpnhopandmarksvpnscope",
+      "target": "tools_semp_gen_internal_ir_extract_test_bodyparam",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L21",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonestripsthevpnhopandmarksvpnscope",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L504",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testapplylegacyleavesanobjectwithnooverlayuntouched",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L460",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testapplylegacypinsoverlayfieldsanddropsskippedattributes",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L236",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testattributesexcludespathkeysandreadonlyproperties",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L354",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testbuildattributerejectsanunsupportedtype",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L320",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L513",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testchecklegacymatchederrorswhenanoverlayprefixmatchesnoobject",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L298",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testdescribeappendstheoperationalnoteforeachflag",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L291",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testdescribetrimsboilerplateafterthefirstblankline",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L153",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractbrokerrequiresapatchoperation",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L186",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractcollectionhasupdatecomesfromtheitempathonly",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L52",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonebrokerglobalobjecthasnovpnhop",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L160",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonebuildsthebrokersingletonfromtherootpath",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L83",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonenestedchildgetsaparenthopanditsownkeyfromtheitempath",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L115",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testextractonesplitsacompositeownkeyandacompositeparentkeyonthecomma",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L266",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testparsedefaultreadstheprosesentence",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L389",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testunionattributestagstheplatformspecificoneandnotesitsdescription",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L430",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testunionenumkeepsthewidersetsorder",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L369",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testuniontagsobjectsbywhichplatformdefinesthem",
+      "target": "tools_semp_gen_internal_ir_extract_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L382",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testuniontagsobjectsbywhichplatformdefinesthem",
+      "target": "tools_semp_gen_internal_ir_merge_union"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L417",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testunionattributestagstheplatformspecificoneandnotesitsdescription",
+      "target": "tools_semp_gen_internal_ir_merge_unionattributes"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L453",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testunionenumkeepsthewidersetsorder",
+      "target": "tools_semp_gen_internal_ir_merge_unionenum"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L488",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testapplylegacypinsoverlayfieldsanddropsskippedattributes",
+      "target": "tools_semp_gen_internal_ir_legacy_applylegacy"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L506",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testapplylegacyleavesanobjectwithnooverlayuntouched",
+      "target": "tools_semp_gen_internal_ir_legacy_applylegacy"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L514",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_extract_test_testchecklegacymatchederrorswhenanoverlayprefixmatchesnoobject",
+      "target": "tools_semp_gen_internal_ir_legacy_legacyprefixes"
     },
     {
       "relation": "contains",
@@ -32654,6 +34086,18 @@
     {
       "relation": "references",
       "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L32",
+      "weight": 1.0,
+      "context": "return_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_buildgoldenspec",
+      "target": "ir_spec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/main.go",
       "source_location": "L166",
       "weight": 1.0,
@@ -32847,6 +34291,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/naming.go",
+      "source_location": "L239",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_naming",
+      "target": "tools_semp_gen_internal_ir_naming_indefinitearticle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/naming.go",
       "source_location": "L109",
       "weight": 1.0,
       "_origin": "ast",
@@ -32877,17 +34332,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tools/semp-gen/internal/ir/naming.go",
-      "source_location": "L199",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tools_semp_gen_internal_ir_naming",
-      "target": "tools_semp_gen_internal_ir_naming_vowelarticle",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -32904,7 +34348,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/naming.go",
-      "source_location": "L171",
+      "source_location": "L176",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_naming_friendlyname",
@@ -32965,7 +34409,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tools/semp-gen/internal/ir/naming_test.go",
-      "source_location": "L97",
+      "source_location": "L110",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_naming_test_testfriendlynamepreservesinitialisms",
@@ -32977,11 +34421,11 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "tools/semp-gen/internal/ir/naming_test.go",
-      "source_location": "L103",
+      "source_location": "L138",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "tools_semp_gen_internal_ir_naming_test_testvowelarticle",
-      "target": "tools_semp_gen_internal_ir_naming_vowelarticle"
+      "source": "tools_semp_gen_internal_ir_naming_test_testindefinitearticle",
+      "target": "tools_semp_gen_internal_ir_naming_indefinitearticle"
     },
     {
       "relation": "contains",
@@ -33003,6 +34447,17 @@
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_naming_test",
       "target": "tools_semp_gen_internal_ir_naming_test_testfriendlynamepreservesinitialisms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/naming_test.go",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_naming_test",
+      "target": "tools_semp_gen_internal_ir_naming_test_testindefinitearticle",
       "confidence_score": 1.0
     },
     {
@@ -33036,17 +34491,6 @@
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_naming_test",
       "target": "tools_semp_gen_internal_ir_naming_test_testsplitcamel",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tools/semp-gen/internal/ir/naming_test.go",
-      "source_location": "L102",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tools_semp_gen_internal_ir_naming_test",
-      "target": "tools_semp_gen_internal_ir_naming_test_testvowelarticle",
       "confidence_score": 1.0
     },
     {
@@ -33089,6 +34533,18 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/internal/ir/naming_test.go",
+      "source_location": "L115",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_ir_naming_test_testindefinitearticle",
+      "target": "tools_semp_gen_internal_ir_naming_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/ir/naming_test.go",
       "source_location": "L69",
       "weight": 1.0,
       "context": "parameter_type",
@@ -33106,18 +34562,6 @@
       "context": "parameter_type",
       "_origin": "ast",
       "source": "tools_semp_gen_internal_ir_naming_test_testprefixaliasesareunique",
-      "target": "tools_semp_gen_internal_ir_naming_test_go_t",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "tools/semp-gen/internal/ir/naming_test.go",
-      "source_location": "L102",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "_origin": "ast",
-      "source": "tools_semp_gen_internal_ir_naming_test_testvowelarticle",
       "target": "tools_semp_gen_internal_ir_naming_test_go_t",
       "confidence_score": 1.0
     },
@@ -33297,6 +34741,114 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_notablesisemptynoterror",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L215",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_realspecificationhasplausiblerowcounts",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L188",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_tableliketextwithoutseparatorisignored",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_splitsandtrimsrequiresandconflicts",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_withandwithoutconflictscolumn",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_accumulatesacrosstablesinonedescription",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_marksonlydeclaredflags",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_unknowncolumnerrorsandnamesthecolumn",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L171",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_xmarkiscaseinsensitiveandselective",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_parse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "tools/semp-gen/main.go",
       "source_location": "L35",
       "weight": 1.0,
@@ -33327,6 +34879,225 @@
       "source": "mdtable_parsed_addcombinationtable",
       "target": "tools_semp_gen_internal_mdtable_mdtable_splitlist",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_notablesisemptynoterror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L200",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_realspecificationhasplausiblerowcounts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L184",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_tableliketextwithoutseparatorisignored",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_splitsandtrimsrequiresandconflicts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_withandwithoutconflictscolumn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_accumulatesacrosstablesinonedescription",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_marksonlydeclaredflags",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_unknowncolumnerrorsandnamesthecolumn",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L165",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_xmarkiscaseinsensitiveandselective",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_marksonlydeclaredflags",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L89",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_notablesisemptynoterror",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L200",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_realspecificationhasplausiblerowcounts",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L184",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_tableliketextwithoutseparatorisignored",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L142",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_splitsandtrimsrequiresandconflicts",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L103",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparsecombinationtable_withandwithoutconflictscolumn",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L44",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_accumulatesacrosstablesinonedescription",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L75",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_unknowncolumnerrorsandnamesthecolumn",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L165",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparseflagtable_xmarkiscaseinsensitiveandselective",
+      "target": "tools_semp_gen_internal_mdtable_mdtable_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable_test.go",
+      "source_location": "L206",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_mdtable_mdtable_test_testparse_realspecificationhasplausiblerowcounts",
+      "target": "tools_semp_gen_internal_specmodel_spec_load"
     },
     {
       "relation": "contains",
@@ -33516,6 +35287,30 @@
       "context": "return_type",
       "_origin": "ast",
       "source": "tools_semp_gen_internal_render_render_object",
+      "target": "render_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L154",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_dumpfiles",
+      "target": "render_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L319",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_findattrdesc",
       "target": "render_file",
       "confidence_score": 1.0
     },
@@ -33728,12 +35523,361 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L218",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testmanifestnamesaresortedandcountmatchescomment",
+      "target": "tools_semp_gen_internal_render_render_manifest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L288",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testallerrorsonduplicatefilename",
+      "target": "tools_semp_gen_internal_render_render_all"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L267",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testallonefileperobjectplusmanifest",
+      "target": "tools_semp_gen_internal_render_render_all"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L168",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectgolden",
+      "target": "tools_semp_gen_internal_render_render_all"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectsarevalidgofmtstablego",
+      "target": "tools_semp_gen_internal_render_render_all"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "tools/semp-gen/main.go",
       "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tools_semp_gen_main_run",
       "target": "tools_semp_gen_internal_render_render_all"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L157",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_dumpfiles",
+      "target": "tools_semp_gen_internal_render_render_bytes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_buildgoldenspec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_dumpfiles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L319",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_findattrdesc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L280",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testallerrorsonduplicatefilename",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L259",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testallonefileperobjectplusmanifest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L381",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testarticleemittedforindefinitearticlean",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L366",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testarticleomittedforindefinitearticlea",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testdescriptionsurvivesquotesbackslashesandnewlines",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L209",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testmanifestnamesaresortedandcountmatchescomment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L166",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testobjectgolden",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L188",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test",
+      "target": "tools_semp_gen_internal_render_render_test_testobjectsarevalidgofmtstablego",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectgolden",
+      "target": "tools_semp_gen_internal_render_render_test_buildgoldenspec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L189",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectsarevalidgofmtstablego",
+      "target": "tools_semp_gen_internal_render_render_test_buildgoldenspec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L171",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectgolden",
+      "target": "tools_semp_gen_internal_render_render_test_dumpfiles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L166",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectgolden",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L319",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_findattrdesc",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L280",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testallerrorsonduplicatefilename",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L259",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testallonefileperobjectplusmanifest",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L381",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testarticleemittedforindefinitearticlean",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L366",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testarticleomittedforindefinitearticlea",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L298",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testdescriptionsurvivesquotesbackslashesandnewlines",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L209",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testmanifestnamesaresortedandcountmatchescomment",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L188",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testobjectsarevalidgofmtstablego",
+      "target": "tools_semp_gen_internal_render_render_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/render/render_test.go",
+      "source_location": "L313",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_render_render_test_testdescriptionsurvivesquotesbackslashesandnewlines",
+      "target": "tools_semp_gen_internal_render_render_test_findattrdesc",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -33956,12 +36100,210 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L160",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testrefname",
+      "target": "tools_semp_gen_internal_specmodel_spec_refname"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "target": "tools_semp_gen_internal_specmodel_spec_load"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "target": "tools_semp_gen_internal_specmodel_spec_load"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "tools/semp-gen/main.go",
       "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tools_semp_gen_main_run",
       "target": "tools_semp_gen_internal_specmodel_spec_load"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_testbodydefinition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_testpathparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L148",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_testrefname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L53",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L100",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testbodydefinition",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L71",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L60",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L127",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testpathparams",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L148",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_internal_specmodel_spec_test_testrefname",
+      "target": "tools_semp_gen_internal_specmodel_spec_test_go_t",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -34103,6 +36445,18 @@
     {
       "relation": "calls",
       "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_teststalefiles",
+      "target": "tools_semp_gen_main_stalefiles"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tools/semp-gen/main.go",
       "source_location": "L147",
@@ -34110,6 +36464,134 @@
       "_origin": "ast",
       "source": "tools_semp_gen_main_reportdrift",
       "target": "tools_semp_gen_main_truncate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_testtruncate",
+      "target": "tools_semp_gen_main_truncate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_testactioncount",
+      "target": "tools_semp_gen_main_actioncount"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_testsummary",
+      "target": "tools_semp_gen_main_summary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test",
+      "target": "tools_semp_gen_main_test_testactioncount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test",
+      "target": "tools_semp_gen_main_test_teststalefiles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test",
+      "target": "tools_semp_gen_main_test_testsummary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test",
+      "target": "tools_semp_gen_main_test_testtruncate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_testactioncount",
+      "target": "tools_semp_gen_main_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L59",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_teststalefiles",
+      "target": "tools_semp_gen_main_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L26",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_testsummary",
+      "target": "tools_semp_gen_main_test_go_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "_origin": "ast",
+      "source": "tools_semp_gen_main_test_testtruncate",
+      "target": "tools_semp_gen_main_test_go_t",
       "confidence_score": 1.0
     },
     {

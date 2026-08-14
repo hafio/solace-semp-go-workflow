@@ -22,7 +22,7 @@ func coerceField(f fieldDesc, payload map[string]any) error {
 	case kindInt:
 		n, err := semp.CoerceInt(v)
 		if err != nil {
-			return fmt.Errorf("'%s' must be an integer: %w", f.Name, err)
+			return fmt.Errorf("'%s' must be an integer: %w", f.canonical(), err)
 		}
 		payload[f.Name] = n
 
@@ -32,14 +32,14 @@ func coerceField(f fieldDesc, payload map[string]any) error {
 	case kindObject:
 		nested, ok := v.(map[string]any)
 		if !ok {
-			return fmt.Errorf("'%s' must be an object with fields: %s", f.Name, fieldNames(f.Fields))
+			return fmt.Errorf("'%s' must be an object with fields: %s", f.canonical(), fieldNames(f.Fields))
 		}
 		for _, sub := range f.Fields {
 			if _, present := nested[sub.Name]; !present {
 				continue
 			}
 			if err := coerceField(sub, nested); err != nil {
-				return fmt.Errorf("'%s': %w", f.Name, err)
+				return fmt.Errorf("'%s': %w", f.canonical(), err)
 			}
 		}
 		payload[f.Name] = nested
@@ -51,11 +51,12 @@ func coerceField(f fieldDesc, payload map[string]any) error {
 	return nil
 }
 
-// fieldNames lists a nested group's attribute names for an error message.
+// fieldNames lists a nested group's attribute names for an error message, in the
+// canonical spelling an operator would write them.
 func fieldNames(fields []fieldDesc) string {
 	names := make([]string, len(fields))
 	for i, f := range fields {
-		names[i] = f.Name
+		names[i] = f.canonical()
 	}
 	return strings.Join(names, ", ")
 }

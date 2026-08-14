@@ -1,7 +1,7 @@
-# SEMP Workflow Automation — How-To Guide
+# SEMP Workflow Automation - How-To Guide
 
-> Version: 0.2.2
 > Platform: Solace PubSub+ (SEMP v2)
+> Action modules generated from the SEMP 10.26.0.8755 schemas in `specs/`
 
 ---
 
@@ -23,13 +23,20 @@
 
 ## 1. Introduction
 
-SEMP Workflow Automation is an Ansible-like CLI tool for Solace PubSub+ message brokers. Using declarative YAML configuration files, you can batch-create, delete, or update queues, REST Delivery Points (RDPs), and other SEMP v2 resources without manual UI interaction.
+SEMP Workflow Automation is an Ansible-like CLI tool for Solace PubSub+ message brokers. Using declarative YAML configuration files, you can batch-create, delete, or update queues, REST Delivery Points (RDPs), and any other object the SEMP v2 config API exposes, without manual UI interaction.
 
 **Key features:**
-- **Idempotent operations**: checks resource existence before acting — safe to re-run
-- **Jinja2 variable rendering**: supports dynamic naming and cross-variable references
-- **Dry-run mode**: preview changes without executing them
-- **Modular design**: each SEMP resource type maps to an independent module
+
+- **Complete SEMP v2 config coverage**: 225 actions across 86 object types, generated from the broker's own schemas rather than written by hand. That includes broker-level objects as well as message-VPN ones: message VPNs themselves, DMR clusters and links, OAuth profiles, certificate authorities, virtual hostnames, and the broker settings object.
+- **Idempotent operations**: every action checks current state before acting, so re-running is safe. An `add` whose object exists is skipped; an `update` compares the broker's current values and reports no change when it is already correct.
+- **Validated before it leaves your machine**: a misspelled attribute, a value outside an enum, a missing required attribute or an attribute that cannot be changed after creation is reported locally, naming the workflow and task, instead of travelling to the broker to be refused there.
+- **Jinja2 variable rendering**: supports dynamic naming and cross-variable references.
+- **Dry-run mode**: preview changes without executing them.
+
+**Two behaviours worth knowing if you used an earlier version:**
+
+- An `update` now reports `skipped` when the object already holds the values you asked for, rather than always reporting `changed`. Attributes the broker never returns, such as passwords, cannot be compared and so are always re-sent.
+- Arguments are checked against each object's full attribute set. An argument that is not an attribute of that object is an error rather than something passed through to the broker.
 
 ---
 
@@ -226,13 +233,13 @@ workflow-templates:
 
     actions:
     - name: "Create Queue"
-      module: "queue.add"
+      module: "msg_vpn_queue.add"
       args:
-        queueName: "{{ inputs.queue_name }}"
+        queue_name: "{{ inputs.queue_name }}"
         owner: "{{ inputs.queue_owner }}"
 ```
 
-**Explanation:** The template defines a contract: which inputs are required, which are optional (with their defaults), and what actions to perform. Actions execute in order and each one maps to a built-in module (like `queue.add` or `rdp.delete`). The `args` section supports full Jinja2 expressions, so you can compose dynamic values from inputs and global vars.
+**Explanation:** The template defines a contract: which inputs are required, which are optional (with their defaults), and what actions to perform. Actions execute in order and each one maps to a built-in module (like `msg_vpn_queue.add` or `msg_vpn_rest_delivery_point.delete`). The `args` section supports full Jinja2 expressions, so you can compose dynamic values from inputs and global vars.
 
 ### Input Schema
 
@@ -275,9 +282,9 @@ workflow-templates:
         access_type: exclusive
     actions: &create-actions
       - name: "Create Queue"
-        module: "queue.add"
+        module: "msg_vpn_queue.add"
         args:
-          queueName: "{{ inputs.queue_name }}"
+          queue_name: "{{ inputs.queue_name }}"
 
   - name: "create-non-seq"
     inputs:
@@ -379,12 +386,28 @@ Flags:
   -t, --templates-dir string   Override the workflow templates directory.
 ```
 
-**Explanation:** Loads the config file, loads all templates from the templates directory, and checks that every `template` reference in the `workflows` list matches a real template. Does not connect to the broker, so it runs instantly.
+**Explanation:** Checks the whole config offline, without connecting to the broker, so it runs instantly. It verifies that:
+
+1. the config file and every template parse;
+2. every `template` reference in the `workflows` list matches a real template;
+3. every required input is supplied, and every input resolves (a Jinja2 expression that cannot be resolved, or refers to itself in a cycle, is reported);
+4. every action names a registered module; and
+5. every action's arguments are valid for that module -- no unknown attributes, values within their allowed set, required attributes present, no create-only attribute in an update, no attribute exceeding its length limit, and no attribute combination the broker forbids.
+
+Every problem found is listed in one run, so a config is fixed in a single pass rather than one failure at a time.
 
 **Example:**
 ```bash
 semp-workflow validate -c config.yaml
 ```
+
+A failure names the workflow, the task and the attribute:
+
+```
+ERROR: workflow 1 (app-inbound.new-seq), task 'Create queue' [msg_vpn_queue.add]: unknown argument: acessType (see docs/modules/msg_vpn_queue.md for the accepted attributes)
+```
+
+Run this before `run` against a production broker. It costs nothing and catches the class of mistake that would otherwise be discovered halfway through applying a workflow.
 
 ---
 
@@ -399,17 +422,24 @@ Usage:
   semp-workflow list-modules [flags]
 
 Flags:
-  -h, --help            help for list-modules
-  -o, --output string   Write module reference docs to a Markdown file (e.g. all-modules.md).
+  -h, --help                help for list-modules
+  -o, --output string       Write the whole module reference to one Markdown file.
+      --output-dir string   Write the module reference as an index plus one file per object family (e.g. docs/modules).
 ```
 
-**Explanation:** Shows all registered action modules with their descriptions. The `--output` option generates a complete reference document with parameter tables for every module.
+**Explanation:** Shows all registered action modules with their descriptions.
+
+`--output-dir` writes the reference the way it is committed in this repository: an `index.md` listing every object family, plus one page per family with a parameter table for each of its actions. This is the form to use -- at full SEMP coverage a single document runs past ten thousand lines. Files for families that no longer exist are removed, so the directory cannot accumulate pages for objects a newer broker schema has dropped.
+
+`--output` still writes everything to one file, which is occasionally useful for searching.
 
 **Examples:**
 ```bash
 semp-workflow list-modules
-semp-workflow list-modules --output docs/all-modules.md
+semp-workflow list-modules --output-dir docs/modules
 ```
+
+The committed reference lives at [docs/modules/index.md](modules/index.md).
 
 ---
 
@@ -492,45 +522,72 @@ Message direction: APP -> Solace -> backend REST service
 
 ## 9. Available Modules
 
-All operations are **idempotent**: they check resource state first and skip (`skipped`) if already in the desired state.
+There are **225 actions across 86 object families**, one family per object type the SEMP v2 config API exposes. The full reference, with a parameter table for every action, is generated from the broker schemas and committed at **[docs/modules/index.md](modules/index.md)**. Run `semp-workflow list-modules` to list them from the binary you have.
+
+An action is named `<family>.<verb>`:
+
+| Verb | Available when | Behaviour |
+|---|---|---|
+| `add` | the object can be created | Creates it. Skipped if it already exists. |
+| `update` | the object accepts changes after creation | Compares current state and sends only what differs. Skipped if already correct, fails if the object does not exist. |
+| `delete` | the object can be removed | Deletes it. Skipped if it does not exist. |
+
+Most families support all three. Some -- subscriptions, ACL exceptions, trusted common names -- are create-and-remove only, because SEMP has nothing to change on them once they exist. The broker settings object supports `update` alone, since it cannot be created or deleted.
+
+### Modules used by the bundled templates
+
+These are the ones the shipped `app-inbound` and `app-outbound` templates use, which is the shortest path to a working workflow. Everything else is in the generated reference.
 
 | Module | Description |
 |---|---|
-| `queue.add` | Create a queue |
-| `queue.delete` | Delete a queue |
-| `queue.update` | Update queue attributes |
-| `q_sub.add` | Add a topic subscription to a queue |
-| `q_sub.delete` | Remove a topic subscription from a queue |
-| `rdp.add` | Create a REST Delivery Point |
-| `rdp.delete` | Delete a REST Delivery Point |
-| `rdp.update` | Update a REST Delivery Point |
-| `rdp_rc.add` | Add a REST Consumer to an RDP |
-| `rdp_rc.delete` | Remove a REST Consumer from an RDP |
-| `rdp_qb.add` | Create a Queue Binding on an RDP |
-| `rdp_qb.delete` | Remove a Queue Binding |
-| `acl_profile.add` | Create an ACL Profile |
-| `acl_profile.delete` | Delete an ACL Profile |
-| `acl_publish_exception.add` | Add a publish topic exception to an ACL Profile |
-| `acl_publish_exception.delete` | Remove a publish topic exception from an ACL Profile |
-| `acl_subscribe_exception.add` | Add a subscribe topic exception to an ACL Profile |
-| `acl_subscribe_exception.delete` | Remove a subscribe topic exception from an ACL Profile |
-| `client_profile.add` | Create a Client Profile |
-| `client_profile.delete` | Delete a Client Profile |
-| `client_profile.update` | Update attributes of an existing Client Profile |
-| `client_username.add` | Create a Client Username |
-| `client_username.delete` | Delete a Client Username |
-| `client_username.update` | Update attributes of an existing Client Username |
+| `msg_vpn_queue.add` | Create a queue. Skipped if it already exists. |
+| `msg_vpn_queue.delete` | Delete a queue. Skipped if it does not exist. |
+| `msg_vpn_queue_subscription.add` | Create a subscription. Skipped if it already exists. |
+| `msg_vpn_rest_delivery_point.add` | Create an RDP. Skipped if it already exists. |
+| `msg_vpn_rest_delivery_point.delete` | Delete an RDP. Skipped if it does not exist. |
+| `msg_vpn_rest_delivery_point_rest_consumer.add` | Create a REST consumer. Skipped if it already exists. |
+| `msg_vpn_rest_delivery_point_queue_binding.add` | Create a queue binding. Skipped if it already exists. |
+| `msg_vpn_acl_profile.add` | Create an ACL profile. Skipped if it already exists. |
+| `msg_vpn_acl_profile.delete` | Delete an ACL profile. Skipped if it does not exist. |
+| `msg_vpn_acl_profile_publish_topic_exception.add` | Create a publish topic exception. Skipped if it already exists. |
+| `msg_vpn_acl_profile_publish_topic_exception.delete` | Delete a publish topic exception. Skipped if it does not exist. |
+| `msg_vpn_client_profile.add` | Create a client profile. Skipped if it already exists. |
+| `msg_vpn_client_profile.update` | Update an existing client profile. Fails if it does not exist, skipped if it is already in the desired state. |
+| `msg_vpn_client_username.add` | Create a client username. Skipped if it already exists. |
+| `msg_vpn_client_username.delete` | Delete a client username. Skipped if it does not exist. |
+| `msg_vpn_client_username.update` | Update an existing client username. Fails if it does not exist, skipped if it is already in the desired state. |
+
+### Naming
+
+Action and attribute names match the [Solace Terraform provider](https://registry.terraform.io/providers/SolaceProducts/solacebroker/latest/docs), so one spelling works across both tools.
+
+Family names are the SEMP object name in snake_case: `MsgVpnQueue` becomes `msg_vpn_queue`, `MsgVpnTopicEndpoint` becomes `msg_vpn_topic_endpoint`, `DmrClusterLink` becomes `dmr_cluster_link`. That is the provider's resource name without its `solacebroker_` prefix, so `solacebroker_msg_vpn_queue` and `msg_vpn_queue.add` address the same object.
+
+Attributes follow the same rule: the SEMP attribute `egressEnabled` is written `egress_enabled`, and `maxMsgSpoolUsage` is `max_msg_spool_usage`. The module reference in [docs/modules/index.md](modules/index.md) lists the exact spelling for every attribute of every action.
+
+#### Upgrading from an earlier version
+
+Workflows written against earlier versions keep working unchanged -- there is nothing to rewrite in order to upgrade:
+
+- The ten original short family names still resolve: `queue`, `q_sub`, `rdp`, `rdp_rc`, `rdp_qb`, `client_profile`, `client_username`, `acl_profile`, `acl_publish_exception`, `acl_subscribe_exception`.
+- camelCase attribute names are still accepted, so `egressEnabled` and `egress_enabled` are equivalent.
+
+Both spellings work, but only the canonical one is listed: `list-modules` and the module reference show canonical names only, and that is what a new template should use. Do not supply both spellings of the same attribute in one `args` block -- that is rejected rather than resolved, because there would be no way to tell which value you meant.
+
+### Choosing the message VPN
+
+VPN-scoped actions use the `msg_vpn` from your config. To target a different one in a single action, pass `msg_vpn_name` explicitly. This matters when a workflow creates a VPN with `msg_vpn.add` and then populates it.
 
 **Result states:**
 
 | State | Meaning |
 |---|---|
-| `changed` | Resource created/modified successfully |
-| `skipped` | Resource already in desired state, no action taken |
-| `dryrun` | Dry-run mode — shows what would be done |
-| `failed` | Operation failed |
+| `changed` | The broker was modified |
+| `skipped` | Already in the desired state, nothing sent |
+| `dryrun` | Dry-run mode: what would be done |
+| `failed` | Rejected locally, or the broker refused it |
 
-For full parameter details, run `semp-workflow list-modules` or see [all-modules.md](all-modules.md).
+Because `update` compares before sending, applying the same config twice reports `changed` on the first run and `skipped` on the second. If a second run still reports `changed`, something is genuinely differing every time -- see Troubleshooting.
 
 ---
 
@@ -804,6 +861,54 @@ TemplateError: Unexpected inputs: my_typo_var
 ```
 
 **Fix:** Check spelling — input variable names must exactly match those defined in the template's `optional:` block.
+
+---
+
+### Issue: Unknown argument
+
+```
+unknown argument: acessType (see docs/modules/msg_vpn_queue.md for the accepted attributes)
+```
+
+**Cause:** The action passed an argument that is not an attribute of that object. Arguments are checked against each object's full attribute set from the broker schema, so this is almost always a misspelling.
+
+**Fix:** Open the family's page under [docs/modules/](modules/index.md) and check the spelling against the parameter table. Note SEMP attribute names are camelCase, and read-only attributes are not accepted as input because the broker will not accept them either.
+
+---
+
+### Issue: An attribute cannot be set on an update
+
+```
+'flavour' can only be set when the object is created, so it cannot appear in an update
+```
+
+**Cause:** SEMP marks some attributes as fixed after creation. Earlier versions dropped them silently, which reported success for a change that had not happened.
+
+**Fix:** Remove the attribute from the `update` action. If the value genuinely must change, the object has to be deleted and recreated -- put that in the workflow explicitly so it is visible.
+
+---
+
+### Issue: Value too long
+
+```
+'queue_name' value is 203 bytes but the broker limit is 200: '...'
+```
+
+**Cause:** The broker enforces a length limit on names and topic strings. The limit is checked locally so the request is not sent.
+
+**Fix:** Shorten the value. Limits are in **bytes**, not characters, so a name with accented or non-Latin characters reaches its limit sooner than its visible length suggests.
+
+---
+
+### Issue: A second run still reports `changed`
+
+An `update` compares current state and should report `skipped` when the object already matches, so applying the same config twice should report nothing changed on the second run.
+
+**Causes:**
+- **Attributes the broker never returns.** Passwords and other write-only or opaque attributes cannot be read back for comparison, so they are re-sent every time and the action reports `changed`. This is expected.
+- **A value the broker normalises.** If the broker stores a value in a different form from the one you supplied, the comparison sees a difference on every run. Check the attribute with a `GET` against the broker and supply the stored form.
+
+**To confirm which:** run with `--dry-run`. The dry-run message names the attributes it would send.
 
 ---
 

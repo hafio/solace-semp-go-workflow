@@ -128,20 +128,20 @@
 
 | # | Action name | Module | Purpose |
 |---|---|---|---|
-| 1 | Create Client Profile | `client_profile.add` | Create `cp-it-user`. Skipped if exists. |
-| 2 | Update Client Profile | `client_profile.update` | Enable guaranteed send + receive. Always runs. |
-| 3 | Create ACL Profile | `acl_profile.add` | Create `acl-it-user-{aem_client_username}` (allow connect, disallow pub/sub). Skipped if exists. |
-| 4 | Create Client Username | `client_username.add` | Create `{aem_client_username}` linked to both profiles. Skipped if exists. |
-| 5 | Update Client Username Association | `client_username.update` | Ensures profile links are correct even if the username pre-existed with wrong associations. |
-| 6 | Add ACL Publish Topic Exception | `acl_publish_exception.add` | Add publish exception for the subscription topic. |
-| 7 | Create Service Queue | `queue.add` | Create `FROM-{domain}-{system}-{system_topic}`, owned by the RDP. |
-| 8 | Create Mirror Queue | `queue.add` | Create `MIRROR/FROM-{domain}-{system}-{system_topic}`. |
-| 9 | Create DMQ | `queue.add` | Create `DMQ/FROM-{domain}-{system}-{system_topic}`. |
-| 10 | Add Service Queue Subscription | `q_sub.add` | Subscribe service queue to `{domain}/{system}/{system_topic}`. |
-| 11 | Add Mirror Queue Subscription | `q_sub.add` | Subscribe mirror queue to the same topic. |
-| 12 | Create REST Delivery Point | `rdp.add` | Create the RDP. |
-| 13 | Create REST Consumer | `rdp_rc.add` | Create the REST consumer pointing at the backend HTTP endpoint. |
-| 14 | Create Queue Binding | `rdp_qb.add` | Bind the service queue to the RDP with the POST target path. |
+| 1 | Create Client Profile | `msg_vpn_client_profile.add` | Create `cp-it-user`. Skipped if exists. |
+| 2 | Update Client Profile | `msg_vpn_client_profile.update` | Enable guaranteed send + receive. Always runs. |
+| 3 | Create ACL Profile | `msg_vpn_acl_profile.add` | Create `acl-it-user-{aem_client_username}` (allow connect, disallow pub/sub). Skipped if exists. |
+| 4 | Create Client Username | `msg_vpn_client_username.add` | Create `{aem_client_username}` linked to both profiles. Skipped if exists. |
+| 5 | Update Client Username Association | `msg_vpn_client_username.update` | Ensures profile links are correct even if the username pre-existed with wrong associations. |
+| 6 | Add ACL Publish Topic Exception | `msg_vpn_acl_profile_publish_topic_exception.add` | Add publish exception for the subscription topic. |
+| 7 | Create Service Queue | `msg_vpn_queue.add` | Create `FROM-{domain}-{system}-{system_topic}`, owned by the RDP. |
+| 8 | Create Mirror Queue | `msg_vpn_queue.add` | Create `MIRROR/FROM-{domain}-{system}-{system_topic}`. |
+| 9 | Create DMQ | `msg_vpn_queue.add` | Create `DMQ/FROM-{domain}-{system}-{system_topic}`. |
+| 10 | Add Service Queue Subscription | `msg_vpn_queue_subscription.add` | Subscribe service queue to `{domain}/{system}/{system_topic}`. |
+| 11 | Add Mirror Queue Subscription | `msg_vpn_queue_subscription.add` | Subscribe mirror queue to the same topic. |
+| 12 | Create REST Delivery Point | `msg_vpn_rest_delivery_point.add` | Create the RDP. |
+| 13 | Create REST Consumer | `msg_vpn_rest_delivery_point_rest_consumer.add` | Create the REST consumer pointing at the backend HTTP endpoint. |
+| 14 | Create Queue Binding | `msg_vpn_rest_delivery_point_queue_binding.add` | Bind the service queue to the RDP with the POST target path. |
 
 **End-to-end pipeline:** Message arrives on topic -> service queue (via subscription) -> RDP picks up via queue binding -> REST consumer delivers as HTTP POST to the backend.
 
@@ -151,13 +151,13 @@ All actions are idempotent. Re-running produces `SKIPPED` for everything (except
 
 | # | Action name | Module | Purpose |
 |---|---|---|---|
-| 1 | Delete REST Delivery Point | `rdp.delete` | Removes RDP (cascades the REST consumer and queue binding). |
-| 2 | Delete Service Queue | `queue.delete` | Remove service queue. |
-| 3 | Delete Mirror Queue | `queue.delete` | Remove mirror queue. |
-| 4 | Delete DMQ | `queue.delete` | Remove dead-message queue. |
-| 5 | Remove ACL Publish Topic Exception | `acl_publish_exception.delete` | Remove publish exception. |
-| 6 | Delete Client Username | `client_username.delete` | Remove the per-topic client username. |
-| 7 | Delete ACL Profile | `acl_profile.delete` | Remove the per-user ACL profile. |
+| 1 | Delete REST Delivery Point | `msg_vpn_rest_delivery_point.delete` | Removes RDP (cascades the REST consumer and queue binding). |
+| 2 | Delete Service Queue | `msg_vpn_queue.delete` | Remove service queue. |
+| 3 | Delete Mirror Queue | `msg_vpn_queue.delete` | Remove mirror queue. |
+| 4 | Delete DMQ | `msg_vpn_queue.delete` | Remove dead-message queue. |
+| 5 | Remove ACL Publish Topic Exception | `msg_vpn_acl_profile_publish_topic_exception.delete` | Remove publish exception. |
+| 6 | Delete Client Username | `msg_vpn_client_username.delete` | Remove the per-topic client username. |
+| 7 | Delete ACL Profile | `msg_vpn_acl_profile.delete` | Remove the per-user ACL profile. |
 
 **Deletion order matters:** RDP first (because the queue binding references the queue), then queues, then access control (because the username references the ACL profile).
 

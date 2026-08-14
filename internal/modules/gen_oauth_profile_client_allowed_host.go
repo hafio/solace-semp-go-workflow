@@ -10,12 +10,12 @@ func init() {
 		FriendlyName: "client allowed host",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Desc: "The name of the OAuth profile."}}},
+			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Canon: "oauth_profile_name", Desc: "The name of the OAuth profile."}}},
 		},
 		ParentFriendlyName: "OAuth profile",
 		Collection:         "clientAllowedHosts",
 		OwnKey: []keyDesc{
-			{Name: "allowedHost", Desc: "An allowed value for the Host header."},
+			{Name: "allowedHost", Canon: "allowed_host", Desc: "An allowed value for the Host header."},
 		},
 	})
 }

@@ -100,17 +100,17 @@
 
 | # | Action name | Module | Purpose |
 |---|---|---|---|
-| 1 | Create Client Profile | `client_profile.add` | Create `cp-it-user`. Skipped if exists. |
-| 2 | Update Client Profile | `client_profile.update` | Enable guaranteed send + receive. Runs every time to ensure correct state. |
-| 3 | Create ACL Profile | `acl_profile.add` | Create `acl-it-user-{aem_client_username}` with allow-connect, disallow-publish, disallow-subscribe. Skipped if exists. |
-| 4 | Create Client Username | `client_username.add` | Create `{aem_client_username}` linked to both profiles. Skipped if exists. |
-| 5 | Update Client Username Association | `client_username.update` | Ensures profile links are correct even if the username pre-existed with wrong associations. |
-| 6 | Add ACL Publish Topic Exception | `acl_publish_exception.add` | Add publish exception for `{topic_prefix}/{system_topic}` to the per-user ACL profile. |
-| 7 | Create Service Queue | `queue.add` | Create `TO-{domain}-{system}-{system_topic}`. |
-| 8 | Create Mirror Queue | `queue.add` | Create `MIRROR/TO-{domain}-{system}-{system_topic}`. |
-| 9 | Create DMQ | `queue.add` | Create `DMQ/TO-{domain}-{system}-{system_topic}`. |
-| 10 | Add Service Queue Subscription | `q_sub.add` | Subscribe service queue to `{topic_prefix}/{system_topic}`. |
-| 11 | Add Mirror Queue Subscription | `q_sub.add` | Subscribe mirror queue to the same topic. |
+| 1 | Create Client Profile | `msg_vpn_client_profile.add` | Create `cp-it-user`. Skipped if exists. |
+| 2 | Update Client Profile | `msg_vpn_client_profile.update` | Enable guaranteed send + receive. Runs every time to ensure correct state. |
+| 3 | Create ACL Profile | `msg_vpn_acl_profile.add` | Create `acl-it-user-{aem_client_username}` with allow-connect, disallow-publish, disallow-subscribe. Skipped if exists. |
+| 4 | Create Client Username | `msg_vpn_client_username.add` | Create `{aem_client_username}` linked to both profiles. Skipped if exists. |
+| 5 | Update Client Username Association | `msg_vpn_client_username.update` | Ensures profile links are correct even if the username pre-existed with wrong associations. |
+| 6 | Add ACL Publish Topic Exception | `msg_vpn_acl_profile_publish_topic_exception.add` | Add publish exception for `{topic_prefix}/{system_topic}` to the per-user ACL profile. |
+| 7 | Create Service Queue | `msg_vpn_queue.add` | Create `TO-{domain}-{system}-{system_topic}`. |
+| 8 | Create Mirror Queue | `msg_vpn_queue.add` | Create `MIRROR/TO-{domain}-{system}-{system_topic}`. |
+| 9 | Create DMQ | `msg_vpn_queue.add` | Create `DMQ/TO-{domain}-{system}-{system_topic}`. |
+| 10 | Add Service Queue Subscription | `msg_vpn_queue_subscription.add` | Subscribe service queue to `{topic_prefix}/{system_topic}`. |
+| 11 | Add Mirror Queue Subscription | `msg_vpn_queue_subscription.add` | Subscribe mirror queue to the same topic. |
 
 All actions are idempotent. Re-running produces `SKIPPED` for every step (except the two update actions, which always run and report `OK` or `SKIPPED` if no fields changed).
 
@@ -118,12 +118,12 @@ All actions are idempotent. Re-running produces `SKIPPED` for every step (except
 
 | # | Action name | Module | Purpose |
 |---|---|---|---|
-| 1 | Delete Service Queue | `queue.delete` | Remove the service queue. |
-| 2 | Delete Mirror Queue | `queue.delete` | Remove the mirror queue. |
-| 3 | Delete DMQ | `queue.delete` | Remove the dead-message queue. |
-| 4 | Remove ACL Publish Topic Exception | `acl_publish_exception.delete` | Remove publish exception. |
-| 5 | Delete Client Username | `client_username.delete` | Remove the per-topic client username. |
-| 6 | Delete ACL Profile | `acl_profile.delete` | Remove the per-user ACL profile. |
+| 1 | Delete Service Queue | `msg_vpn_queue.delete` | Remove the service queue. |
+| 2 | Delete Mirror Queue | `msg_vpn_queue.delete` | Remove the mirror queue. |
+| 3 | Delete DMQ | `msg_vpn_queue.delete` | Remove the dead-message queue. |
+| 4 | Remove ACL Publish Topic Exception | `msg_vpn_acl_profile_publish_topic_exception.delete` | Remove publish exception. |
+| 5 | Delete Client Username | `msg_vpn_client_username.delete` | Remove the per-topic client username. |
+| 6 | Delete ACL Profile | `msg_vpn_acl_profile.delete` | Remove the per-user ACL profile. |
 
 > **Note:** The shared `cp-it-user` client profile is **not** deleted — it's reused by all APP workflows.
 

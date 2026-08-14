@@ -10,15 +10,15 @@ func init() {
 		FriendlyName: "client required claim",
 		Scope:        scopeGlobal,
 		Parents: []parentHop{
-			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Desc: "The name of the OAuth profile."}}},
+			{Collection: "oauthProfiles", Keys: []keyDesc{{Name: "oauthProfileName", Canon: "oauth_profile_name", Desc: "The name of the OAuth profile."}}},
 		},
 		ParentFriendlyName: "OAuth profile",
 		Collection:         "clientRequiredClaims",
 		OwnKey: []keyDesc{
-			{Name: "clientRequiredClaimName", Desc: "The name of the ID token claim to verify."},
+			{Name: "clientRequiredClaimName", Canon: "client_required_claim_name", Desc: "The name of the ID token claim to verify."},
 		},
 		Fields: []fieldDesc{
-			{Name: "clientRequiredClaimValue", Kind: kindString, Required: true, Const: true, Desc: "The required claim value, which must be a string containing a valid JSON value. Settable only when the object is created."},
+			{Name: "clientRequiredClaimValue", Canon: "client_required_claim_value", Kind: kindString, Required: true, Const: true, Desc: "The required claim value, which must be a string containing a valid JSON value. Settable only when the object is created."},
 		},
 	})
 }

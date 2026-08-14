@@ -62,8 +62,13 @@ type payloadHook func(args, payload map[string]any) error
 // keyDesc is one identifying key value. Several keyDescs on the same hop form a
 // composite key, which SEMP renders as one comma-joined path segment.
 type keyDesc struct {
+	// Name is the SEMP spelling. It is what an own key is sent as in a create
+	// body, so it must not be changed to suit presentation.
 	Name string
-	Desc string
+	// Canon is the snake_case spelling operators write and docs publish, empty
+	// when identical to Name. Read it through canonical(), never directly.
+	Canon string
+	Desc  string
 	// Default is used when the action does not supply this key. It exists for
 	// composite keys whose leading part is a discriminator an operator rarely
 	// states -- an ACL exception's topic syntax defaults to "smf" -- so a
@@ -82,7 +87,14 @@ type parentHop struct {
 
 // fieldDesc is one non-key body attribute.
 type fieldDesc struct {
-	Name    string
+	// Name is the SEMP spelling: what is sent in a payload and what a GET
+	// returns. The diff compares against a broker response keyed by this name, so
+	// it is wire identity and never presentation.
+	Name string
+	// Canon is the snake_case spelling operators write and docs publish, matching
+	// the Solace Terraform provider. Empty when identical to Name. Read it through
+	// canonical(), never directly.
+	Canon   string
 	Kind    fieldKind
 	Enum    []string
 	Default any
@@ -195,6 +207,15 @@ func orDefault(v, def string) string {
 	}
 	return v
 }
+
+// canonical is the name an operator writes and the docs publish. It falls back to
+// Name for an attribute already spelled the same in both conventions ("owner",
+// "permission"), so the generated descriptors carry Canon only where it differs.
+//
+// Never use it to build a payload or read a broker response -- those are keyed by
+// the SEMP spelling in Name.
+func (k keyDesc) canonical() string   { return orDefault(k.Canon, k.Name) }
+func (f fieldDesc) canonical() string { return orDefault(f.Canon, f.Name) }
 
 // applyMsgDefaults fills every unset message template from the default set for
 // this object's shape, so a descriptor only states the wording it needs to
@@ -327,7 +348,9 @@ func hopKeys(keys []keyDesc, args map[string]any) (parts, missing []string) {
 	for _, k := range keys {
 		v := argStr(args, k.Name, k.Default)
 		if v == "" {
-			missing = append(missing, k.Name)
+			// Reported under the canonical spelling: args have already been
+			// normalised, so the SEMP name is an internal detail by this point.
+			missing = append(missing, k.canonical())
 			continue
 		}
 		parts = append(parts, v)
@@ -352,7 +375,7 @@ func (d objectDesc) resolve(c Client, args map[string]any) (resolved, []string, 
 		if vpn == "" {
 			// Without a VPN no path can be built at all, so report immediately
 			// rather than accumulating keys that would be meaningless anyway.
-			return r, []string{"msgVpnName"}, ""
+			return r, []string{"msg_vpn_name"}, ""
 		}
 		segs = append(segs, semp.VPNSeg(vpn))
 	}
@@ -364,7 +387,7 @@ func (d objectDesc) resolve(c Client, args map[string]any) (resolved, []string, 
 			continue
 		}
 		for i, v := range parts {
-			if msg := semp.CheckNameLength(p.Keys[i].Name, v); msg != "" {
+			if msg := semp.CheckNameLength(p.Keys[i].Name, p.Keys[i].canonical(), v); msg != "" {
 				return r, nil, msg
 			}
 		}
@@ -384,7 +407,7 @@ func (d objectDesc) resolve(c Client, args map[string]any) (resolved, []string, 
 		return r, missing, ""
 	}
 	for i, v := range ownParts {
-		if msg := semp.CheckNameLength(d.OwnKey[i].Name, v); msg != "" {
+		if msg := semp.CheckNameLength(d.OwnKey[i].Name, d.OwnKey[i].canonical(), v); msg != "" {
 			return r, nil, msg
 		}
 	}
@@ -480,10 +503,10 @@ func (d objectDesc) requiredMissing(args map[string]any) string {
 		}
 		v, present := args[f.Name]
 		if !present || v == nil {
-			return f.Name
+			return f.canonical()
 		}
 		if f.Kind == kindString && strings.TrimSpace(semp.Stringify(v)) == "" {
-			return f.Name
+			return f.canonical()
 		}
 	}
 	return ""
@@ -511,8 +534,20 @@ func (a collectionAdd) Description() string {
 
 func (a collectionAdd) Params() []ParamSpec { return buildParams(a.d, paramAdd) }
 
+func (a collectionAdd) Validate(args map[string]any) error {
+	args, err := a.d.normalizeArgs(args)
+	if err != nil {
+		return err
+	}
+	return a.d.validate(args, paramAdd)
+}
+
 func (a collectionAdd) Execute(c Client, args map[string]any, dryRun bool) models.ActionResult {
 	d := a.d
+	args, nerr := d.normalizeArgs(args)
+	if nerr != nil {
+		return failed(nerr.Error())
+	}
 	r, missing, lenErr := d.resolve(c, args)
 	if len(missing) > 0 {
 		return d.missing(missing)
@@ -520,8 +555,8 @@ func (a collectionAdd) Execute(c Client, args map[string]any, dryRun bool) model
 	if lenErr != "" {
 		return failed(lenErr)
 	}
-	if f := d.requiredMissing(args); f != "" {
-		return d.missing([]string{f})
+	if err := d.validate(args, paramAdd); err != nil {
+		return failed(err.Error())
 	}
 
 	// The optimistic mode still pre-checks under dry-run: without a GET there is
@@ -573,14 +608,30 @@ func (u collectionUpdate) Description() string {
 
 func (u collectionUpdate) Params() []ParamSpec { return buildParams(u.d, paramUpdate) }
 
+func (u collectionUpdate) Validate(args map[string]any) error {
+	args, err := u.d.normalizeArgs(args)
+	if err != nil {
+		return err
+	}
+	return u.d.validate(args, paramUpdate)
+}
+
 func (u collectionUpdate) Execute(c Client, args map[string]any, dryRun bool) models.ActionResult {
 	d := u.d
+	args, nerr := d.normalizeArgs(args)
+	if nerr != nil {
+		return failed(nerr.Error())
+	}
 	r, missing, lenErr := d.resolve(c, args)
 	if len(missing) > 0 {
 		return d.missing(missing)
 	}
 	if lenErr != "" {
 		return failed(lenErr)
+	}
+
+	if err := d.validate(args, paramUpdate); err != nil {
+		return failed(err.Error())
 	}
 
 	exists, current, err := c.Exists(r.itemPath)
@@ -682,14 +733,30 @@ func (x collectionDelete) Description() string {
 
 func (x collectionDelete) Params() []ParamSpec { return buildParams(x.d, paramDelete) }
 
+func (x collectionDelete) Validate(args map[string]any) error {
+	args, err := x.d.normalizeArgs(args)
+	if err != nil {
+		return err
+	}
+	return x.d.validate(args, paramDelete)
+}
+
 func (x collectionDelete) Execute(c Client, args map[string]any, dryRun bool) models.ActionResult {
 	d := x.d
+	args, nerr := d.normalizeArgs(args)
+	if nerr != nil {
+		return failed(nerr.Error())
+	}
 	r, missing, lenErr := d.resolve(c, args)
 	if len(missing) > 0 {
 		return d.missing(missing)
 	}
 	if lenErr != "" {
 		return failed(lenErr)
+	}
+
+	if err := d.validate(args, paramDelete); err != nil {
+		return failed(err.Error())
 	}
 
 	exists, _, err := c.Exists(r.itemPath)
@@ -732,11 +799,11 @@ func buildParams(d objectDesc, mode paramMode) []ParamSpec {
 
 	for _, p := range d.Parents {
 		for _, k := range p.Keys {
-			specs = append(specs, ParamSpec{Name: k.Name, Type: "string", Required: true, Description: k.Desc})
+			specs = append(specs, ParamSpec{Name: k.canonical(), Type: "string", Required: true, Description: k.Desc})
 		}
 	}
 	for _, k := range d.OwnKey {
-		specs = append(specs, ParamSpec{Name: k.Name, Type: "string", Required: true, Description: k.Desc})
+		specs = append(specs, ParamSpec{Name: k.canonical(), Type: "string", Required: true, Description: k.Desc})
 	}
 
 	if mode != paramDelete {
@@ -745,7 +812,7 @@ func buildParams(d objectDesc, mode paramMode) []ParamSpec {
 				continue
 			}
 			spec := ParamSpec{
-				Name:        f.Name,
+				Name:        f.canonical(),
 				Type:        f.Kind.String(),
 				Required:    f.Required && mode == paramAdd,
 				Description: f.Desc,
@@ -761,7 +828,7 @@ func buildParams(d objectDesc, mode paramMode) []ParamSpec {
 
 	if d.Scope == scopeVPN {
 		specs = append(specs, ParamSpec{
-			Name:        "msgVpnName",
+			Name:        "msg_vpn_name",
 			Type:        "string",
 			Description: "Message VPN to act on. Defaults to the VPN in the connection config.",
 		})
