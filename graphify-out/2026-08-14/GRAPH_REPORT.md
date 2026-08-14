@@ -1,11 +1,11 @@
 # Graph Report - Solace-SEMP-Workflow-Automation  (2026-08-14)
 
 ## Corpus Check
-- 259 files · ~558,582 words
+- 259 files · ~559,195 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1611 nodes · 3093 edges · 220 communities (137 shown, 83 thin omitted)
+- 1613 nodes · 3095 edges · 227 communities (145 shown, 82 thin omitted)
 - Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 446 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -16,18 +16,18 @@
 
 ## Community Hubs (Navigation)
 - newTestClient
-- testing.T
+- driver_test.go
 - naming_test.go
 - output.go
 - newTestEngine
-- SEMP Workflow Automation - How-To Guide
-- SEMP Workflow Automation — 操作指南
+- 11. Troubleshooting
+- 11. 故障排除
 - cutover-check.sh
 - NewEngine
-- run
-- runCLI
+- NewTemplateError
+- testing.T
 - absent
-- NewEngine
+- buildAttribute
 - dev.sh
 - registerObject
 - dev.ps1
@@ -35,7 +35,7 @@
 - Parse
 - `dmr_cluster_cert_matching_rule_attribute_filter`
 - Release Checklist
-- render.go
+- Object
 - Template: `app-inbound`
 - Template: `app-outbound`
 - `msg_vpn_acl_profile`
@@ -87,7 +87,7 @@
 - `msg_vpn_rest_delivery_point_queue_binding_protected_request_header`
 - init
 - `msg_vpn_rest_delivery_point_queue_binding_request_header`
-- extract.go
+- Doc
 - `oauth_profile_client_allowed_host`
 - `msg_vpn_rest_delivery_point_rest_consumer`
 - `msg_vpn_telemetry_profile`
@@ -108,7 +108,7 @@
 - `msg_vpn_acl_profile_subscribe_exception`
 - init
 - `msg_vpn_acl_profile_subscribe_share_name_exception`
-- Object
+- extract.go
 - `msg_vpn_acl_profile_subscribe_topic_exception`
 - `msg_vpn_authentication_oauth_profile_client_required_claim`
 - `msg_vpn_authentication_oauth_profile_resource_server_required_claim`
@@ -130,7 +130,7 @@
 - `msg_vpn_telemetry_profile_receiver_acl_connect_exception`
 - `cert_authority`
 - `msg_vpn_telemetry_profile_trace_filter_subscription`
-- models_test.go
+- SEMP Workflow Automation - How-To Guide
 - `client_cert_authority`
 - init
 - init
@@ -184,7 +184,7 @@
 - `cert_authority_ocsp_tls_trusted_common_name`
 - init
 - fakeClient
-- Get
+- SEMP Workflow Automation — 操作指南
 - init
 - init
 - init
@@ -217,19 +217,26 @@
 - init
 - init
 - init
-- LoadTemplatesFS
+- 10. Common Scenario Examples
 - ActionResult
-- LoadConfig
-- fieldDesc
+- 10. 常見情境範例
+- checkValue
 - .resolve
-- config.go
-- coerceField
+- 7. CLI Commands
+- fieldDesc
 - buildParams
-- unionAttributes
+- 7. CLI 指令
 - WorkflowResult
 - AttrEqual
-- engineFake
+- 5. Configuration File
 - fieldCanonToWire
+- 6. Workflow Templates
+- 9. Available Modules
+- 5. 設定檔
+- 6. 工作流程範本
+- 9. 可用模組
+- 3. Getting Started
+- 3. 開始使用
 
 ## God Nodes (most connected - your core abstractions)
 1. `registerObject()` - 90 edges
@@ -258,15 +265,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (220 total, 83 thin omitted)
+## Communities (227 total, 82 thin omitted)
 
 ### Community 0 - "newTestClient"
 Cohesion: 0.06
-Nodes (50): net/http.Client, net/http.HandlerFunc, net/http/httptest.Server, net/http.Request, net/http.Response, net/http.ResponseWriter, net/http.RoundTripper, time.Duration (+42 more)
+Nodes (51): net/http.Client, net/http.HandlerFunc, net/http/httptest.Server, net/http.Request, net/http.Response, net/http.ResponseWriter, net/http.RoundTripper, time.Duration (+43 more)
 
-### Community 1 - "testing.T"
-Cohesion: 0.11
-Nodes (52): testing.T, brokerObj(), constDesc(), deepObj(), desc(), globalObj(), objectDesc, queueLike() (+44 more)
+### Community 1 - "driver_test.go"
+Cohesion: 0.07
+Nodes (52): brokerObj(), constDesc(), deepObj(), desc(), globalObj(), objectDesc, queueLike(), TestAddAcceptsRequiredFalseAndZero() (+44 more)
 
 ### Community 2 - "naming_test.go"
 Cohesion: 0.15
@@ -274,43 +281,43 @@ Nodes (21): canonOf(), CheckPrefixes(), CheckSnakeRoundTrip(), friendlyName(), F
 
 ### Community 3 - "output.go"
 Cohesion: 0.07
-Nodes (62): main(), bytes.Buffer, embed.FS, github.com/spf13/cobra.Command, classifyExit(), Execute(), joinComma(), newInitCmd() (+54 more)
+Nodes (61): main(), bytes.Buffer, embed.FS, github.com/spf13/cobra.Command, classifyExit(), Execute(), joinComma(), newInitCmd() (+53 more)
 
 ### Community 4 - "newTestEngine"
-Cohesion: 0.20
-Nodes (22): Engine, TestResolveTemplateNotFoundListsAvailable(), TestRunFailFastStopsAfterFailedWorkflow(), TestRunFailFastStopsOnTemplateError(), TestRunWorkflowInputRenderError(), TestRunWorkflowMissingRequiredInput(), newTestEngine(), queueTemplate() (+14 more)
+Cohesion: 0.05
+Nodes (68): ActionSpec, Engine, Engine, engineFake, io/fs.FS, cfgBool(), cfgInt(), cfgStr() (+60 more)
 
-### Community 5 - "SEMP Workflow Automation - How-To Guide"
-Cohesion: 0.04
-Nodes (49): 10. Common Scenario Examples, 11. Troubleshooting, 1. Introduction, 2. Prerequisites, 3. Getting Started, 4. Project Structure, 5.1 SEMP Connection, 5.2 Global Variables (global_vars) (+41 more)
+### Community 5 - "11. Troubleshooting"
+Cohesion: 0.18
+Nodes (11): 11. Troubleshooting, Dry-run best practice, Issue: A second run still reports `changed`, Issue: An attribute cannot be set on an update, Issue: Connection error, Issue: Required input not provided, Issue: Template not found, Issue: Unexpected inputs (+3 more)
 
-### Community 6 - "SEMP Workflow Automation — 操作指南"
-Cohesion: 0.04
-Nodes (49): 10. 常見情境範例, 11. 故障排除, 1. 簡介, 2. 系統需求, 3. 開始使用, 4. 專案結構, 5.1 SEMP 連線設定, 5.2 全域變數（global_vars） (+41 more)
+### Community 6 - "11. 故障排除"
+Cohesion: 0.18
+Nodes (11): 11. 故障排除, 問題：值超過長度上限, 問題：屬性無法在 update 中設定, 問題：找不到範本（Template not found）, 問題：未提供必填輸入（Required input not provided）, 問題：未知的參數（Unknown argument）, 問題：未預期的輸入變數（Unexpected inputs）, 問題：第二次執行仍回報 `changed` (+3 more)
 
 ### Community 7 - "cutover-check.sh"
 Cohesion: 0.24
 Nodes (15): acl_config(), conn_block(), die(), fail(), FAILURES, hr(), info(), NO_COLOR (+7 more)
 
 ### Community 8 - "NewEngine"
-Cohesion: 0.07
-Nodes (46): ConfigError, SEMPError, TemplateError, ValidationError, WorkflowError, github.com/nikolalohinski/gonja/v2/config.Config, TestClassifyExit(), TestWorkflowAndValidationErrorMessages() (+38 more)
-
-### Community 9 - "run"
-Cohesion: 0.17
-Nodes (20): actionCount(), main(), reportDrift(), run(), staleFiles(), summary(), TestActionCount(), TestStaleFiles() (+12 more)
-
-### Community 10 - "runCLI"
 Cohesion: 0.15
-Nodes (27): runCLI(), TestInitCopiesBundledTemplates(), TestListModules(), TestListModulesRemovesStaleReferencePages(), TestListModulesWritesFile(), TestMissingConfigFlagIsUsageError(), TestRunConfigError(), TestRunTemplateNotFoundExit1() (+19 more)
+Nodes (30): github.com/nikolalohinski/gonja/v2/config.Config, TestRenderMalformedTemplateError(), TestRenderMapRecursionError(), TestRenderSliceRecursionError(), TestRenderUndefinedIndexBranch(), TestValidateInputsIntegerCoercionVariants(), TestValidateInputsOptionalSkipped(), TestValidateInputsUnknownTypePassthrough() (+22 more)
+
+### Community 9 - "NewTemplateError"
+Cohesion: 0.12
+Nodes (16): ConfigError, SEMPError, TemplateError, ValidationError, WorkflowError, TestClassifyExit(), TestWorkflowAndValidationErrorMessages(), IsWorkflowError() (+8 more)
+
+### Community 10 - "testing.T"
+Cohesion: 0.16
+Nodes (32): testing.T, runCLI(), TestInitCopiesBundledTemplates(), TestListModules(), TestListModulesRemovesStaleReferencePages(), TestListModulesWritesFile(), TestMissingConfigFlagIsUsageError(), TestRunConfigError() (+24 more)
 
 ### Community 11 - "absent"
-Cohesion: 0.13
-Nodes (39): TestDeleteSkipsWhenAbsentAndDeletesWhenPresent(), TestDryRunNeverMutates(), absent(), existing(), sempErr(), exec(), Client, TestAclProfileAddDelete() (+31 more)
+Cohesion: 0.14
+Nodes (37): absent(), existing(), sempErr(), exec(), Client, TestAclProfileAddDelete(), TestClientProfileAddCoercion(), TestClientProfileUpdateNoFields() (+29 more)
 
-### Community 12 - "NewEngine"
+### Community 12 - "buildAttribute"
 Cohesion: 0.18
-Nodes (10): ActionSpec, Engine, WorkflowTemplate, LoadTemplatesDir(), TestLoadTemplatesDirNotFound(), TestLoadTemplatesDirSuccess(), TestNewEngineBundledTemplates(), TestNewEngineMissingTemplatesDir() (+2 more)
+Nodes (13): applyCombos(), buildAttribute(), describe(), parseDefault(), TestBuildAttributeRejectsAnUnsupportedType(), TestBuildAttributeResolvesANestedRefAndAppliesCombosByNestedDefinition(), TestDescribeAppendsTheOperationalNoteForEachFlag(), TestDescribeTrimsBoilerplateAfterTheFirstBlankLine() (+5 more)
 
 ### Community 13 - "dev.sh"
 Cohesion: 0.20
@@ -325,12 +332,12 @@ Cohesion: 0.24
 Nodes (22): Get-BinPath(), Have(), Import-LocalEnv(), Invoke-Logged(), Invoke-Task(), Ok(), Step(), Task-All() (+14 more)
 
 ### Community 16 - "objectDesc"
-Cohesion: 0.13
-Nodes (14): applyMsgDefaults(), capitalizeFirst(), objectDesc, objectDesc, orDefault(), addMode, collectionAdd, collectionDelete (+6 more)
+Cohesion: 0.14
+Nodes (15): applyMsgDefaults(), capitalizeFirst(), objectDesc, objectDesc, orDefault(), TestCapitalizeFirstLeavesAcronymsAlone(), addMode, collectionAdd (+7 more)
 
 ### Community 17 - "Parse"
-Cohesion: 0.19
-Nodes (15): Parsed, cells(), Flags, Parse(), readTable(), splitList(), TestParse_NoTablesIsEmptyNotError(), TestParse_RealSpecificationHasPlausibleRowCounts() (+7 more)
+Cohesion: 0.20
+Nodes (14): Parsed, cells(), Parse(), readTable(), splitList(), TestParse_NoTablesIsEmptyNotError(), TestParse_RealSpecificationHasPlausibleRowCounts(), TestParse_TableLikeTextWithoutSeparatorIsIgnored() (+6 more)
 
 ### Community 18 - "`dmr_cluster_cert_matching_rule_attribute_filter`"
 Cohesion: 0.40
@@ -340,9 +347,9 @@ Nodes (4): `dmr_cluster_cert_matching_rule_attribute_filter`, `dmr_cluster_cert_
 Cohesion: 0.17
 Nodes (12): 1. Run the test suite, 2. Run vet, lint, and the vulnerability scan, 3. Regenerate the descriptors and the module reference, 4. Build the release binary, 5. Commit the release, 6. Tag the release, 7. The tag pipeline publishes the release automatically, Common Commands (+4 more)
 
-### Community 20 - "render.go"
-Cohesion: 0.15
-Nodes (26): go/ast.File, strings.Builder, All(), Bytes(), countAttrs(), describeObject(), File, literal() (+18 more)
+### Community 20 - "Object"
+Cohesion: 0.06
+Nodes (61): go/ast.File, strings.Builder, Kind, ParentHop, Platform, TestUnionAttributesTagsThePlatformSpecificOneAndNotesItsDescription(), TestUnionEnumKeepsTheWiderSetsOrder(), TestUnionTagsObjectsByWhichPlatformDefinesThem() (+53 more)
 
 ### Community 21 - "Template: `app-inbound`"
 Cohesion: 0.18
@@ -381,8 +388,8 @@ Cohesion: 0.40
 Nodes (4): `msg_vpn_authentication_oauth_profile`, `msg_vpn_authentication_oauth_profile.add`, `msg_vpn_authentication_oauth_profile.delete`, `msg_vpn_authentication_oauth_profile.update`
 
 ### Community 30 - "Extract"
-Cohesion: 0.13
-Nodes (17): legacyOverlay, checkLegacyMatched(), Extract(), TestCheckLegacyMatchedErrorsWhenAnOverlayDefinitionMatchesNoObject(), specPath(), TestExtractAppliesEveryLegacyOverlay(), TestExtractOnTheRealSpecifications(), TestKindRuntimeConstMatchesTheRuntimeIdentifiers() (+9 more)
+Cohesion: 0.17
+Nodes (16): checkLegacyMatched(), Extract(), TestCheckLegacyMatchedErrorsWhenAnOverlayDefinitionMatchesNoObject(), specPath(), TestExtractAppliesEveryLegacyOverlay(), TestExtractOnTheRealSpecifications(), TestKindRuntimeConstMatchesTheRuntimeIdentifiers(), TestLegacyOverlaysAreKeyedByDefinitionNotPrefix() (+8 more)
 
 ### Community 34 - "`msg_vpn_authentication_oauth_provider`"
 Cohesion: 0.40
@@ -512,9 +519,9 @@ Nodes (4): `msg_vpn_rest_delivery_point_queue_binding_protected_request_header`,
 Cohesion: 0.40
 Nodes (4): `msg_vpn_rest_delivery_point_queue_binding_request_header`, `msg_vpn_rest_delivery_point_queue_binding_request_header.add`, `msg_vpn_rest_delivery_point_queue_binding_request_header.delete`, `msg_vpn_rest_delivery_point_queue_binding_request_header.update`
 
-### Community 73 - "extract.go"
-Cohesion: 0.12
-Nodes (28): Definition, Info, Schema, applyCombos(), attributes(), buildAttribute(), extractBroker(), extractCollection() (+20 more)
+### Community 73 - "Doc"
+Cohesion: 0.22
+Nodes (12): Definition, Info, Schema, attributes(), extractBroker(), TestAttributesExcludesPathKeysAndReadOnlyProperties(), TestExtractBrokerRequiresAPatchOperation(), Doc (+4 more)
 
 ### Community 74 - "`oauth_profile_client_allowed_host`"
 Cohesion: 0.50
@@ -549,8 +556,8 @@ Cohesion: 0.40
 Nodes (4): `oauth_profile_default_msg_vpn_access_level_exception`, `oauth_profile_default_msg_vpn_access_level_exception.add`, `oauth_profile_default_msg_vpn_access_level_exception.delete`, `oauth_profile_default_msg_vpn_access_level_exception.update`
 
 ### Community 82 - "extract_test.go"
-Cohesion: 0.26
-Nodes (14): describe(), extractOne(), bodyParam(), TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched(), TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes(), TestDescribeAppendsTheOperationalNoteForEachFlag(), TestDescribeTrimsBoilerplateAfterTheFirstBlankLine(), TestExtractCollectionHasUpdateComesFromTheItemPathOnly() (+6 more)
+Cohesion: 0.23
+Nodes (12): legacyOverlay, extractOne(), bodyParam(), TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched(), TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes(), TestExtractCollectionHasUpdateComesFromTheItemPathOnly(), TestExtractOneBrokerGlobalObjectHasNoVPNHop(), TestExtractOneBuildsTheBrokerSingletonFromTheRootPath() (+4 more)
 
 ### Community 83 - "`client_cert_authority_ocsp_tls_trusted_common_name`"
 Cohesion: 0.50
@@ -576,9 +583,9 @@ Nodes (3): `msg_vpn_acl_profile_subscribe_exception`, `msg_vpn_acl_profile_subsc
 Cohesion: 0.50
 Nodes (3): `msg_vpn_acl_profile_subscribe_share_name_exception`, `msg_vpn_acl_profile_subscribe_share_name_exception.add`, `msg_vpn_acl_profile_subscribe_share_name_exception.delete`
 
-### Community 94 - "Object"
-Cohesion: 0.32
-Nodes (9): Kind, ParentHop, Platform, ownKeyNames(), Attribute, Key, Object, Scope (+1 more)
+### Community 94 - "extract.go"
+Cohesion: 0.47
+Nodes (8): extractCollection(), firstSentence(), isKeySegment(), itemPaths(), keyNames(), ownKeyNames(), parentDefinition(), pathSegments()
 
 ### Community 95 - "`msg_vpn_acl_profile_subscribe_topic_exception`"
 Cohesion: 0.50
@@ -613,8 +620,8 @@ Cohesion: 0.50
 Nodes (3): `msg_vpn_distributed_cache_cluster_global_caching_home_cluster`, `msg_vpn_distributed_cache_cluster_global_caching_home_cluster.add`, `msg_vpn_distributed_cache_cluster_global_caching_home_cluster.delete`
 
 ### Community 103 - "canon_test.go"
-Cohesion: 0.22
-Nodes (15): canonObj(), objectDesc, TestAnUnknownArgIsReportedAsTyped(), TestCanonicalArgsAreTranslatedInsideANestedGroup(), TestCanonicalArgsStillSendWireNames(), TestCanonicalArgsWorkOnUpdateAndDelete(), TestCanonicalMsgVpnNameOverridesTheConfiguredVPN(), TestEveryLegacyActionPrefixMatchesARealDescriptor() (+7 more)
+Cohesion: 0.14
+Nodes (22): canonObj(), objectDesc, TestAnUnknownArgIsReportedAsTyped(), TestCanonicalArgsAreTranslatedInsideANestedGroup(), TestCanonicalArgsStillSendWireNames(), TestCanonicalArgsWorkOnUpdateAndDelete(), TestCanonicalMsgVpnNameOverridesTheConfiguredVPN(), TestEveryLegacyActionPrefixMatchesARealDescriptor() (+14 more)
 
 ### Community 104 - "`msg_vpn_distributed_cache_cluster_global_caching_home_cluster_topic_prefix`"
 Cohesion: 0.50
@@ -656,9 +663,9 @@ Nodes (4): `cert_authority`, `cert_authority.add`, `cert_authority.delete`, `cer
 Cohesion: 0.50
 Nodes (3): `msg_vpn_telemetry_profile_trace_filter_subscription`, `msg_vpn_telemetry_profile_trace_filter_subscription.add`, `msg_vpn_telemetry_profile_trace_filter_subscription.delete`
 
-### Community 118 - "models_test.go"
-Cohesion: 0.50
-Nodes (3): TestNewActionResult(), TestWorkflowResultCounts(), TestWorkflowResultNoFailures()
+### Community 118 - "SEMP Workflow Automation - How-To Guide"
+Cohesion: 0.25
+Nodes (8): 1. Introduction, 2. Prerequisites, 4. Project Structure, 8. Built-in Template Reference, app-inbound — APP Inbound Workflows, app-outbound — APP Outbound Workflows, SEMP Workflow Automation - How-To Guide, Table of Contents
 
 ### Community 119 - "`client_cert_authority`"
 Cohesion: 0.40
@@ -709,16 +716,16 @@ Cohesion: 0.15
 Nodes (13): Aggregate dev-script tasks, Application, Coverage, Generator, Integration tests (live broker required), Module Registry, Overview, Result Status Reference (+5 more)
 
 ### Community 166 - "validate_test.go"
-Cohesion: 0.25
-Nodes (17): objectDesc, TestExportedValidateMatchesTheVerb(), TestInvalidArgsFailWithoutIssuingAnyRequest(), TestValidateAcceptsAWellFormedCall(), TestValidateChecksClientUsernameBodyAttributes(), TestValidateChecksInsideNestedGroups(), TestValidateChecksLengthOfBodyAttributesToo(), TestValidateEnforcesAttributeCoDependencies() (+9 more)
+Cohesion: 0.31
+Nodes (15): objectDesc, TestExportedValidateMatchesTheVerb(), TestInvalidArgsFailWithoutIssuingAnyRequest(), TestValidateAcceptsAWellFormedCall(), TestValidateChecksInsideNestedGroups(), TestValidateEnforcesAttributeCoDependencies(), TestValidateEnforcesEnums(), TestValidateRejectsBodyArgumentsOnDelete() (+7 more)
 
 ### Community 169 - "`cert_authority_ocsp_tls_trusted_common_name`"
 Cohesion: 0.50
 Nodes (3): `cert_authority_ocsp_tls_trusted_common_name`, `cert_authority_ocsp_tls_trusted_common_name.add`, `cert_authority_ocsp_tls_trusted_common_name.delete`
 
-### Community 172 - "Get"
-Cohesion: 0.29
-Nodes (8): TestLegacyActionNamesAreNotListed(), TestLegacyAndCanonicalActionNamesResolveToTheSameModule(), TestEveryDescriptorIsWiredIntoTheRegistry(), TestGetUnknownModule(), TestRegistryCompleteness(), Get(), List(), Module
+### Community 172 - "SEMP Workflow Automation — 操作指南"
+Cohesion: 0.25
+Nodes (8): 1. 簡介, 2. 系統需求, 4. 專案結構, 8. 內建範本說明, app-inbound — APP 入站工作流程, app-outbound — APP 出站工作流程, SEMP Workflow Automation — 操作指南, 目錄
 
 ### Community 176 - "`dmr_cluster_cert_matching_rule_condition`"
 Cohesion: 0.50
@@ -744,64 +751,96 @@ Nodes (3): `oauth_profile_resource_server_required_claim`, `oauth_profile_resour
 Cohesion: 0.50
 Nodes (3): `oauth_profile_client_required_claim`, `oauth_profile_client_required_claim.add`, `oauth_profile_client_required_claim.delete`
 
-### Community 206 - "LoadTemplatesFS"
-Cohesion: 0.16
-Nodes (15): io/fs.FS, cfgStr(), LoadTemplatesFS(), parseInputsSchema(), TestLoadTemplatesFS(), TestLoadTemplatesMissingModule(), TestLoadTemplatesNonListSkipped(), TestLoadConfigReadError() (+7 more)
+### Community 206 - "10. Common Scenario Examples"
+Cohesion: 0.29
+Nodes (7): 10. Common Scenario Examples, Scenario 1: Create a single APP outbound queue set, Scenario 2: Create a APP inbound flow (queue + RDP + REST delivery), Scenario 3: Batch-create multiple workflows, Scenario 4: Centralise settings in global_vars, Scenario 5: Delete resources, Scenario 6: Sequential vs non-sequential delivery
 
 ### Community 207 - "ActionResult"
-Cohesion: 0.39
-Nodes (9): ActionResult, NewActionResult(), dryrun(), failed(), ok(), sempCodeOf(), skipped(), Client (+1 more)
+Cohesion: 0.35
+Nodes (10): ActionResult, NewActionResult(), dryrun(), failed(), ok(), sempCodeOf(), skipped(), Client (+2 more)
 
-### Community 208 - "LoadConfig"
-Cohesion: 0.34
-Nodes (13): LoadConfig(), TestLoadConfigMissingFile(), TestLoadConfigMissingSemp(), TestLoadConfigMissingSempKey(), TestLoadConfigNotAMapping(), TestLoadConfigOverrides(), TestLoadConfigTemplatesDirOnDisk(), TestLoadConfigValid() (+5 more)
+### Community 208 - "10. 常見情境範例"
+Cohesion: 0.29
+Nodes (7): 10. 常見情境範例, 情境一：建立單一 APP 出站佇列組合, 情境三：批次建立多個工作流程, 情境二：建立 APP 入站流程（佇列 + RDP + REST 遞送）, 情境五：刪除資源, 情境六：循序遞送 vs 並發遞送, 情境四：使用全域變數統一管理設定
 
-### Community 209 - "fieldDesc"
-Cohesion: 0.25
-Nodes (10): fieldNames(), checkCombinations(), checkValue(), contains(), objectDesc, quoteAll(), sortedArgNames(), fieldDesc (+2 more)
+### Community 209 - "checkValue"
+Cohesion: 0.36
+Nodes (7): checkCombinations(), checkValue(), contains(), objectDesc, quoteAll(), sortedArgNames(), paramMode
 
 ### Community 211 - ".resolve"
-Cohesion: 0.24
-Nodes (8): argStr(), hopKeys(), Path(), ResolveVPN(), TestPath(), TestResolveVPN(), VPNSeg(), Seg
+Cohesion: 0.21
+Nodes (10): argStr(), hopKeys(), Stringify(), TestStringify(), Path(), ResolveVPN(), TestPath(), TestResolveVPN() (+2 more)
 
-### Community 212 - "config.go"
-Cohesion: 0.27
-Nodes (10): cfgBool(), cfgInt(), AppConfig, SempConfig, WorkflowEntry, integrationSemp(), makeConfig(), TestIntegrationEngineLifecycle() (+2 more)
+### Community 212 - "7. CLI Commands"
+Cohesion: 0.33
+Nodes (6): 7.1 Run Workflows, 7.2 Validate Configuration, 7.3 List Available Modules, 7.4 Export Bundled Templates, 7. CLI Commands, Top-Level Help
 
-### Community 213 - "coerceField"
-Cohesion: 0.42
-Nodes (7): coerceField(), TestCoerceFieldIntErrorNamesTheAttribute(), TestCoerceFieldNestedObject(), TestCoerceFieldNestedObjectInnerError(), TestCoerceFieldNestedObjectWrongShape(), TestCoerceFieldScalars(), threshold()
+### Community 213 - "fieldDesc"
+Cohesion: 0.28
+Nodes (10): coerceField(), fieldNames(), TestCoerceFieldIntErrorNamesTheAttribute(), TestCoerceFieldNestedObject(), TestCoerceFieldNestedObjectInnerError(), TestCoerceFieldNestedObjectWrongShape(), TestCoerceFieldScalars(), threshold() (+2 more)
 
 ### Community 214 - "buildParams"
-Cohesion: 0.36
-Nodes (3): buildParams(), collectionUpdate, ParamSpec
+Cohesion: 0.27
+Nodes (5): buildParams(), TestGlobalObjectDocumentsNoMsgVpnName(), TestUpdateParamsOmitDefaultsAndConstAttributes(), collectionUpdate, ParamSpec
 
-### Community 215 - "unionAttributes"
-Cohesion: 0.36
-Nodes (7): TestUnionAttributesTagsThePlatformSpecificOneAndNotesItsDescription(), TestUnionEnumKeepsTheWiderSetsOrder(), TestUnionTagsObjectsByWhichPlatformDefinesThem(), union(), unionAttributes(), unionEnum(), withNote()
+### Community 215 - "7. CLI 指令"
+Cohesion: 0.33
+Nodes (6): 7.1 執行工作流程, 7.2 驗證設定檔, 7.3 列出所有可用模組, 7.4 匯出內建範本, 7. CLI 指令, 頂層說明
 
 ### Community 217 - "AttrEqual"
-Cohesion: 0.43
+Cohesion: 0.31
 Nodes (5): AttrEqual(), numericEqual(), sliceEqual(), TestAttrEqual(), toAnySlice()
+
+### Community 218 - "5. Configuration File"
+Cohesion: 0.40
+Nodes (5): 5.1 SEMP Connection, 5.2 Global Variables (global_vars), 5.3 Workflow List (workflows), 5.4 Full Config Example, 5. Configuration File
 
 ### Community 219 - "fieldCanonToWire"
 Cohesion: 0.53
 Nodes (3): fieldCanonToWire(), objectDesc, renameKeys()
 
+### Community 220 - "6. Workflow Templates"
+Cohesion: 0.40
+Nodes (5): 6. Workflow Templates, Input Schema, Two-Pass Rendering, Variable Rendering Rules, YAML Anchor Support
+
+### Community 221 - "9. Available Modules"
+Cohesion: 0.40
+Nodes (5): 9. Available Modules, Choosing the message VPN, Modules used by the bundled templates, Naming, Upgrading from an earlier version
+
+### Community 222 - "5. 設定檔"
+Cohesion: 0.40
+Nodes (5): 5.1 SEMP 連線設定, 5.2 全域變數（global_vars）, 5.3 工作流程清單（workflows）, 5.4 完整設定檔範例, 5. 設定檔
+
+### Community 223 - "6. 工作流程範本"
+Cohesion: 0.40
+Nodes (5): 6. 工作流程範本, YAML 錨點（Anchor）支援, 兩階段渲染說明, 變數渲染規則, 輸入結構
+
+### Community 224 - "9. 可用模組"
+Cohesion: 0.40
+Nodes (5): 9. 可用模組, 內建範本所使用的模組, 命名規則, 從舊版升級, 指定訊息 VPN
+
+### Community 225 - "3. Getting Started"
+Cohesion: 0.67
+Nodes (3): 3. Getting Started, Build from source (Go 1.26+), Install a prebuilt binary (recommended)
+
+### Community 226 - "3. 開始使用"
+Cohesion: 0.67
+Nodes (3): 3. 開始使用, 安裝預先建置的二進位檔（建議）, 從原始碼建置（Go 1.26 以上）
+
 ## Knowledge Gaps
 - **365 isolated node(s):** `solace-semp-workflow`, `InputSpec`, `NO_COLOR`, `FAILURES`, `NO_COLOR` (+360 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **83 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **82 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `registerObject()` connect `registerObject` to `objectDesc`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`, `init`?**
-  _High betweenness centrality (0.126) - this node is a cross-community bridge._
-- **Why does `register()` connect `registerObject` to `testing.T`, `Get`?**
+  _High betweenness centrality (0.125) - this node is a cross-community bridge._
+- **Why does `register()` connect `registerObject` to `driver_test.go`, `ActionResult`?**
   _High betweenness centrality (0.073) - this node is a cross-community bridge._
-- **Why does `TestRegisterPanicsOnADuplicateName()` connect `testing.T` to `registerObject`?**
-  _High betweenness centrality (0.072) - this node is a cross-community bridge._
+- **Why does `TestRegisterPanicsOnADuplicateName()` connect `driver_test.go` to `testing.T`, `registerObject`?**
+  _High betweenness centrality (0.071) - this node is a cross-community bridge._
 - **Are the 87 inferred relationships involving `registerObject()` (e.g. with `init()` and `init()`) actually correct?**
   _`registerObject()` has 87 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 48 inferred relationships involving `absent()` (e.g. with `TestAnUnknownArgIsReportedAsTyped()` and `TestCanonicalArgsAreTranslatedInsideANestedGroup()`) actually correct?**

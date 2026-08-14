@@ -26,3 +26,5 @@ other-examples/
 # generator's only input and must be present in a fresh clone.
 
 m4-run
+cutover*
+test.sh

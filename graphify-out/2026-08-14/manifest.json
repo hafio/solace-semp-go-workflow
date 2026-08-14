@@ -270,8 +270,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1786614153.2910237,
-    "ast_hash": "ffffa72e9468d8a67ac6038241c55f8b",
+    "mtime": 1786689595.690681,
+    "ast_hash": "b08e398855f0a17d9f742a0067719446",
     "semantic_hash": ""
   },
   "README.md": {
@@ -280,13 +280,13 @@
     "semantic_hash": ""
   },
   "docs/HOWTO-zh.md": {
-    "mtime": 1786617346.1168623,
-    "ast_hash": "5f0af6c9ed171cd4bd70adf5400d3c30",
+    "mtime": 1786689588.0454178,
+    "ast_hash": "6c100c468d91dfa4e04f3d291b42826d",
     "semantic_hash": ""
   },
   "docs/HOWTO.md": {
-    "mtime": 1786613825.2192676,
-    "ast_hash": "a8016f0d6ed75812fe2fc58e5d71b1e2",
+    "mtime": 1786689571.9100842,
+    "ast_hash": "d77db2c2d9e5e784bcbcb6975a8d7659",
     "semantic_hash": ""
   },
   "docs/TESTS.md": {
@@ -300,18 +300,18 @@
     "semantic_hash": ""
   },
   "docs/roadmap.md": {
-    "mtime": 1786613922.41638,
-    "ast_hash": "6637d0c1bb59a1866ef7bb7acd2f17ab",
+    "mtime": 1786689635.0854921,
+    "ast_hash": "9924a88179c24c8ff6ef9a482311029a",
     "semantic_hash": ""
   },
   "docs/template-app-inbound.md": {
-    "mtime": 1786419484.3817372,
-    "ast_hash": "ca4aae1337754e81f05f06ba0db7ca5d",
+    "mtime": 1786689487.5994375,
+    "ast_hash": "fc9ca9af9a7bf755f9bcf1fd8f57de39",
     "semantic_hash": ""
   },
   "docs/template-app-outbound.md": {
-    "mtime": 1786419484.4915307,
-    "ast_hash": "4ee561440961acb8e8613911cb3c59e4",
+    "mtime": 1786689487.6366458,
+    "ast_hash": "8199d599edf7a5fe24b1021b15839477",
     "semantic_hash": ""
   },
   "examples/config.yaml": {
