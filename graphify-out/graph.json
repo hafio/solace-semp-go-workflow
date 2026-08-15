@@ -4,6 +4,39 @@
   "graph": {},
   "nodes": [
     {
+      "label": "SEMPError",
+      "file_type": "code",
+      "source_file": "internal/errors/errors.go",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "errors_semperror",
+      "community": 0,
+      "community_name": "newTestClient",
+      "norm_label": "semperror"
+    },
+    {
+      "label": ".Error()",
+      "file_type": "code",
+      "source_file": "internal/errors/errors.go",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "errors_semperror_error",
+      "community": 0,
+      "community_name": "newTestClient",
+      "norm_label": ".error()"
+    },
+    {
+      "label": ".workflowErr()",
+      "file_type": "code",
+      "source_file": "internal/errors/errors.go",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "errors_semperror_workflowerr",
+      "community": 0,
+      "community_name": "newTestClient",
+      "norm_label": ".workflowerr()"
+    },
+    {
       "label": "net/http.Client",
       "file_type": "code",
       "source_file": "",
@@ -178,6 +211,17 @@
       "community": 0,
       "community_name": "newTestClient",
       "norm_label": "client.go"
+    },
+    {
+      "label": "asSEMPError()",
+      "file_type": "code",
+      "source_file": "internal/semp/client.go",
+      "source_location": "L280",
+      "_origin": "ast",
+      "id": "internal_semp_client_assemperror",
+      "community": 0,
+      "community_name": "newTestClient",
+      "norm_label": "assemperror()"
     },
     {
       "label": "backoffDelay()",
@@ -730,17 +774,6 @@
       "norm_label": "testing.t"
     },
     {
-      "label": "buildParams()",
-      "file_type": "code",
-      "source_file": "internal/modules/driver.go",
-      "source_location": "L797",
-      "_origin": "ast",
-      "id": "internal_modules_driver_buildparams",
-      "community": 1,
-      "community_name": "testing.T",
-      "norm_label": "buildparams()"
-    },
-    {
       "label": "driver_test.go",
       "file_type": "code",
       "source_file": "internal/modules/driver_test.go",
@@ -970,17 +1003,6 @@
       "community": 1,
       "community_name": "testing.T",
       "norm_label": "testdryrunnevermutates()"
-    },
-    {
-      "label": "TestEveryDescriptorIsWiredIntoTheRegistry()",
-      "file_type": "code",
-      "source_file": "internal/modules/driver_test.go",
-      "source_location": "L698",
-      "_origin": "ast",
-      "id": "internal_modules_driver_test_testeverydescriptoriswiredintotheregistry",
-      "community": 1,
-      "community_name": "testing.T",
-      "norm_label": "testeverydescriptoriswiredintotheregistry()"
     },
     {
       "label": "TestEveryIdentifyingKeyHasALimitOrAStatedReason()",
@@ -1346,28 +1368,6 @@
       "norm_label": "testwriteonlyparamsaremarkedsensitive()"
     },
     {
-      "label": "TestValidateChecksClientUsernameBodyAttributes()",
-      "file_type": "code",
-      "source_file": "internal/modules/validate_test.go",
-      "source_location": "L267",
-      "_origin": "ast",
-      "id": "internal_modules_validate_test_testvalidatechecksclientusernamebodyattributes",
-      "community": 1,
-      "community_name": "testing.T",
-      "norm_label": "testvalidatechecksclientusernamebodyattributes()"
-    },
-    {
-      "label": "TestValidateChecksLengthOfBodyAttributesToo()",
-      "file_type": "code",
-      "source_file": "internal/modules/validate_test.go",
-      "source_location": "L235",
-      "_origin": "ast",
-      "id": "internal_modules_validate_test_testvalidatecheckslengthofbodyattributestoo",
-      "community": 1,
-      "community_name": "testing.T",
-      "norm_label": "testvalidatecheckslengthofbodyattributestoo()"
-    },
-    {
       "label": "cli_test.go",
       "file_type": "code",
       "source_file": "internal/cli/cli_test.go",
@@ -1608,94 +1608,6 @@
       "community": 10,
       "community_name": "runCLI",
       "norm_label": "testvalidatetemplatesdirnotfound()"
-    },
-    {
-      "label": "cli/integration_test.go",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "cli/integration_test.go"
-    },
-    {
-      "label": "integrationEnv()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_integrationenv",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "integrationenv()"
-    },
-    {
-      "label": "integrationFixturesDir()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_integrationfixturesdir",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "integrationfixturesdir()"
-    },
-    {
-      "label": "integrationSempClient()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L71",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_integrationsempclient",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "integrationsempclient()"
-    },
-    {
-      "label": "TestIntegrationCLIListModules()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L77",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_testintegrationclilistmodules",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "testintegrationclilistmodules()"
-    },
-    {
-      "label": "TestIntegrationCLIRun()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L111",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_testintegrationclirun",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "testintegrationclirun()"
-    },
-    {
-      "label": "TestIntegrationCLIValidate()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L95",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_testintegrationclivalidate",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "testintegrationclivalidate()"
-    },
-    {
-      "label": "writeIntegrationConfig()",
-      "file_type": "code",
-      "source_file": "internal/cli/integration_test.go",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "internal_cli_integration_test_writeintegrationconfig",
-      "community": 10,
-      "community_name": "runCLI",
-      "norm_label": "writeintegrationconfig()"
     },
     {
       "label": "msg_vpn_cert_matching_rule_condition.md",
@@ -2028,6 +1940,17 @@
       "norm_label": "testvalidateacceptsbothspellingsandrejectsthemtogether()"
     },
     {
+      "label": "TestEveryDescriptorIsWiredIntoTheRegistry()",
+      "file_type": "code",
+      "source_file": "internal/modules/driver_test.go",
+      "source_location": "L698",
+      "_origin": "ast",
+      "id": "internal_modules_driver_test_testeverydescriptoriswiredintotheregistry",
+      "community": 103,
+      "community_name": "canon_test.go",
+      "norm_label": "testeverydescriptoriswiredintotheregistry()"
+    },
+    {
       "label": "TestGetUnknownModule()",
       "file_type": "code",
       "source_file": "internal/modules/modules_test.go",
@@ -2345,6 +2268,17 @@
       "community": 109,
       "community_name": "`msg_vpn_rest_delivery_point_rest_consumer_tls_trusted_common_name`",
       "norm_label": "`msg_vpn_rest_delivery_point_rest_consumer_tls_trusted_common_name.delete`"
+    },
+    {
+      "label": "fake_test.go",
+      "file_type": "code",
+      "source_file": "internal/modules/fake_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "internal_modules_fake_test",
+      "community": 11,
+      "community_name": "absent",
+      "norm_label": "fake_test.go"
     },
     {
       "label": "absent()",
@@ -3040,6 +2974,17 @@
       "norm_label": "2. prerequisites"
     },
     {
+      "label": "3. Getting Started",
+      "file_type": "document",
+      "source_file": "docs/HOWTO.md",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "docs_howto_3_getting_started",
+      "community": 118,
+      "community_name": "SEMP Workflow Automation - How-To Guide",
+      "norm_label": "3. getting started"
+    },
+    {
       "label": "4. Project Structure",
       "file_type": "document",
       "source_file": "docs/HOWTO.md",
@@ -3051,37 +2996,26 @@
       "norm_label": "4. project structure"
     },
     {
-      "label": "8. Built-in Template Reference",
+      "label": "Build from source (Go 1.26+)",
       "file_type": "document",
       "source_file": "docs/HOWTO.md",
-      "source_location": "L473",
+      "source_location": "L74",
       "_origin": "ast",
-      "id": "docs_howto_8_built_in_template_reference",
+      "id": "docs_howto_build_from_source_go_1_26",
       "community": 118,
       "community_name": "SEMP Workflow Automation - How-To Guide",
-      "norm_label": "8. built-in template reference"
+      "norm_label": "build from source (go 1.26+)"
     },
     {
-      "label": "app-inbound \u2014 APP Inbound Workflows",
+      "label": "Install a prebuilt binary (recommended)",
       "file_type": "document",
       "source_file": "docs/HOWTO.md",
-      "source_location": "L499",
+      "source_location": "L59",
       "_origin": "ast",
-      "id": "docs_howto_app_inbound_app_inbound_workflows",
+      "id": "docs_howto_install_a_prebuilt_binary_recommended",
       "community": 118,
       "community_name": "SEMP Workflow Automation - How-To Guide",
-      "norm_label": "app-inbound \u2014 app inbound workflows"
-    },
-    {
-      "label": "app-outbound \u2014 APP Outbound Workflows",
-      "file_type": "document",
-      "source_file": "docs/HOWTO.md",
-      "source_location": "L475",
-      "_origin": "ast",
-      "id": "docs_howto_app_outbound_app_outbound_workflows",
-      "community": 118,
-      "community_name": "SEMP Workflow Automation - How-To Guide",
-      "norm_label": "app-outbound \u2014 app outbound workflows"
+      "norm_label": "install a prebuilt binary (recommended)"
     },
     {
       "label": "SEMP Workflow Automation - How-To Guide",
@@ -3161,28 +3095,6 @@
       "norm_label": "`client_cert_authority.update`"
     },
     {
-      "label": "applyCombos()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract.go",
-      "source_location": "L419",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_applycombos",
-      "community": 12,
-      "community_name": "extract_test.go",
-      "norm_label": "applycombos()"
-    },
-    {
-      "label": "buildAttribute()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract.go",
-      "source_location": "L361",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_buildattribute",
-      "community": 12,
-      "community_name": "extract_test.go",
-      "norm_label": "buildattribute()"
-    },
-    {
       "label": "describe()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -3203,17 +3115,6 @@
       "community": 12,
       "community_name": "extract_test.go",
       "norm_label": "extractone()"
-    },
-    {
-      "label": "parseDefault()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract.go",
-      "source_location": "L437",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_parsedefault",
-      "community": 12,
-      "community_name": "extract_test.go",
-      "norm_label": "parsedefault()"
     },
     {
       "label": "extract_test.go",
@@ -3238,26 +3139,26 @@
       "norm_label": "bodyparam()"
     },
     {
-      "label": "TestBuildAttributeRejectsAnUnsupportedType()",
+      "label": "TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L354",
+      "source_location": "L505",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testbuildattributerejectsanunsupportedtype",
+      "id": "tools_semp_gen_internal_ir_extract_test_testapplylegacyleavesanobjectwithnooverlayuntouched",
       "community": 12,
       "community_name": "extract_test.go",
-      "norm_label": "testbuildattributerejectsanunsupportedtype()"
+      "norm_label": "testapplylegacyleavesanobjectwithnooverlayuntouched()"
     },
     {
-      "label": "TestBuildAttributeResolvesANestedRefAndAppliesCombosByNestedDefinition()",
+      "label": "TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L320",
+      "source_location": "L460",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition",
+      "id": "tools_semp_gen_internal_ir_extract_test_testapplylegacypinsoverlayfieldsanddropsskippedattributes",
       "community": 12,
       "community_name": "extract_test.go",
-      "norm_label": "testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition()"
+      "norm_label": "testapplylegacypinsoverlayfieldsanddropsskippedattributes()"
     },
     {
       "label": "TestDescribeAppendsTheOperationalNoteForEachFlag()",
@@ -3348,26 +3249,15 @@
       "norm_label": "testextractonestripsthevpnhopandmarksvpnscope()"
     },
     {
-      "label": "TestParseDefaultReadsTheProseSentence()",
+      "label": "applyLegacy()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L266",
+      "source_file": "tools/semp-gen/internal/ir/legacy.go",
+      "source_location": "L180",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testparsedefaultreadstheprosesentence",
+      "id": "tools_semp_gen_internal_ir_legacy_applylegacy",
       "community": 12,
       "community_name": "extract_test.go",
-      "norm_label": "testparsedefaultreadstheprosesentence()"
-    },
-    {
-      "label": "Combination",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/mdtable/mdtable.go",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_mdtable_mdtable_go_mdtable_combination",
-      "community": 12,
-      "community_name": "extract_test.go",
-      "norm_label": "combination"
+      "norm_label": "applylegacy()"
     },
     {
       "label": "gen_client_cert_authority_ocsp_tls_trusted_common_name.go",
@@ -5620,39 +5510,6 @@
       "norm_label": ".validate()"
     },
     {
-      "label": "fieldDesc",
-      "file_type": "code",
-      "source_file": "internal/modules/driver.go",
-      "source_location": "L89",
-      "_origin": "ast",
-      "id": "modules_fielddesc",
-      "community": 16,
-      "community_name": "objectDesc",
-      "norm_label": "fielddesc"
-    },
-    {
-      "label": "fieldKind",
-      "file_type": "code",
-      "source_file": "internal/modules/driver.go",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "modules_fieldkind",
-      "community": 16,
-      "community_name": "objectDesc",
-      "norm_label": "fieldkind"
-    },
-    {
-      "label": ".String()",
-      "file_type": "code",
-      "source_file": "internal/modules/driver.go",
-      "source_location": "L840",
-      "_origin": "ast",
-      "id": "modules_fieldkind_string",
-      "community": 16,
-      "community_name": "objectDesc",
-      "norm_label": ".string()"
-    },
-    {
       "label": "keyDesc",
       "file_type": "code",
       "source_file": "internal/modules/driver.go",
@@ -6126,6 +5983,17 @@
       "norm_label": "testvalidateacceptsawellformedcall()"
     },
     {
+      "label": "TestValidateChecksClientUsernameBodyAttributes()",
+      "file_type": "code",
+      "source_file": "internal/modules/validate_test.go",
+      "source_location": "L267",
+      "_origin": "ast",
+      "id": "internal_modules_validate_test_testvalidatechecksclientusernamebodyattributes",
+      "community": 166,
+      "community_name": "validate_test.go",
+      "norm_label": "testvalidatechecksclientusernamebodyattributes()"
+    },
+    {
       "label": "TestValidateChecksInsideNestedGroups()",
       "file_type": "code",
       "source_file": "internal/modules/validate_test.go",
@@ -6135,6 +6003,17 @@
       "community": 166,
       "community_name": "validate_test.go",
       "norm_label": "testvalidatechecksinsidenestedgroups()"
+    },
+    {
+      "label": "TestValidateChecksLengthOfBodyAttributesToo()",
+      "file_type": "code",
+      "source_file": "internal/modules/validate_test.go",
+      "source_location": "L235",
+      "_origin": "ast",
+      "id": "internal_modules_validate_test_testvalidatecheckslengthofbodyattributestoo",
+      "community": 166,
+      "community_name": "validate_test.go",
+      "norm_label": "testvalidatecheckslengthofbodyattributestoo()"
     },
     {
       "label": "TestValidateEnforcesAttributeCoDependencies()",
@@ -6564,17 +6443,6 @@
       "community": 170,
       "community_name": "init",
       "norm_label": "init()"
-    },
-    {
-      "label": "fake_test.go",
-      "file_type": "code",
-      "source_file": "internal/modules/fake_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_modules_fake_test",
-      "community": 171,
-      "community_name": "fakeClient",
-      "norm_label": "fake_test.go"
     },
     {
       "label": "fakeClient",
@@ -7926,7 +7794,7 @@
       "_origin": "ast",
       "id": "go_type_go_ast_file",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "go/ast.file"
     },
     {
@@ -7937,19 +7805,8 @@
       "_origin": "ast",
       "id": "go_type_strings_builder",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "strings.builder"
-    },
-    {
-      "label": "Spec",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/ir.go",
-      "source_location": "L155",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_ir_go_ir_spec",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "spec"
     },
     {
       "label": "render.go",
@@ -7959,7 +7816,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "render.go"
     },
     {
@@ -7970,7 +7827,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_all",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "all()"
     },
     {
@@ -7981,7 +7838,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_bytes",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "bytes()"
     },
     {
@@ -7992,7 +7849,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_countattrs",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "countattrs()"
     },
     {
@@ -8003,7 +7860,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_describeobject",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "describeobject()"
     },
     {
@@ -8014,7 +7871,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_go_render_file",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "file"
     },
     {
@@ -8025,7 +7882,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_literal",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "literal()"
     },
     {
@@ -8036,7 +7893,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_manifest",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "manifest()"
     },
     {
@@ -8047,7 +7904,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_object",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "object()"
     },
     {
@@ -8058,7 +7915,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_quote",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "quote()"
     },
     {
@@ -8069,7 +7926,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_renderattribute",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "renderattribute()"
     },
     {
@@ -8080,7 +7937,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_renderkey",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "renderkey()"
     },
     {
@@ -8091,7 +7948,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_scopeconst",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "scopeconst()"
     },
     {
@@ -8102,7 +7959,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_stringslice",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "stringslice()"
     },
     {
@@ -8113,7 +7970,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "render_test.go"
     },
     {
@@ -8124,7 +7981,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_buildgoldenspec",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "buildgoldenspec()"
     },
     {
@@ -8135,7 +7992,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_dumpfiles",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "dumpfiles()"
     },
     {
@@ -8146,7 +8003,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_findattrdesc",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "findattrdesc()"
     },
     {
@@ -8157,7 +8014,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testallerrorsonduplicatefilename",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testallerrorsonduplicatefilename()"
     },
     {
@@ -8168,7 +8025,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testallonefileperobjectplusmanifest",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testallonefileperobjectplusmanifest()"
     },
     {
@@ -8179,7 +8036,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testarticleemittedforindefinitearticlean",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testarticleemittedforindefinitearticlean()"
     },
     {
@@ -8190,7 +8047,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testarticleomittedforindefinitearticlea",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testarticleomittedforindefinitearticlea()"
     },
     {
@@ -8201,7 +8058,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testdescriptionsurvivesquotesbackslashesandnewlines",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testdescriptionsurvivesquotesbackslashesandnewlines()"
     },
     {
@@ -8212,7 +8069,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testmanifestnamesaresortedandcountmatchescomment",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testmanifestnamesaresortedandcountmatchescomment()"
     },
     {
@@ -8223,7 +8080,7 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testobjectgolden",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testobjectgolden()"
     },
     {
@@ -8234,261 +8091,8 @@
       "_origin": "ast",
       "id": "tools_semp_gen_internal_render_render_test_testobjectsarevalidgofmtstablego",
       "community": 20,
-      "community_name": "run",
+      "community_name": "render.go",
       "norm_label": "testobjectsarevalidgofmtstablego()"
-    },
-    {
-      "label": "semp-gen/main.go",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "semp-gen/main.go"
-    },
-    {
-      "label": "actionCount()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L166",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_actioncount",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "actioncount()"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_main",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "main()"
-    },
-    {
-      "label": "reportDrift()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L126",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_reportdrift",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "reportdrift()"
-    },
-    {
-      "label": "run()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_run",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "run()"
-    },
-    {
-      "label": "staleFiles()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L102",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_stalefiles",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "stalefiles()"
-    },
-    {
-      "label": "summary()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L181",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_summary",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "summary()"
-    },
-    {
-      "label": "main_test.go",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_test",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "main_test.go"
-    },
-    {
-      "label": "TestActionCount()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main_test.go",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_test_testactioncount",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testactioncount()"
-    },
-    {
-      "label": "TestStaleFiles()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main_test.go",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_test_teststalefiles",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "teststalefiles()"
-    },
-    {
-      "label": "TestSummary()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main_test.go",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_test_testsummary",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testsummary()"
-    },
-    {
-      "label": "TestTruncate()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main_test.go",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_test_testtruncate",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testtruncate()"
-    },
-    {
-      "label": "truncate()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/main.go",
-      "source_location": "L159",
-      "_origin": "ast",
-      "id": "tools_semp_gen_main_truncate",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "truncate()"
-    },
-    {
-      "label": "run_test.go",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "run_test.go"
-    },
-    {
-      "label": "genFiles()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_genfiles",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "genfiles()"
-    },
-    {
-      "label": "realSpecs()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_realspecs",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "realspecs()"
-    },
-    {
-      "label": "TestRunCheckReportsAnOutOfDateFile()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L73",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testruncheckreportsanoutofdatefile",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testruncheckreportsanoutofdatefile()"
-    },
-    {
-      "label": "TestRunCheckReportsAStaleFile()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L109",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testruncheckreportsastalefile",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testruncheckreportsastalefile()"
-    },
-    {
-      "label": "TestRunCheckReportsMissingOutput()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L61",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testruncheckreportsmissingoutput",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testruncheckreportsmissingoutput()"
-    },
-    {
-      "label": "TestRunGeneratesThenReportsNoDrift()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testrungeneratesthenreportsnodrift",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testrungeneratesthenreportsnodrift()"
-    },
-    {
-      "label": "TestRunRejectsMismatchedSpecificationVersions()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L121",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testrunrejectsmismatchedspecificationversions",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testrunrejectsmismatchedspecificationversions()"
-    },
-    {
-      "label": "TestRunRemovesADescriptorTheSpecNoLongerProduces()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L91",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testrunremovesadescriptorthespecnolongerproduces",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testrunremovesadescriptorthespecnolongerproduces()"
-    },
-    {
-      "label": "TestRunReportsAMissingSpecification()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/run_test.go",
-      "source_location": "L142",
-      "_origin": "ast",
-      "id": "tools_semp_gen_run_test_testrunreportsamissingspecification",
-      "community": 20,
-      "community_name": "run",
-      "norm_label": "testrunreportsamissingspecification()"
     },
     {
       "label": "gen_msg_vpn_topic_endpoint_template.go",
@@ -8942,17 +8546,6 @@
       "norm_label": "\u60c5\u5883\u56db:\u4f7f\u7528\u5168\u57df\u8b8a\u6578\u7d71\u4e00\u7ba1\u7406\u8a2d\u5b9a"
     },
     {
-      "label": "cfgInt()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L315",
-      "_origin": "ast",
-      "id": "internal_config_config_cfgint",
-      "community": 209,
-      "community_name": "Stringify",
-      "norm_label": "cfgint()"
-    },
-    {
       "label": "validate.go",
       "file_type": "code",
       "source_file": "internal/modules/validate.go",
@@ -8960,7 +8553,7 @@
       "_origin": "ast",
       "id": "internal_modules_validate",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "validate.go"
     },
     {
@@ -8971,7 +8564,7 @@
       "_origin": "ast",
       "id": "internal_modules_validate_checkcombinations",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "checkcombinations()"
     },
     {
@@ -8982,7 +8575,7 @@
       "_origin": "ast",
       "id": "internal_modules_validate_checkvalue",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "checkvalue()"
     },
     {
@@ -8993,7 +8586,7 @@
       "_origin": "ast",
       "id": "internal_modules_validate_contains",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "contains()"
     },
     {
@@ -9004,7 +8597,7 @@
       "_origin": "ast",
       "id": "internal_modules_validate_go_modules_objectdesc",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "objectdesc"
     },
     {
@@ -9015,7 +8608,7 @@
       "_origin": "ast",
       "id": "internal_modules_validate_quoteall",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "quoteall()"
     },
     {
@@ -9026,63 +8619,41 @@
       "_origin": "ast",
       "id": "internal_modules_validate_sortedargnames",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "sortedargnames()"
     },
     {
-      "label": "CoerceInt()",
-      "file_type": "code",
-      "source_file": "internal/semp/helpers.go",
-      "source_location": "L247",
-      "_origin": "ast",
-      "id": "internal_semp_helpers_coerceint",
-      "community": 209,
-      "community_name": "Stringify",
-      "norm_label": "coerceint()"
-    },
-    {
-      "label": "Stringify()",
-      "file_type": "code",
-      "source_file": "internal/semp/helpers.go",
-      "source_location": "L281",
-      "_origin": "ast",
-      "id": "internal_semp_helpers_stringify",
-      "community": 209,
-      "community_name": "Stringify",
-      "norm_label": "stringify()"
-    },
-    {
-      "label": "TestCoerceInt()",
-      "file_type": "code",
-      "source_file": "internal/semp/helpers_test.go",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "internal_semp_helpers_test_testcoerceint",
-      "community": 209,
-      "community_name": "Stringify",
-      "norm_label": "testcoerceint()"
-    },
-    {
-      "label": "TestStringify()",
-      "file_type": "code",
-      "source_file": "internal/semp/helpers_test.go",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "internal_semp_helpers_test_teststringify",
-      "community": 209,
-      "community_name": "Stringify",
-      "norm_label": "teststringify()"
-    },
-    {
-      "label": ".requiredMissing()",
+      "label": "fieldDesc",
       "file_type": "code",
       "source_file": "internal/modules/driver.go",
-      "source_location": "L499",
+      "source_location": "L89",
       "_origin": "ast",
-      "id": "modules_objectdesc_requiredmissing",
+      "id": "modules_fielddesc",
       "community": 209,
-      "community_name": "Stringify",
-      "norm_label": ".requiredmissing()"
+      "community_name": "fieldDesc",
+      "norm_label": "fielddesc"
+    },
+    {
+      "label": "fieldKind",
+      "file_type": "code",
+      "source_file": "internal/modules/driver.go",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "modules_fieldkind",
+      "community": 209,
+      "community_name": "fieldDesc",
+      "norm_label": "fieldkind"
+    },
+    {
+      "label": ".String()",
+      "file_type": "code",
+      "source_file": "internal/modules/driver.go",
+      "source_location": "L840",
+      "_origin": "ast",
+      "id": "modules_fieldkind_string",
+      "community": 209,
+      "community_name": "fieldDesc",
+      "norm_label": ".string()"
     },
     {
       "label": ".unknownArgs()",
@@ -9092,7 +8663,7 @@
       "_origin": "ast",
       "id": "modules_objectdesc_unknownargs",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": ".unknownargs()"
     },
     {
@@ -9103,7 +8674,7 @@
       "_origin": "ast",
       "id": "modules_objectdesc_validate",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": ".validate()"
     },
     {
@@ -9114,7 +8685,7 @@
       "_origin": "ast",
       "id": "modules_parammode",
       "community": 209,
-      "community_name": "Stringify",
+      "community_name": "fieldDesc",
       "norm_label": "parammode"
     },
     {
@@ -9239,48 +8810,125 @@
       "norm_label": "template variants"
     },
     {
-      "label": "cutover-deploy.ps1",
+      "label": "AppConfig",
       "file_type": "code",
-      "source_file": "scripts/cutover-deploy.ps1",
+      "source_file": "internal/config/config.go",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "internal_config_config_go_config_appconfig",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "appconfig"
+    },
+    {
+      "label": "SempConfig",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "internal_config_config_go_config_sempconfig",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "sempconfig"
+    },
+    {
+      "label": "WorkflowEntry",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "internal_config_config_go_config_workflowentry",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "workflowentry"
+    },
+    {
+      "label": "TestNewEngineBundledTemplates()",
+      "file_type": "code",
+      "source_file": "internal/engine/coverage_test.go",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "internal_engine_coverage_test_testnewenginebundledtemplates",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "testnewenginebundledtemplates()"
+    },
+    {
+      "label": "TestNewEngineMissingTemplatesDir()",
+      "file_type": "code",
+      "source_file": "internal/engine/coverage_test.go",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "internal_engine_coverage_test_testnewenginemissingtemplatesdir",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "testnewenginemissingtemplatesdir()"
+    },
+    {
+      "label": "engine.go",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "scripts_cutover_deploy",
+      "id": "internal_engine_engine",
       "community": 210,
-      "community_name": "cutover-deploy.ps1",
-      "norm_label": "cutover-deploy.ps1"
+      "community_name": "NewEngine",
+      "norm_label": "engine.go"
     },
     {
-      "label": "Fail()",
+      "label": "NewEngine()",
       "file_type": "code",
-      "source_file": "scripts/cutover-deploy.ps1",
-      "source_location": "L47",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L38",
       "_origin": "ast",
-      "id": "scripts_cutover_deploy_fail",
+      "id": "internal_engine_engine_newengine",
       "community": 210,
-      "community_name": "cutover-deploy.ps1",
-      "norm_label": "fail()"
+      "community_name": "NewEngine",
+      "norm_label": "newengine()"
     },
     {
-      "label": "Info()",
+      "label": "engine/integration_test.go",
       "file_type": "code",
-      "source_file": "scripts/cutover-deploy.ps1",
-      "source_location": "L46",
+      "source_file": "internal/engine/integration_test.go",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "scripts_cutover_deploy_info",
+      "id": "internal_engine_integration_test",
       "community": 210,
-      "community_name": "cutover-deploy.ps1",
-      "norm_label": "info()"
+      "community_name": "NewEngine",
+      "norm_label": "engine/integration_test.go"
     },
     {
-      "label": "Step()",
+      "label": "integrationSemp()",
       "file_type": "code",
-      "source_file": "scripts/cutover-deploy.ps1",
-      "source_location": "L45",
+      "source_file": "internal/engine/integration_test.go",
+      "source_location": "L36",
       "_origin": "ast",
-      "id": "scripts_cutover_deploy_step",
+      "id": "internal_engine_integration_test_integrationsemp",
       "community": 210,
-      "community_name": "cutover-deploy.ps1",
-      "norm_label": "step()"
+      "community_name": "NewEngine",
+      "norm_label": "integrationsemp()"
+    },
+    {
+      "label": "makeConfig()",
+      "file_type": "code",
+      "source_file": "internal/engine/integration_test.go",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "internal_engine_integration_test_makeconfig",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "makeconfig()"
+    },
+    {
+      "label": "TestIntegrationEngineLifecycle()",
+      "file_type": "code",
+      "source_file": "internal/engine/integration_test.go",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "internal_engine_integration_test_testintegrationenginelifecycle",
+      "community": 210,
+      "community_name": "NewEngine",
+      "norm_label": "testintegrationenginelifecycle()"
     },
     {
       "label": "argStr()",
@@ -9391,6 +9039,17 @@
       "community": 211,
       "community_name": ".resolve",
       "norm_label": ".canonical()"
+    },
+    {
+      "label": ".requiredMissing()",
+      "file_type": "code",
+      "source_file": "internal/modules/driver.go",
+      "source_location": "L499",
+      "_origin": "ast",
+      "id": "modules_objectdesc_requiredmissing",
+      "community": 211,
+      "community_name": ".resolve",
+      "norm_label": ".requiredmissing()"
     },
     {
       "label": ".resolve()",
@@ -9591,6 +9250,17 @@
       "norm_label": "threshold()"
     },
     {
+      "label": "buildParams()",
+      "file_type": "code",
+      "source_file": "internal/modules/driver.go",
+      "source_location": "L797",
+      "_origin": "ast",
+      "id": "internal_modules_driver_buildparams",
+      "community": 214,
+      "community_name": "buildParams",
+      "norm_label": "buildparams()"
+    },
+    {
       "label": ".Params()",
       "file_type": "code",
       "source_file": "internal/modules/driver.go",
@@ -9598,7 +9268,7 @@
       "_origin": "ast",
       "id": "modules_collectionadd_params",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": ".params()"
     },
     {
@@ -9609,7 +9279,7 @@
       "_origin": "ast",
       "id": "modules_collectiondelete_params",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": ".params()"
     },
     {
@@ -9620,7 +9290,7 @@
       "_origin": "ast",
       "id": "modules_collectionupdate",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": "collectionupdate"
     },
     {
@@ -9631,7 +9301,7 @@
       "_origin": "ast",
       "id": "modules_collectionupdate_description",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": ".description()"
     },
     {
@@ -9642,7 +9312,7 @@
       "_origin": "ast",
       "id": "modules_collectionupdate_params",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": ".params()"
     },
     {
@@ -9653,7 +9323,7 @@
       "_origin": "ast",
       "id": "modules_collectionupdate_validate",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": ".validate()"
     },
     {
@@ -9664,7 +9334,7 @@
       "_origin": "ast",
       "id": "modules_paramspec",
       "community": 214,
-      "community_name": "collectionUpdate",
+      "community_name": "buildParams",
       "norm_label": "paramspec"
     },
     {
@@ -10405,37 +10075,114 @@
       "norm_label": "\u6307\u5b9a\u8a0a\u606f vpn"
     },
     {
-      "label": "3. Getting Started",
-      "file_type": "document",
-      "source_file": "docs/HOWTO.md",
-      "source_location": "L53",
+      "label": "ActionSpec",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L49",
       "_origin": "ast",
-      "id": "docs_howto_3_getting_started",
+      "id": "config_actionspec",
       "community": 225,
-      "community_name": "3. Getting Started",
-      "norm_label": "3. getting started"
+      "community_name": "Engine",
+      "norm_label": "actionspec"
     },
     {
-      "label": "Build from source (Go 1.26+)",
-      "file_type": "document",
-      "source_file": "docs/HOWTO.md",
-      "source_location": "L74",
+      "label": "Engine",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L27",
       "_origin": "ast",
-      "id": "docs_howto_build_from_source_go_1_26",
+      "id": "engine_engine",
       "community": 225,
-      "community_name": "3. Getting Started",
-      "norm_label": "build from source (go 1.26+)"
+      "community_name": "Engine",
+      "norm_label": "engine"
     },
     {
-      "label": "Install a prebuilt binary (recommended)",
-      "file_type": "document",
-      "source_file": "docs/HOWTO.md",
-      "source_location": "L59",
+      "label": ".resolveEntry()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L118",
       "_origin": "ast",
-      "id": "docs_howto_install_a_prebuilt_binary_recommended",
+      "id": "engine_engine_resolveentry",
       "community": 225,
-      "community_name": "3. Getting Started",
-      "norm_label": "install a prebuilt binary (recommended)"
+      "community_name": "Engine",
+      "norm_label": ".resolveentry()"
+    },
+    {
+      "label": ".resolveTemplate()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L285",
+      "_origin": "ast",
+      "id": "engine_engine_resolvetemplate",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": ".resolvetemplate()"
+    },
+    {
+      "label": ".Run()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "engine_engine_run",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": ".run()"
+    },
+    {
+      "label": ".runAction()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L242",
+      "_origin": "ast",
+      "id": "engine_engine_runaction",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": ".runaction()"
+    },
+    {
+      "label": ".runWorkflow()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L213",
+      "_origin": "ast",
+      "id": "engine_engine_runworkflow",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": ".runworkflow()"
+    },
+    {
+      "label": ".ValidateWorkflows()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine.go",
+      "source_location": "L179",
+      "_origin": "ast",
+      "id": "engine_engine_validateworkflows",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": ".validateworkflows()"
+    },
+    {
+      "label": "WorkflowTemplate",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "internal_config_config_go_config_workflowtemplate",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": "workflowtemplate"
+    },
+    {
+      "label": "Client",
+      "file_type": "code",
+      "source_file": "internal/modules/base.go",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "internal_modules_base_go_modules_client",
+      "community": 225,
+      "community_name": "Engine",
+      "norm_label": "client"
     },
     {
       "label": "3. \u958b\u59cb\u4f7f\u7528",
@@ -10515,6 +10262,182 @@
       "norm_label": "testworkflowresultnofailures()"
     },
     {
+      "label": "cli/integration_test.go",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "cli/integration_test.go"
+    },
+    {
+      "label": "integrationEnv()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_integrationenv",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "integrationenv()"
+    },
+    {
+      "label": "integrationFixturesDir()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_integrationfixturesdir",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "integrationfixturesdir()"
+    },
+    {
+      "label": "integrationSempClient()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_integrationsempclient",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "integrationsempclient()"
+    },
+    {
+      "label": "TestIntegrationCLIListModules()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_testintegrationclilistmodules",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "testintegrationclilistmodules()"
+    },
+    {
+      "label": "TestIntegrationCLIRun()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L111",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_testintegrationclirun",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "testintegrationclirun()"
+    },
+    {
+      "label": "TestIntegrationCLIValidate()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_testintegrationclivalidate",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "testintegrationclivalidate()"
+    },
+    {
+      "label": "writeIntegrationConfig()",
+      "file_type": "code",
+      "source_file": "internal/cli/integration_test.go",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "internal_cli_integration_test_writeintegrationconfig",
+      "community": 228,
+      "community_name": "cli/integration_test.go",
+      "norm_label": "writeintegrationconfig()"
+    },
+    {
+      "label": "TestUnionAttributesTagsThePlatformSpecificOneAndNotesItsDescription()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L389",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testunionattributestagstheplatformspecificoneandnotesitsdescription",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "testunionattributestagstheplatformspecificoneandnotesitsdescription()"
+    },
+    {
+      "label": "TestUnionEnumKeepsTheWiderSetsOrder()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L430",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testunionenumkeepsthewidersetsorder",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "testunionenumkeepsthewidersetsorder()"
+    },
+    {
+      "label": "TestUnionTagsObjectsByWhichPlatformDefinesThem()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L369",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testuniontagsobjectsbywhichplatformdefinesthem",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "testuniontagsobjectsbywhichplatformdefinesthem()"
+    },
+    {
+      "label": "merge.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/merge.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_merge",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "merge.go"
+    },
+    {
+      "label": "union()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/merge.go",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_merge_union",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "union()"
+    },
+    {
+      "label": "unionAttributes()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/merge.go",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_merge_unionattributes",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "unionattributes()"
+    },
+    {
+      "label": "unionEnum()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/merge.go",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_merge_unionenum",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "unionenum()"
+    },
+    {
+      "label": "withNote()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/merge.go",
+      "source_location": "L84",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_merge_withnote",
+      "community": 229,
+      "community_name": "unionAttributes",
+      "norm_label": "withnote()"
+    },
+    {
       "label": "msg_vpn_acl_profile.md",
       "file_type": "document",
       "source_file": "docs/modules/msg_vpn_acl_profile.md",
@@ -10568,6 +10491,160 @@
       "community": 23,
       "community_name": "`msg_vpn_acl_profile`",
       "norm_label": "`msg_vpn_acl_profile.update`"
+    },
+    {
+      "label": "engineFake",
+      "file_type": "code",
+      "source_file": "internal/engine/engine_test.go",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "engine_enginefake",
+      "community": 230,
+      "community_name": "engineFake",
+      "norm_label": "enginefake"
+    },
+    {
+      "label": ".Create()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine_test.go",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "engine_enginefake_create",
+      "community": 230,
+      "community_name": "engineFake",
+      "norm_label": ".create()"
+    },
+    {
+      "label": ".DefaultMsgVPN()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine_test.go",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "engine_enginefake_defaultmsgvpn",
+      "community": 230,
+      "community_name": "engineFake",
+      "norm_label": ".defaultmsgvpn()"
+    },
+    {
+      "label": ".Delete()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine_test.go",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "engine_enginefake_delete",
+      "community": 230,
+      "community_name": "engineFake",
+      "norm_label": ".delete()"
+    },
+    {
+      "label": ".Exists()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine_test.go",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "engine_enginefake_exists",
+      "community": 230,
+      "community_name": "engineFake",
+      "norm_label": ".exists()"
+    },
+    {
+      "label": ".Update()",
+      "file_type": "code",
+      "source_file": "internal/engine/engine_test.go",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "engine_enginefake_update",
+      "community": 230,
+      "community_name": "engineFake",
+      "norm_label": ".update()"
+    },
+    {
+      "label": "cfgInt()",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L315",
+      "_origin": "ast",
+      "id": "internal_config_config_cfgint",
+      "community": 231,
+      "community_name": "Stringify",
+      "norm_label": "cfgint()"
+    },
+    {
+      "label": "CoerceInt()",
+      "file_type": "code",
+      "source_file": "internal/semp/helpers.go",
+      "source_location": "L247",
+      "_origin": "ast",
+      "id": "internal_semp_helpers_coerceint",
+      "community": 231,
+      "community_name": "Stringify",
+      "norm_label": "coerceint()"
+    },
+    {
+      "label": "Stringify()",
+      "file_type": "code",
+      "source_file": "internal/semp/helpers.go",
+      "source_location": "L281",
+      "_origin": "ast",
+      "id": "internal_semp_helpers_stringify",
+      "community": 231,
+      "community_name": "Stringify",
+      "norm_label": "stringify()"
+    },
+    {
+      "label": "TestCoerceInt()",
+      "file_type": "code",
+      "source_file": "internal/semp/helpers_test.go",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "internal_semp_helpers_test_testcoerceint",
+      "community": 231,
+      "community_name": "Stringify",
+      "norm_label": "testcoerceint()"
+    },
+    {
+      "label": "TestStringify()",
+      "file_type": "code",
+      "source_file": "internal/semp/helpers_test.go",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "internal_semp_helpers_test_teststringify",
+      "community": 231,
+      "community_name": "Stringify",
+      "norm_label": "teststringify()"
+    },
+    {
+      "label": "8. Built-in Template Reference",
+      "file_type": "document",
+      "source_file": "docs/HOWTO.md",
+      "source_location": "L473",
+      "_origin": "ast",
+      "id": "docs_howto_8_built_in_template_reference",
+      "community": 232,
+      "community_name": "8. Built-in Template Reference",
+      "norm_label": "8. built-in template reference"
+    },
+    {
+      "label": "app-inbound \u2014 APP Inbound Workflows",
+      "file_type": "document",
+      "source_file": "docs/HOWTO.md",
+      "source_location": "L499",
+      "_origin": "ast",
+      "id": "docs_howto_app_inbound_app_inbound_workflows",
+      "community": 232,
+      "community_name": "8. Built-in Template Reference",
+      "norm_label": "app-inbound \u2014 app inbound workflows"
+    },
+    {
+      "label": "app-outbound \u2014 APP Outbound Workflows",
+      "file_type": "document",
+      "source_file": "docs/HOWTO.md",
+      "source_location": "L475",
+      "_origin": "ast",
+      "id": "docs_howto_app_outbound_app_outbound_workflows",
+      "community": 232,
+      "community_name": "8. Built-in Template Reference",
+      "norm_label": "app-outbound \u2014 app outbound workflows"
     },
     {
       "label": "CLAUDE.md",
@@ -11879,28 +11956,6 @@
       "norm_label": "extract()"
     },
     {
-      "label": "TestApplyLegacyLeavesAnObjectWithNoOverlayUntouched()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L505",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testapplylegacyleavesanobjectwithnooverlayuntouched",
-      "community": 30,
-      "community_name": "Extract",
-      "norm_label": "testapplylegacyleavesanobjectwithnooverlayuntouched()"
-    },
-    {
-      "label": "TestApplyLegacyPinsOverlayFieldsAndDropsSkippedAttributes()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L460",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testapplylegacypinsoverlayfieldsanddropsskippedattributes",
-      "community": 30,
-      "community_name": "Extract",
-      "norm_label": "testapplylegacypinsoverlayfieldsanddropsskippedattributes()"
-    },
-    {
       "label": "TestCheckLegacyMatchedErrorsWhenAnOverlayDefinitionMatchesNoObject()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract_test.go",
@@ -12011,17 +12066,6 @@
       "norm_label": "addedremovedmsgs()"
     },
     {
-      "label": "applyLegacy()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/legacy.go",
-      "source_location": "L180",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_legacy_applylegacy",
-      "community": 30,
-      "community_name": "Extract",
-      "norm_label": "applylegacy()"
-    },
-    {
       "label": "LegacyDefinitions()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/legacy.go",
@@ -12042,6 +12086,83 @@
       "community": 30,
       "community_name": "Extract",
       "norm_label": "merge()"
+    },
+    {
+      "label": "Load()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec.go",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_load",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "load()"
+    },
+    {
+      "label": "spec_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "spec_test.go"
+    },
+    {
+      "label": "TestBodyDefinition()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L100",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testbodydefinition",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "testbodydefinition()"
+    },
+    {
+      "label": "TestLoadErrors()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "testloaderrors()"
+    },
+    {
+      "label": "TestLoadValidMinimalSpec()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "testloadvalidminimalspec()"
+    },
+    {
+      "label": "TestPathParams()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L127",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testpathparams",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "testpathparams()"
+    },
+    {
+      "label": "writeSpec()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L53",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "community": 30,
+      "community_name": "Extract",
+      "norm_label": "writespec()"
     },
     {
       "label": "overrides.go",
@@ -12066,34 +12187,202 @@
       "norm_label": "queuederivedfields()"
     },
     {
-      "label": "test.sh",
+      "label": "io/fs.FS",
       "file_type": "code",
-      "source_file": "scripts/test.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
+      "source_file": "",
+      "source_location": "",
       "_origin": "ast",
-      "id": "scripts_test",
+      "id": "go_type_io_fs_fs",
       "community": 32,
-      "community_name": "test.sh",
-      "norm_label": "test.sh"
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "io/fs.fs"
     },
     {
-      "label": "test.sh script",
+      "label": "config.go",
       "file_type": "code",
-      "source_file": "scripts/test.sh",
+      "source_file": "internal/config/config.go",
       "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
       "_origin": "ast",
-      "id": "scripts_test_sh__entry",
+      "id": "internal_config_config",
       "community": 32,
-      "community_name": "test.sh",
-      "norm_label": "test.sh script"
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "config.go"
+    },
+    {
+      "label": "cfgBool()",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L309",
+      "_origin": "ast",
+      "id": "internal_config_config_cfgbool",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "cfgbool()"
+    },
+    {
+      "label": "cfgStr()",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L298",
+      "_origin": "ast",
+      "id": "internal_config_config_cfgstr",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "cfgstr()"
+    },
+    {
+      "label": "LoadTemplatesDir()",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L206",
+      "_origin": "ast",
+      "id": "internal_config_config_loadtemplatesdir",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "loadtemplatesdir()"
+    },
+    {
+      "label": "LoadTemplatesFS()",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L216",
+      "_origin": "ast",
+      "id": "internal_config_config_loadtemplatesfs",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "loadtemplatesfs()"
+    },
+    {
+      "label": "parseInputsSchema()",
+      "file_type": "code",
+      "source_file": "internal/config/config.go",
+      "source_location": "L170",
+      "_origin": "ast",
+      "id": "internal_config_config_parseinputsschema",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "parseinputsschema()"
+    },
+    {
+      "label": "TestLoadTemplatesDirNotFound()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L198",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadtemplatesdirnotfound",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesdirnotfound()"
+    },
+    {
+      "label": "TestLoadTemplatesFS()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadtemplatesfs",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesfs()"
+    },
+    {
+      "label": "TestLoadTemplatesMissingModule()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadtemplatesmissingmodule",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesmissingmodule()"
+    },
+    {
+      "label": "TestLoadTemplatesNonListSkipped()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L191",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadtemplatesnonlistskipped",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesnonlistskipped()"
+    },
+    {
+      "label": "config/coverage_test.go",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "config/coverage_test.go"
+    },
+    {
+      "label": "TestLoadConfigReadError()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadconfigreaderror",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadconfigreaderror()"
+    },
+    {
+      "label": "TestLoadTemplatesActionNoArgs()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadtemplatesactionnoargs",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesactionnoargs()"
+    },
+    {
+      "label": "TestLoadTemplatesDirSuccess()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadtemplatesdirsuccess",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesdirsuccess()"
+    },
+    {
+      "label": "TestLoadTemplatesParseError()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadtemplatesparseerror",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesparseerror()"
+    },
+    {
+      "label": "TestLoadTemplatesReadError()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadtemplatesreaderror",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesreaderror()"
+    },
+    {
+      "label": "TestLoadTemplatesSkippedEntries()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadtemplatesskippedentries",
+      "community": 32,
+      "community_name": "LoadTemplatesFS",
+      "norm_label": "testloadtemplatesskippedentries()"
     },
     {
       "label": "solace-semp-workflow",
@@ -12439,17 +12728,6 @@
       "norm_label": "`msg_vpn_cert_matching_rule_attribute_filter.update`"
     },
     {
-      "label": "ActionSpec",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "config_actionspec",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "actionspec"
-    },
-    {
       "label": "Engine",
       "file_type": "code",
       "source_file": "",
@@ -12461,545 +12739,6 @@
       "norm_label": "engine"
     },
     {
-      "label": "Engine",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "engine_engine",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "engine"
-    },
-    {
-      "label": ".resolveEntry()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L118",
-      "_origin": "ast",
-      "id": "engine_engine_resolveentry",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".resolveentry()"
-    },
-    {
-      "label": ".resolveTemplate()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L285",
-      "_origin": "ast",
-      "id": "engine_engine_resolvetemplate",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".resolvetemplate()"
-    },
-    {
-      "label": ".Run()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L70",
-      "_origin": "ast",
-      "id": "engine_engine_run",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".run()"
-    },
-    {
-      "label": ".runAction()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L242",
-      "_origin": "ast",
-      "id": "engine_engine_runaction",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".runaction()"
-    },
-    {
-      "label": ".runWorkflow()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L213",
-      "_origin": "ast",
-      "id": "engine_engine_runworkflow",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".runworkflow()"
-    },
-    {
-      "label": ".ValidateWorkflows()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L179",
-      "_origin": "ast",
-      "id": "engine_engine_validateworkflows",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".validateworkflows()"
-    },
-    {
-      "label": "engineFake",
-      "file_type": "code",
-      "source_file": "internal/engine/engine_test.go",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "engine_enginefake",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "enginefake"
-    },
-    {
-      "label": ".Create()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine_test.go",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "engine_enginefake_create",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".create()"
-    },
-    {
-      "label": ".DefaultMsgVPN()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine_test.go",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "engine_enginefake_defaultmsgvpn",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".defaultmsgvpn()"
-    },
-    {
-      "label": ".Delete()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine_test.go",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "engine_enginefake_delete",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".delete()"
-    },
-    {
-      "label": ".Exists()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine_test.go",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "engine_enginefake_exists",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".exists()"
-    },
-    {
-      "label": ".Update()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine_test.go",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "engine_enginefake_update",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": ".update()"
-    },
-    {
-      "label": "io/fs.FS",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "go_type_io_fs_fs",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "io/fs.fs"
-    },
-    {
-      "label": "config.go",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_config_config",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "config.go"
-    },
-    {
-      "label": "cfgBool()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L309",
-      "_origin": "ast",
-      "id": "internal_config_config_cfgbool",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "cfgbool()"
-    },
-    {
-      "label": "cfgStr()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L298",
-      "_origin": "ast",
-      "id": "internal_config_config_cfgstr",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "cfgstr()"
-    },
-    {
-      "label": "AppConfig",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "internal_config_config_go_config_appconfig",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "appconfig"
-    },
-    {
-      "label": "SempConfig",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "internal_config_config_go_config_sempconfig",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "sempconfig"
-    },
-    {
-      "label": "WorkflowEntry",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L32",
-      "_origin": "ast",
-      "id": "internal_config_config_go_config_workflowentry",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "workflowentry"
-    },
-    {
-      "label": "WorkflowTemplate",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L56",
-      "_origin": "ast",
-      "id": "internal_config_config_go_config_workflowtemplate",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "workflowtemplate"
-    },
-    {
-      "label": "LoadConfig()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L63",
-      "_origin": "ast",
-      "id": "internal_config_config_loadconfig",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "loadconfig()"
-    },
-    {
-      "label": "LoadTemplatesDir()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L206",
-      "_origin": "ast",
-      "id": "internal_config_config_loadtemplatesdir",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "loadtemplatesdir()"
-    },
-    {
-      "label": "LoadTemplatesFS()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L216",
-      "_origin": "ast",
-      "id": "internal_config_config_loadtemplatesfs",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "loadtemplatesfs()"
-    },
-    {
-      "label": "parseInputsSchema()",
-      "file_type": "code",
-      "source_file": "internal/config/config.go",
-      "source_location": "L170",
-      "_origin": "ast",
-      "id": "internal_config_config_parseinputsschema",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "parseinputsschema()"
-    },
-    {
-      "label": "config_test.go",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_config_config_test",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "config_test.go"
-    },
-    {
-      "label": "TestLoadConfigMissingFile()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L78",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigmissingfile",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigmissingfile()"
-    },
-    {
-      "label": "TestLoadConfigMissingSemp()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L93",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigmissingsemp",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigmissingsemp()"
-    },
-    {
-      "label": "TestLoadConfigMissingSempKey()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L100",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigmissingsempkey",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigmissingsempkey()"
-    },
-    {
-      "label": "TestLoadConfigNotAMapping()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L86",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfignotamapping",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfignotamapping()"
-    },
-    {
-      "label": "TestLoadConfigOverrides()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L61",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigoverrides",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigoverrides()"
-    },
-    {
-      "label": "TestLoadConfigTemplatesDirOnDisk()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigtemplatesdirondisk",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigtemplatesdirondisk()"
-    },
-    {
-      "label": "TestLoadConfigValid()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigvalid",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigvalid()"
-    },
-    {
-      "label": "TestLoadConfigWorkflowMissingTemplate()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L122",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigworkflowmissingtemplate",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigworkflowmissingtemplate()"
-    },
-    {
-      "label": "TestLoadConfigWorkflowsNotList()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L112",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadconfigworkflowsnotlist",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigworkflowsnotlist()"
-    },
-    {
-      "label": "TestLoadTemplatesDirNotFound()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L198",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadtemplatesdirnotfound",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesdirnotfound()"
-    },
-    {
-      "label": "TestLoadTemplatesFS()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L151",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadtemplatesfs",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesfs()"
-    },
-    {
-      "label": "TestLoadTemplatesMissingModule()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L175",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadtemplatesmissingmodule",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesmissingmodule()"
-    },
-    {
-      "label": "TestLoadTemplatesNonListSkipped()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L191",
-      "_origin": "ast",
-      "id": "internal_config_config_test_testloadtemplatesnonlistskipped",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesnonlistskipped()"
-    },
-    {
-      "label": "writeConfig()",
-      "file_type": "code",
-      "source_file": "internal/config/config_test.go",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "internal_config_config_test_writeconfig",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "writeconfig()"
-    },
-    {
-      "label": "config/coverage_test.go",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "config/coverage_test.go"
-    },
-    {
-      "label": "TestLoadConfigEdgeDefaults()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadconfigedgedefaults",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigedgedefaults()"
-    },
-    {
-      "label": "TestLoadConfigParseErrors()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadconfigparseerrors",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigparseerrors()"
-    },
-    {
-      "label": "TestLoadConfigReadError()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadconfigreaderror",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadconfigreaderror()"
-    },
-    {
-      "label": "TestLoadTemplatesActionNoArgs()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L175",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadtemplatesactionnoargs",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesactionnoargs()"
-    },
-    {
-      "label": "TestLoadTemplatesDirSuccess()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L103",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadtemplatesdirsuccess",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesdirsuccess()"
-    },
-    {
-      "label": "TestLoadTemplatesParseError()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L123",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadtemplatesparseerror",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesparseerror()"
-    },
-    {
-      "label": "TestLoadTemplatesReadError()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L114",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadtemplatesreaderror",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesreaderror()"
-    },
-    {
-      "label": "TestLoadTemplatesSkippedEntries()",
-      "file_type": "code",
-      "source_file": "internal/config/coverage_test.go",
-      "source_location": "L132",
-      "_origin": "ast",
-      "id": "internal_config_coverage_test_testloadtemplatesskippedentries",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testloadtemplatesskippedentries()"
-    },
-    {
       "label": "engine/coverage_test.go",
       "file_type": "code",
       "source_file": "internal/engine/coverage_test.go",
@@ -13009,28 +12748,6 @@
       "community": 4,
       "community_name": "newTestEngine",
       "norm_label": "engine/coverage_test.go"
-    },
-    {
-      "label": "TestNewEngineBundledTemplates()",
-      "file_type": "code",
-      "source_file": "internal/engine/coverage_test.go",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "internal_engine_coverage_test_testnewenginebundledtemplates",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testnewenginebundledtemplates()"
-    },
-    {
-      "label": "TestNewEngineMissingTemplatesDir()",
-      "file_type": "code",
-      "source_file": "internal/engine/coverage_test.go",
-      "source_location": "L41",
-      "_origin": "ast",
-      "id": "internal_engine_coverage_test_testnewenginemissingtemplatesdir",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testnewenginemissingtemplatesdir()"
     },
     {
       "label": "TestResolveTemplateNotFoundListsAvailable()",
@@ -13086,28 +12803,6 @@
       "community": 4,
       "community_name": "newTestEngine",
       "norm_label": "testrunworkflowmissingrequiredinput()"
-    },
-    {
-      "label": "engine.go",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_engine_engine",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "engine.go"
-    },
-    {
-      "label": "NewEngine()",
-      "file_type": "code",
-      "source_file": "internal/engine/engine.go",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "internal_engine_engine_newengine",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "newengine()"
     },
     {
       "label": "engine_test.go",
@@ -13295,72 +12990,6 @@
       "community": 4,
       "community_name": "newTestEngine",
       "norm_label": "testvalidateworkflowsreportseveryproblem()"
-    },
-    {
-      "label": "engine/integration_test.go",
-      "file_type": "code",
-      "source_file": "internal/engine/integration_test.go",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "internal_engine_integration_test",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "engine/integration_test.go"
-    },
-    {
-      "label": "integrationSemp()",
-      "file_type": "code",
-      "source_file": "internal/engine/integration_test.go",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "internal_engine_integration_test_integrationsemp",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "integrationsemp()"
-    },
-    {
-      "label": "makeConfig()",
-      "file_type": "code",
-      "source_file": "internal/engine/integration_test.go",
-      "source_location": "L55",
-      "_origin": "ast",
-      "id": "internal_engine_integration_test_makeconfig",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "makeconfig()"
-    },
-    {
-      "label": "TestIntegrationEngineLifecycle()",
-      "file_type": "code",
-      "source_file": "internal/engine/integration_test.go",
-      "source_location": "L69",
-      "_origin": "ast",
-      "id": "internal_engine_integration_test_testintegrationenginelifecycle",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "testintegrationenginelifecycle()"
-    },
-    {
-      "label": "Client",
-      "file_type": "code",
-      "source_file": "internal/modules/base.go",
-      "source_location": "L21",
-      "_origin": "ast",
-      "id": "internal_modules_base_go_modules_client",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "client"
-    },
-    {
-      "label": "InputSchema",
-      "file_type": "code",
-      "source_file": "internal/templating/templating.go",
-      "source_location": "L121",
-      "_origin": "ast",
-      "id": "internal_templating_templating_go_templating_inputschema",
-      "community": 4,
-      "community_name": "newTestEngine",
-      "norm_label": "inputschema"
     },
     {
       "label": "msg_vpn_client_profile.md",
@@ -15277,259 +14906,257 @@
       "norm_label": "init()"
     },
     {
-      "label": "cutover-check.sh",
+      "label": "semp-gen/main.go",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
+      "source_file": "tools/semp-gen/main.go",
       "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
       "_origin": "ast",
-      "id": "scripts_cutover_check",
+      "id": "tools_semp_gen_main",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "cutover-check.sh"
+      "community_name": "run",
+      "norm_label": "semp-gen/main.go"
     },
     {
-      "label": "acl_config()",
+      "label": "actionCount()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L295",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main.go",
+      "source_location": "L166",
       "_origin": "ast",
-      "id": "scripts_cutover_check_acl_config",
+      "id": "tools_semp_gen_main_actioncount",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "acl_config()"
+      "community_name": "run",
+      "norm_label": "actioncount()"
     },
     {
-      "label": "cleanup()",
+      "label": "main()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L141",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main.go",
+      "source_location": "L27",
       "_origin": "ast",
-      "id": "scripts_cutover_check_cleanup",
+      "id": "tools_semp_gen_main_main",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "cleanup()"
+      "community_name": "run",
+      "norm_label": "main()"
     },
     {
-      "label": "conn_block()",
+      "label": "reportDrift()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L165",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main.go",
+      "source_location": "L126",
       "_origin": "ast",
-      "id": "scripts_cutover_check_conn_block",
+      "id": "tools_semp_gen_main_reportdrift",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "conn_block()"
+      "community_name": "run",
+      "norm_label": "reportdrift()"
     },
     {
-      "label": "die()",
+      "label": "run()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L111",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main.go",
+      "source_location": "L43",
       "_origin": "ast",
-      "id": "scripts_cutover_check_die",
+      "id": "tools_semp_gen_main_run",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "die()"
+      "community_name": "run",
+      "norm_label": "run()"
     },
     {
-      "label": "fail()",
+      "label": "staleFiles()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
+      "source_file": "tools/semp-gen/main.go",
       "source_location": "L102",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
       "_origin": "ast",
-      "id": "scripts_cutover_check_fail",
+      "id": "tools_semp_gen_main_stalefiles",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "fail()"
+      "community_name": "run",
+      "norm_label": "stalefiles()"
     },
     {
-      "label": "FAILURES",
+      "label": "summary()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L82",
-      "metadata": {
-        "language": "bash",
-        "kind": "code"
-      },
+      "source_file": "tools/semp-gen/main.go",
+      "source_location": "L181",
       "_origin": "ast",
-      "id": "scripts_cutover_check_failures",
+      "id": "tools_semp_gen_main_summary",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "failures"
+      "community_name": "run",
+      "norm_label": "summary()"
     },
     {
-      "label": "hr()",
+      "label": "main_test.go",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L86",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
-      "_origin": "ast",
-      "id": "scripts_cutover_check_hr",
-      "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "hr()"
-    },
-    {
-      "label": "info()",
-      "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L95",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
-      "_origin": "ast",
-      "id": "scripts_cutover_check_info",
-      "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "info()"
-    },
-    {
-      "label": "NO_COLOR",
-      "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L59",
-      "metadata": {
-        "language": "bash",
-        "kind": "code"
-      },
-      "_origin": "ast",
-      "id": "scripts_cutover_check_no_color",
-      "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "no_color"
-    },
-    {
-      "label": "parse_counts()",
-      "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L319",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
-      "_origin": "ast",
-      "id": "scripts_cutover_check_parse_counts",
-      "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "parse_counts()"
-    },
-    {
-      "label": "pass()",
-      "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L97",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
-      "_origin": "ast",
-      "id": "scripts_cutover_check_pass",
-      "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "pass()"
-    },
-    {
-      "label": "cutover-check.sh script",
-      "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
+      "source_file": "tools/semp-gen/main_test.go",
       "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
       "_origin": "ast",
-      "id": "scripts_cutover_check_sh__entry",
+      "id": "tools_semp_gen_main_test",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "cutover-check.sh script"
+      "community_name": "run",
+      "norm_label": "main_test.go"
     },
     {
-      "label": "step()",
+      "label": "TestActionCount()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L88",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L15",
       "_origin": "ast",
-      "id": "scripts_cutover_check_step",
+      "id": "tools_semp_gen_main_test_testactioncount",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "step()"
+      "community_name": "run",
+      "norm_label": "testactioncount()"
     },
     {
-      "label": "usage()",
+      "label": "TestStaleFiles()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L116",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L59",
       "_origin": "ast",
-      "id": "scripts_cutover_check_usage",
+      "id": "tools_semp_gen_main_test_teststalefiles",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "usage()"
+      "community_name": "run",
+      "norm_label": "teststalefiles()"
     },
     {
-      "label": "vhost_config()",
+      "label": "TestSummary()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L285",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L26",
       "_origin": "ast",
-      "id": "scripts_cutover_check_vhost_config",
+      "id": "tools_semp_gen_main_test_testsummary",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "vhost_config()"
+      "community_name": "run",
+      "norm_label": "testsummary()"
     },
     {
-      "label": "wf()",
+      "label": "TestTruncate()",
       "file_type": "code",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L337",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
+      "source_file": "tools/semp-gen/main_test.go",
+      "source_location": "L38",
       "_origin": "ast",
-      "id": "scripts_cutover_check_wf",
+      "id": "tools_semp_gen_main_test_testtruncate",
       "community": 7,
-      "community_name": "cutover-check.sh",
-      "norm_label": "wf()"
+      "community_name": "run",
+      "norm_label": "testtruncate()"
+    },
+    {
+      "label": "truncate()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/main.go",
+      "source_location": "L159",
+      "_origin": "ast",
+      "id": "tools_semp_gen_main_truncate",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "truncate()"
+    },
+    {
+      "label": "run_test.go",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "run_test.go"
+    },
+    {
+      "label": "genFiles()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_genfiles",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "genfiles()"
+    },
+    {
+      "label": "realSpecs()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_realspecs",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "realspecs()"
+    },
+    {
+      "label": "TestRunCheckReportsAnOutOfDateFile()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testruncheckreportsanoutofdatefile",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testruncheckreportsanoutofdatefile()"
+    },
+    {
+      "label": "TestRunCheckReportsAStaleFile()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L109",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testruncheckreportsastalefile",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testruncheckreportsastalefile()"
+    },
+    {
+      "label": "TestRunCheckReportsMissingOutput()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testruncheckreportsmissingoutput",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testruncheckreportsmissingoutput()"
+    },
+    {
+      "label": "TestRunGeneratesThenReportsNoDrift()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testrungeneratesthenreportsnodrift",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testrungeneratesthenreportsnodrift()"
+    },
+    {
+      "label": "TestRunRejectsMismatchedSpecificationVersions()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L121",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testrunrejectsmismatchedspecificationversions",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testrunrejectsmismatchedspecificationversions()"
+    },
+    {
+      "label": "TestRunRemovesADescriptorTheSpecNoLongerProduces()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L91",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testrunremovesadescriptorthespecnolongerproduces",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testrunremovesadescriptorthespecnolongerproduces()"
+    },
+    {
+      "label": "TestRunReportsAMissingSpecification()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/run_test.go",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "tools_semp_gen_run_test_testrunreportsamissingspecification",
+      "community": 7,
+      "community_name": "run",
+      "norm_label": "testrunreportsamissingspecification()"
     },
     {
       "label": "msg_vpn_rest_delivery_point_queue_binding_protected_request_header.md",
@@ -15730,6 +15357,17 @@
       "norm_label": "extract.go"
     },
     {
+      "label": "applyCombos()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract.go",
+      "source_location": "L419",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_applycombos",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "applycombos()"
+    },
+    {
       "label": "attributes()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -15739,6 +15377,17 @@
       "community": 73,
       "community_name": "extract.go",
       "norm_label": "attributes()"
+    },
+    {
+      "label": "buildAttribute()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract.go",
+      "source_location": "L361",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_buildattribute",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "buildattribute()"
     },
     {
       "label": "extractBroker()",
@@ -15818,6 +15467,17 @@
       "norm_label": "parentdefinition()"
     },
     {
+      "label": "parseDefault()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract.go",
+      "source_location": "L437",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_parsedefault",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "parsedefault()"
+    },
+    {
       "label": "pathSegments()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract.go",
@@ -15840,6 +15500,28 @@
       "norm_label": "testattributesexcludespathkeysandreadonlyproperties()"
     },
     {
+      "label": "TestBuildAttributeRejectsAnUnsupportedType()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L354",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testbuildattributerejectsanunsupportedtype",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "testbuildattributerejectsanunsupportedtype()"
+    },
+    {
+      "label": "TestBuildAttributeResolvesANestedRefAndAppliesCombosByNestedDefinition()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L320",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "testbuildattributeresolvesanestedrefandappliescombosbynesteddefinition()"
+    },
+    {
       "label": "TestExtractBrokerRequiresAPatchOperation()",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/extract_test.go",
@@ -15849,6 +15531,28 @@
       "community": 73,
       "community_name": "extract.go",
       "norm_label": "testextractbrokerrequiresapatchoperation()"
+    },
+    {
+      "label": "TestParseDefaultReadsTheProseSentence()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
+      "source_location": "L266",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_ir_extract_test_testparsedefaultreadstheprosesentence",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "testparsedefaultreadstheprosesentence()"
+    },
+    {
+      "label": "Combination",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/mdtable/mdtable.go",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_mdtable_mdtable_go_mdtable_combination",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "combination"
     },
     {
       "label": "spec.go",
@@ -15915,6 +15619,28 @@
       "community": 73,
       "community_name": "extract.go",
       "norm_label": "property"
+    },
+    {
+      "label": "RefName()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec.go",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_refname",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "refname()"
+    },
+    {
+      "label": "TestRefName()",
+      "file_type": "code",
+      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_location": "L148",
+      "_origin": "ast",
+      "id": "tools_semp_gen_internal_specmodel_spec_test_testrefname",
+      "community": 73,
+      "community_name": "extract.go",
+      "norm_label": "testrefname()"
     },
     {
       "label": "oauth_profile_client_allowed_host.md",
@@ -16368,6 +16094,17 @@
       "norm_label": "engine"
     },
     {
+      "label": "InputSchema",
+      "file_type": "code",
+      "source_file": "internal/templating/templating.go",
+      "source_location": "L121",
+      "_origin": "ast",
+      "id": "internal_templating_templating_go_templating_inputschema",
+      "community": 8,
+      "community_name": "NewEngine",
+      "norm_label": "inputschema"
+    },
+    {
       "label": "isUndefinedErr()",
       "file_type": "code",
       "source_file": "internal/templating/templating.go",
@@ -16720,103 +16457,158 @@
       "norm_label": "`oauth_profile_default_msg_vpn_access_level_exception.update`"
     },
     {
-      "label": "Load()",
+      "label": "LoadConfig()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec.go",
-      "source_location": "L107",
+      "source_file": "internal/config/config.go",
+      "source_location": "L63",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_load",
+      "id": "internal_config_config_loadconfig",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "load()"
+      "community_name": "LoadConfig",
+      "norm_label": "loadconfig()"
     },
     {
-      "label": "RefName()",
+      "label": "config_test.go",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec.go",
-      "source_location": "L95",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_refname",
-      "community": 82,
-      "community_name": "Load",
-      "norm_label": "refname()"
-    },
-    {
-      "label": "spec_test.go",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_file": "internal/config/config_test.go",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test",
+      "id": "internal_config_config_test",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "spec_test.go"
+      "community_name": "LoadConfig",
+      "norm_label": "config_test.go"
     },
     {
-      "label": "TestBodyDefinition()",
+      "label": "TestLoadConfigMissingFile()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadconfigmissingfile",
+      "community": 82,
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigmissingfile()"
+    },
+    {
+      "label": "TestLoadConfigMissingSemp()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadconfigmissingsemp",
+      "community": 82,
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigmissingsemp()"
+    },
+    {
+      "label": "TestLoadConfigMissingSempKey()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
       "source_location": "L100",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test_testbodydefinition",
+      "id": "internal_config_config_test_testloadconfigmissingsempkey",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "testbodydefinition()"
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigmissingsempkey()"
     },
     {
-      "label": "TestLoadErrors()",
+      "label": "TestLoadConfigNotAMapping()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
-      "source_location": "L71",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L86",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test_testloaderrors",
+      "id": "internal_config_config_test_testloadconfignotamapping",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "testloaderrors()"
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfignotamapping()"
     },
     {
-      "label": "TestLoadValidMinimalSpec()",
+      "label": "TestLoadConfigOverrides()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
-      "source_location": "L60",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L61",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test_testloadvalidminimalspec",
+      "id": "internal_config_config_test_testloadconfigoverrides",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "testloadvalidminimalspec()"
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigoverrides()"
     },
     {
-      "label": "TestPathParams()",
+      "label": "TestLoadConfigTemplatesDirOnDisk()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
-      "source_location": "L127",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L52",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test_testpathparams",
+      "id": "internal_config_config_test_testloadconfigtemplatesdirondisk",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "testpathparams()"
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigtemplatesdirondisk()"
     },
     {
-      "label": "TestRefName()",
+      "label": "TestLoadConfigValid()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
-      "source_location": "L148",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L36",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test_testrefname",
+      "id": "internal_config_config_test_testloadconfigvalid",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "testrefname()"
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigvalid()"
     },
     {
-      "label": "writeSpec()",
+      "label": "TestLoadConfigWorkflowMissingTemplate()",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/specmodel/spec_test.go",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L122",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadconfigworkflowmissingtemplate",
+      "community": 82,
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigworkflowmissingtemplate()"
+    },
+    {
+      "label": "TestLoadConfigWorkflowsNotList()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "internal_config_config_test_testloadconfigworkflowsnotlist",
+      "community": 82,
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigworkflowsnotlist()"
+    },
+    {
+      "label": "writeConfig()",
+      "file_type": "code",
+      "source_file": "internal/config/config_test.go",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "internal_config_config_test_writeconfig",
+      "community": 82,
+      "community_name": "LoadConfig",
+      "norm_label": "writeconfig()"
+    },
+    {
+      "label": "TestLoadConfigEdgeDefaults()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
       "source_location": "L53",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_specmodel_spec_test_writespec",
+      "id": "internal_config_coverage_test_testloadconfigedgedefaults",
       "community": 82,
-      "community_name": "Load",
-      "norm_label": "writespec()"
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigedgedefaults()"
+    },
+    {
+      "label": "TestLoadConfigParseErrors()",
+      "file_type": "code",
+      "source_file": "internal/config/coverage_test.go",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "internal_config_coverage_test_testloadconfigparseerrors",
+      "community": 82,
+      "community_name": "LoadConfig",
+      "norm_label": "testloadconfigparseerrors()"
     },
     {
       "label": "client_cert_authority_ocsp_tls_trusted_common_name.md",
@@ -17094,39 +16886,6 @@
       "norm_label": ".workflowerr()"
     },
     {
-      "label": "SEMPError",
-      "file_type": "code",
-      "source_file": "internal/errors/errors.go",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "errors_semperror",
-      "community": 9,
-      "community_name": "NewTemplateError",
-      "norm_label": "semperror"
-    },
-    {
-      "label": ".Error()",
-      "file_type": "code",
-      "source_file": "internal/errors/errors.go",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "errors_semperror_error",
-      "community": 9,
-      "community_name": "NewTemplateError",
-      "norm_label": ".error()"
-    },
-    {
-      "label": ".workflowErr()",
-      "file_type": "code",
-      "source_file": "internal/errors/errors.go",
-      "source_location": "L50",
-      "_origin": "ast",
-      "id": "errors_semperror_workflowerr",
-      "community": 9,
-      "community_name": "NewTemplateError",
-      "norm_label": ".workflowerr()"
-    },
-    {
       "label": "TemplateError",
       "file_type": "code",
       "source_file": "internal/errors/errors.go",
@@ -17380,17 +17139,6 @@
       "norm_label": "testisworkflowerror()"
     },
     {
-      "label": "asSEMPError()",
-      "file_type": "code",
-      "source_file": "internal/semp/client.go",
-      "source_location": "L280",
-      "_origin": "ast",
-      "id": "internal_semp_client_assemperror",
-      "community": 9,
-      "community_name": "NewTemplateError",
-      "norm_label": "assemperror()"
-    },
-    {
       "label": "gen_oauth_profile_client_required_claim.go",
       "file_type": "code",
       "source_file": "internal/modules/gen_oauth_profile_client_required_claim.go",
@@ -17589,39 +17337,6 @@
       "norm_label": "ownkeynames()"
     },
     {
-      "label": "TestUnionAttributesTagsThePlatformSpecificOneAndNotesItsDescription()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L389",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testunionattributestagstheplatformspecificoneandnotesitsdescription",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "testunionattributestagstheplatformspecificoneandnotesitsdescription()"
-    },
-    {
-      "label": "TestUnionEnumKeepsTheWiderSetsOrder()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L430",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testunionenumkeepsthewidersetsorder",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "testunionenumkeepsthewidersetsorder()"
-    },
-    {
-      "label": "TestUnionTagsObjectsByWhichPlatformDefinesThem()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/extract_test.go",
-      "source_location": "L369",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_extract_test_testuniontagsobjectsbywhichplatformdefinesthem",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "testuniontagsobjectsbywhichplatformdefinesthem()"
-    },
-    {
       "label": "ir.go",
       "file_type": "code",
       "source_file": "tools/semp-gen/internal/ir/ir.go",
@@ -17677,59 +17392,15 @@
       "norm_label": "scope"
     },
     {
-      "label": "merge.go",
+      "label": "Spec",
       "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/merge.go",
-      "source_location": "L1",
+      "source_file": "tools/semp-gen/internal/ir/ir.go",
+      "source_location": "L155",
       "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_merge",
+      "id": "tools_semp_gen_internal_ir_ir_go_ir_spec",
       "community": 94,
       "community_name": "Object",
-      "norm_label": "merge.go"
-    },
-    {
-      "label": "union()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/merge.go",
-      "source_location": "L16",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_merge_union",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "union()"
-    },
-    {
-      "label": "unionAttributes()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/merge.go",
-      "source_location": "L45",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_merge_unionattributes",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "unionattributes()"
-    },
-    {
-      "label": "unionEnum()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/merge.go",
-      "source_location": "L94",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_merge_unionenum",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "unionenum()"
-    },
-    {
-      "label": "withNote()",
-      "file_type": "code",
-      "source_file": "tools/semp-gen/internal/ir/merge.go",
-      "source_location": "L84",
-      "_origin": "ast",
-      "id": "tools_semp_gen_internal_ir_merge_withnote",
-      "community": 94,
-      "community_name": "Object",
-      "norm_label": "withnote()"
+      "norm_label": "spec"
     },
     {
       "label": "msg_vpn_acl_profile_subscribe_topic_exception.md",
@@ -22979,198 +22650,6 @@
       "_origin": "ast",
       "source": "modules_objectdesc_validate",
       "target": "internal_modules_validate_checkcombinations",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L296",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_acl_config",
-      "target": "scripts_cutover_check_conn_block",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L125",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_usage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L126",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_die",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L153",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_info",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L179",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_conn_block",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L306",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_vhost_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L308",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_acl_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L354",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_step",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L357",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_fail",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L372",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_pass",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L408",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_sh__entry",
-      "target": "scripts_cutover_check_wf",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L90",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_step",
-      "target": "scripts_cutover_check_hr",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L286",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_vhost_config",
-      "target": "scripts_cutover_check_conn_block",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L341",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_wf",
-      "target": "scripts_cutover_check_parse_counts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L343",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_wf",
-      "target": "scripts_cutover_check_info",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L344",
-      "weight": 1.0,
-      "context": "call",
-      "_origin": "ast",
-      "source": "scripts_cutover_check_wf",
-      "target": "scripts_cutover_check_fail",
       "confidence_score": 1.0
     },
     {
@@ -43673,50 +43152,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_sh__entry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-deploy.ps1",
-      "source_location": "L45",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_deploy",
-      "target": "scripts_cutover_deploy_step",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-deploy.ps1",
-      "source_location": "L46",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_deploy",
-      "target": "scripts_cutover_deploy_info",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-deploy.ps1",
-      "source_location": "L47",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_deploy",
-      "target": "scripts_cutover_deploy_fail",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "scripts/dev.ps1",
       "source_location": "L115",
       "weight": 1.0,
@@ -43987,17 +43422,6 @@
       "_origin": "ast",
       "source": "scripts_dev_sh_scripts_dev",
       "target": "scripts_dev_sh__entry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/test.sh",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_test",
-      "target": "scripts_test_sh__entry",
       "confidence_score": 1.0
     },
     {
@@ -45747,171 +45171,6 @@
       "_origin": "ast",
       "source": "tools_semp_gen_run_test",
       "target": "tools_semp_gen_run_test_testrunremovesadescriptorthespecnolongerproduces",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L102",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_fail",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L111",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_die",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L116",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_usage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L141",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_cleanup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L165",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_conn_block",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L285",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_vhost_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L295",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_acl_config",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L319",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_parse_counts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L337",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_wf",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_no_color",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L82",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_failures",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L86",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_hr",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L88",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_step",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L95",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_info",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/cutover-check.sh",
-      "source_location": "L97",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_cutover_check",
-      "target": "scripts_cutover_check_pass",
       "confidence_score": 1.0
     },
     {
@@ -53622,5 +52881,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "918be2910466f5fdb43f9af11824bd91722c851b"
+  "built_at_commit": "ee7b4b03bebc91e37f9bdd55ee0fceb4d843c380"
 }

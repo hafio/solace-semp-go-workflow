@@ -224,11 +224,6 @@
     "ast_hash": "3b43bcb11d82ccada977c9dd9b2d6aee",
     "semantic_hash": ""
   },
-  "scripts/test.sh": {
-    "mtime": 1786419483.4340854,
-    "ast_hash": "c4e7d9aa0454f9d5e86b7d54252b3afc",
-    "semantic_hash": ""
-  },
   "specs/appliance/10.26.0.8755/semp-v2-config.json": {
     "mtime": 1786419485.2139964,
     "ast_hash": "",
@@ -672,16 +667,6 @@
   "internal/modules/integration_test.go": {
     "mtime": 1786614031.9522839,
     "ast_hash": "8d4de52c62641511f54a732bf8f7ffe2",
-    "semantic_hash": ""
-  },
-  "scripts/cutover-check.sh": {
-    "mtime": 1786670787.0594337,
-    "ast_hash": "1d6b2293a037b4eb4e115eeb89021acc",
-    "semantic_hash": ""
-  },
-  "scripts/cutover-deploy.ps1": {
-    "mtime": 1786672712.3586452,
-    "ast_hash": "3b4d5b5d70b4bbc2132d4caba69a0bef",
     "semantic_hash": ""
   },
   "internal/modules/canon.go": {
